@@ -1,31 +1,31 @@
 ---
-- id: com.lightningkite.khrysalis.views.ViewDependency
+- id: com.lightningkite.butterfly.views.ViewDependency
   type: type
   template: Window
 
-- id: com.lightningkite.khrysalis.android.ActivityAccess
+- id: com.lightningkite.butterfly.android.ActivityAccess
   type: type
   template: Window
 
-- id: com.lightningkite.khrysalis.views.getString
+- id: com.lightningkite.butterfly.views.getString
   type: call
   template: ~0~
 
-- id: com.lightningkite.khrysalis.views.displayMetrics
+- id: com.lightningkite.butterfly.views.displayMetrics
   type: get
   template:
     pattern: DisplayMetrics.INSTANCE
     imports:
-      DisplayMetrics: khrysalis/dist/views/DisplayMetrics.actual
+      DisplayMetrics: butterfly/dist/views/DisplayMetrics.actual
 
-- id: com.lightningkite.khrysalis.views.openUrl
+- id: com.lightningkite.butterfly.views.openUrl
   type: call
   template: window.open(~0~, "_blank")
 
-- id: com.lightningkite.khrysalis.views.openAndroidAppOrStore
+- id: com.lightningkite.butterfly.views.openAndroidAppOrStore
   type: call
   template: window.open("https://play.google.com/store/apps/details?id=" + ~0~, "_blank")
 
-- id: com.lightningkite.khrysalis.views.openIosStore
+- id: com.lightningkite.butterfly.views.openIosStore
   type: call
   template: window.open("https://apps.apple.com/us/app/app/id" + ~0~, "_blank")

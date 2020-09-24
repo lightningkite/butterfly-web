@@ -804,37 +804,37 @@
   template:
     pattern: new NumberRange(~this~, ~0~)
     imports:
-      NumberRange: khrysalis/dist/Kotlin
+      NumberRange: butterfly/dist/Kotlin
 - id: kotlin.Short.rangeTo
   type: call
   template:
     pattern: new NumberRange(~this~, ~0~)
     imports:
-      NumberRange: khrysalis/dist/Kotlin
+      NumberRange: butterfly/dist/Kotlin
 - id: kotlin.Int.rangeTo
   type: call
   template:
     pattern: new NumberRange(~this~, ~0~)
     imports:
-      NumberRange: khrysalis/dist/Kotlin
+      NumberRange: butterfly/dist/Kotlin
 - id: kotlin.Long.rangeTo
   type: call
   template:
     pattern: new NumberRange(~this~, ~0~)
     imports:
-      NumberRange: khrysalis/dist/Kotlin
+      NumberRange: butterfly/dist/Kotlin
 - id: kotlin.Float.rangeTo
   type: call
   template:
     pattern: new Range(~this~, ~0~)
     imports:
-      Range: khrysalis/dist/Kotlin
+      Range: butterfly/dist/Kotlin
 - id: kotlin.Double.rangeTo
   type: call
   template:
     pattern: new Range(~this~, ~0~)
     imports:
-      Range: khrysalis/dist/Kotlin
+      Range: butterfly/dist/Kotlin
 - id: kotlin.ranges.until
   type: call
   actualReceiver: kotlin.Number
@@ -842,14 +842,14 @@
   template:
     pattern: (new NumberRange(~this~, ~0~ - 1))
     imports:
-      NumberRange: khrysalis/dist/Kotlin
+      NumberRange: butterfly/dist/Kotlin
 - id: kotlin.ranges.until
   type: call
   actualReceiver: kotlin.Number
   template:
     pattern: new NumberRange(~this~, ~0~ - 1)
     imports:
-      NumberRange: khrysalis/dist/Kotlin
+      NumberRange: butterfly/dist/Kotlin
 
 
 # Math.X

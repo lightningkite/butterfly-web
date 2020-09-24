@@ -4,7 +4,7 @@ const DisposeCondition_actual_1 = require("../../rx/DisposeCondition.actual");
 const ObservableProperty_ext_shared_1 = require("../ObservableProperty.ext.shared");
 const CombineObservableProperty_shared_1 = require("../CombineObservableProperty.shared");
 const StandardObservableProperty_shared_1 = require("../StandardObservableProperty.shared");
-//! Declares com.lightningkite.khrysalis.observables.binding.bind>android.widget.AutoCompleteTextView
+//! Declares com.lightningkite.butterfly.observables.binding.bind>android.widget.AutoCompleteTextView
 function xAutoCompleteTextViewBind(this_, options, toString, onItemSelected) {
     let query = new StandardObservableProperty_shared_1.StandardObservableProperty("");
     this_.addEventListener("change", () => {
@@ -13,7 +13,7 @@ function xAutoCompleteTextViewBind(this_, options, toString, onItemSelected) {
     xAutoCompleteTextViewBindList(this_, CombineObservableProperty_shared_1.xObservablePropertyCombine(options, query, (options, query) => options.filter((x) => toString(x).toLowerCase().indexOf(query.toLowerCase()) != -1)), toString, onItemSelected);
 }
 exports.xAutoCompleteTextViewBind = xAutoCompleteTextViewBind;
-//! Declares com.lightningkite.khrysalis.observables.binding.bindList>android.widget.AutoCompleteTextView
+//! Declares com.lightningkite.butterfly.observables.binding.bindList>android.widget.AutoCompleteTextView
 function xAutoCompleteTextViewBindList(this_, options, toString, onItemSelected) {
     const container = this_.parentElement;
     let selectionView = null;
@@ -38,11 +38,11 @@ function xAutoCompleteTextViewBindList(this_, options, toString, onItemSelected)
         removeOptions();
         const newSelectionView = document.createElement("div");
         newSelectionView.tabIndex = -1;
-        newSelectionView.classList.add("khrysalis-autocomplete-options");
+        newSelectionView.classList.add("butterfly-autocomplete-options");
         for (const option of options) {
             const optionView = document.createElement("button");
             optionView.tabIndex = 0;
-            optionView.classList.add("khrysalis-autocomplete-option");
+            optionView.classList.add("butterfly-autocomplete-option");
             optionView.innerText = toString(option);
             optionView.addEventListener("click", (ev) => {
                 ev.stopPropagation();

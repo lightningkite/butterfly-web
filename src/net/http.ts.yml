@@ -3,9 +3,9 @@
   template:
     pattern: HttpBody
     imports:
-      HttpBody: khrysalis/dist/net/HttpBody.actual
+      HttpBody: butterfly/dist/net/HttpBody.actual
 
-- id: com.lightningkite.khrysalis.net.HttpResponse
+- id: com.lightningkite.butterfly.net.HttpResponse
   type: type
   template: Response
 

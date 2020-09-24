@@ -1,5 +1,5 @@
 ---
 
-- id: com.lightningkite.khrysalis.PI
+- id: com.lightningkite.butterfly.PI
   type: get
   template: Math.PI

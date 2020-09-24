@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Language_1 = require("../kotlin/Language");
-//! Declares com.lightningkite.khrysalis.views.DrawableResource
+//! Declares com.lightningkite.butterfly.views.DrawableResource
 class DrawableResource {
     constructor(cssClass, filePath) {
         this.cssClass = cssClass;

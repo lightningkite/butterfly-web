@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//! Declares com.lightningkite.khrysalis.observables.ObservableProperty
+//! Declares com.lightningkite.butterfly.observables.ObservableProperty
 class ObservableProperty {
     constructor() {
     }

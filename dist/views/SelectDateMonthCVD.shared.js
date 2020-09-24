@@ -6,7 +6,7 @@ const Kotlin_1 = require("../Kotlin");
 const Date_actual_1 = require("../time/Date.actual");
 const StandardObservableProperty_shared_1 = require("../observables/StandardObservableProperty.shared");
 const DisposeCondition_actual_1 = require("../rx/DisposeCondition.actual");
-//! Declares com.lightningkite.khrysalis.views.SelectDateMonthCVD
+//! Declares com.lightningkite.butterfly.views.SelectDateMonthCVD
 class SelectDateMonthCVD extends MonthCVD_shared_1.MonthCVD {
     constructor() {
         super();

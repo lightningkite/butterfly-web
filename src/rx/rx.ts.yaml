@@ -95,7 +95,7 @@
   template:
     pattern: ~this~.pipe(rxRetryWhenAlt(~0~))
     imports:
-      rxRetryWhenAlt: khrysalis/dist/rx/RxActual.actual
+      rxRetryWhenAlt: butterfly/dist/rx/RxActual.actual
 
 - id: io.reactivex.Observable.delay
   type: call
@@ -155,7 +155,7 @@
     imports:
       rxFilter: filter from rxjs/operators
 
-- id: com.lightningkite.khrysalis.rx.combineLatest
+- id: com.lightningkite.butterfly.rx.combineLatest
   type: call
   template:
     pattern: rxCombineLatest([~this~, ~0~]).pipe(rxMap(x => (~1~)(x[0], x[1])))
@@ -163,7 +163,7 @@
       rxMap: map from rxjs/operators
       rxCombineLatest: combineLatest from rxjs
 
-- id: com.lightningkite.khrysalis.rx.combineLatest
+- id: com.lightningkite.butterfly.rx.combineLatest
   type: call
   receiver: kotlin.collections.List
   arguments: []
@@ -173,7 +173,7 @@
       rxMap: map from rxjs/operators
       rxCombineLatest: combineLatest from rxjs
 
-- id: com.lightningkite.khrysalis.rx.combineLatest
+- id: com.lightningkite.butterfly.rx.combineLatest
   type: call
   receiver: kotlin.collections.List
   template:
@@ -291,14 +291,14 @@
   template:
     pattern: ~this~.pipe(rxDoOnSubscribe(~0~))
     imports:
-      rxDoOnSubscribe: doOnSubscribe from khrysalis/dist/rx/RxActual.actual
+      rxDoOnSubscribe: doOnSubscribe from butterfly/dist/rx/RxActual.actual
 
 - id: io.reactivex.Observable.doOnDispose
   type: call
   template:
     pattern: ~this~.pipe(rxDoOnDispose(~0~))
     imports:
-      rxDoOnDispose: doOnDispose from khrysalis/dist/rx/RxActual.actual
+      rxDoOnDispose: doOnDispose from butterfly/dist/rx/RxActual.actual
 
 - id: io.reactivex.Observable.doOnError
   type: call
@@ -452,7 +452,7 @@
   template:
     pattern: ~this~.subscribe(new SingleObserver(~0~))
     imports:
-      SingleObserver: khrysalis/dist/rx/RxActual.actual
+      SingleObserver: butterfly/dist/rx/RxActual.actual
 
 - id: io.reactivex.rxkotlin.subscribeBy
   type: call
@@ -541,7 +541,7 @@
       rxZip: zip from rxjs
       rxMap: map from rxjs/operators
 
-- id: com.lightningkite.khrysalis.rx.zip
+- id: com.lightningkite.butterfly.rx.zip
   type: call
   template:
     pattern: rxZip(...~this~)
@@ -560,7 +560,7 @@
   template:
     pattern: doOnSubscribe(~this~, ~0~)
     imports:
-      doOnSubscribe: khrysalis/dist/Kotlin
+      doOnSubscribe: butterfly/dist/Kotlin
 
 - id: io.reactivex.Single.doFinally
   type: call

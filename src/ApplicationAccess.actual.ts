@@ -3,7 +3,7 @@ import {ConstantObservableProperty} from "./observables/ConstantObservableProper
 import {MutableObservableProperty} from "./observables/MutableObservableProperty.shared";
 import {xObservablePropertyWithWrite} from "./observables/WriteAddedObservableProperty.shared";
 
-//! Declares com.lightningkite.khrysalis.ApplicationAccess
+//! Declares com.lightningkite.butterfly.ApplicationAccess
 export class ApplicationAccess {
     public static INSTANCE = new ApplicationAccess();
     public foreground: ObservableProperty<boolean> = new ConstantObservableProperty(true)

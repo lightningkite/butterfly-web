@@ -12,7 +12,7 @@
   template:
     pattern: listFilterNotNull([~*~]) as Array<~T0~>
     imports:
-      listFilterNotNull: khrysalis/dist/KotlinCollections
+      listFilterNotNull: butterfly/dist/KotlinCollections
 - id: kotlin.collections.mutableListOf
   type: call
   hasExplicitTypeArguments: true
@@ -29,7 +29,7 @@
   template:
     pattern: listFilterNotNull([~*~])
     imports:
-      listFilterNotNull: khrysalis/dist/KotlinCollections
+      listFilterNotNull: butterfly/dist/KotlinCollections
 - id: kotlin.collections.mutableListOf
   type: call
   template: "[~*~]"
@@ -86,7 +86,7 @@
   template:
     pattern: ~this~.some((x) => safeEq(~0~, x))
     imports:
-      safeEq: khrysalis/dist/kotlin/Language
+      safeEq: butterfly/dist/kotlin/Language
 - id: kotlin.collections.List.get
   type: call
   template: ~this~[~0~]
@@ -135,14 +135,14 @@
   template:
     pattern: listRemoveItem(~this~, ~0~)
     imports:
-      listRemoveItem: khrysalis/dist/KotlinCollections
+      listRemoveItem: butterfly/dist/KotlinCollections
 - id: kotlin.collections.removeAll
   type: call
   receiver: kotlin.collections.MutableList
   template:
     pattern: listRemoveAll(~this~, ~0~)
     imports:
-      listRemoveAll: khrysalis/dist/KotlinCollections
+      listRemoveAll: butterfly/dist/KotlinCollections
 - id: kotlin.collections.MutableList.removeAt
   type: call
   usedAsExpression: false
@@ -185,7 +185,7 @@
   template:
     pattern: new NumberRange(0, ~this~.length-1)
     imports:
-      NumberRange: khrysalis/dist/Kotlin
+      NumberRange: butterfly/dist/Kotlin
 - id: kotlin.collections.indexOfFirst
   type: call
   actualReceiver: kotlin.collections.List
@@ -285,7 +285,7 @@
   template:
     pattern: listFilterNotNull(~this~)
     imports:
-      listFilterNotNull: khrysalis/dist/KotlinCollections
+      listFilterNotNull: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.sortBy
   type: call
@@ -305,14 +305,14 @@
   template:
     pattern: ~this~.slice().sort((a, b) => safeCompare(~0~(a), ~0~(b)))
     imports:
-      safeCompare: khrysalis/dist/kotlin/Comparable
+      safeCompare: butterfly/dist/kotlin/Comparable
 - id: kotlin.collections.sortedByDescending
   type: call
   actualReceiver: kotlin.collections.List
   template:
     pattern: ~this~.slice().sort((a, b) => -safeCompare(~0~(a), ~0~(b)))
     imports:
-      safeCompare: khrysalis/dist/kotlin/Comparable
+      safeCompare: butterfly/dist/kotlin/Comparable
 - id: kotlin.collections.sortedWith
   type: call
   actualReceiver: kotlin.collections.List
@@ -350,14 +350,14 @@
   template:
     pattern: listFilterNotNull(~this~.map(~0~))
     imports:
-      listFilterNotNull: khrysalis/dist/KotlinCollections
+      listFilterNotNull: butterfly/dist/KotlinCollections
 - id: kotlin.collections.mapIndexedNotNull
   type: call
   actualReceiver: kotlin.collections.List
   template:
     pattern: ~this~.map((_v, _i) => { ~L0~ }).filter((x) => x !== null)
     imports:
-      listFilterNotNull: khrysalis/dist/KotlinCollections
+      listFilterNotNull: butterfly/dist/KotlinCollections
     lambdaTransforms:
       0: ["_i", "_v"]
 

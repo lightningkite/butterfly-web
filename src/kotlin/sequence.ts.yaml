@@ -23,22 +23,22 @@
   template:
     pattern: iterDrop(~this~, ~0~)
     imports:
-      iterFilter: filter from khrysalis/dist/kotlin/lazyOp
-      iterDrop: drop from khrysalis/dist/kotlin/lazyOp
+      iterFilter: filter from butterfly/dist/kotlin/lazyOp
+      iterDrop: drop from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.dropLast
   type: call
   receiver: kotlin.sequences.Sequence
   template:
     pattern: iterDrop(~this~, ~0~)
     imports:
-      iterDropRight: dropRight from khrysalis/dist/kotlin/lazyOp
+      iterDropRight: dropRight from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.dropWhile
   type: call
   receiver: kotlin.sequences.Sequence
   template:
     pattern: iterDropUntil(~this~, (x) => { !~0~(x) })
     imports:
-      iterDropUntil: dropUntil from khrysalis/dist/kotlin/lazyOp
+      iterDropUntil: dropUntil from butterfly/dist/kotlin/lazyOp
 #- id: kotlin.sequences.dropLastWhile
 
 - id: kotlin.sequences.take
@@ -47,21 +47,21 @@
   template:
     pattern: iterTake(~this~, ~0~)
     imports:
-      iterTake: take from khrysalis/dist/kotlin/lazyOp
+      iterTake: take from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.takeLast
   type: call
   receiver: kotlin.sequences.Sequence
   template:
     pattern: iterTake(~this~, ~0~)
     imports:
-      iterTakeRight: takeRight from khrysalis/dist/kotlin/lazyOp
+      iterTakeRight: takeRight from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.takeWhile
   type: call
   receiver: kotlin.sequences.Sequence
   template:
     pattern: iterTakeUntil(~this~, (x) => { !~0~(x) })
     imports:
-      iterTakeUntil: takeUntil from khrysalis/dist/kotlin/lazyOp
+      iterTakeUntil: takeUntil from butterfly/dist/kotlin/lazyOp
 #- id: kotlin.sequences.takeLastWhile
 
 - id: kotlin.sequences.filter
@@ -70,21 +70,21 @@
   template:
     pattern: iterFilter(~this~, ~0~)
     imports:
-      iterFilter: filter from khrysalis/dist/kotlin/lazyOp
+      iterFilter: filter from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.map
   type: call
   receiver: kotlin.sequences.Sequence
   template:
     pattern: iterMap(~this~, ~0~)
     imports:
-      iterMap: map from khrysalis/dist/kotlin/lazyOp
+      iterMap: map from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.mapIndexed
   type: call
   receiver: kotlin.sequences.Sequence
   template:
     pattern: iterMap(~this~, (_v, _i) => { ~L0~ })
     imports:
-      iterMap: map from khrysalis/dist/kotlin/lazyOp
+      iterMap: map from butterfly/dist/kotlin/lazyOp
     lambdaTransforms:
       0: ["_i", "_v"]
 - id: kotlin.sequences.flatMap
@@ -93,8 +93,8 @@
   template:
     pattern: iterFlatten(iterMap(~this~, ~0~))
     imports:
-      iterMap: map from khrysalis/dist/kotlin/lazyOp
-      iterFlatten: flatten from khrysalis/dist/kotlin/lazyOp
+      iterMap: map from butterfly/dist/kotlin/lazyOp
+      iterFlatten: flatten from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.sequences.filterIndexed
   type: call
@@ -102,34 +102,34 @@
   template:
     pattern: iterFilter(~this~, ~0~)
     imports:
-      iterFilter: filter from khrysalis/dist/kotlin/lazyOp
+      iterFilter: filter from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.filterNot
   type: call
   receiver: kotlin.sequences.Sequence
   template:
     pattern: iterFilter(~this~, (x)=>{ !~0~(x) )
     imports:
-      iterFilter: filter from khrysalis/dist/kotlin/lazyOp
+      iterFilter: filter from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.filterNotNull
   type: call
   template:
     pattern: iterableFilterNotNull(~this~)
     imports:
-      iterableFilterNotNull: khrysalis/dist/KotlinCollections
+      iterableFilterNotNull: butterfly/dist/KotlinCollections
 - id: kotlin.sequences.mapNotNull
   type: call
   template:
     pattern: iterableFilterNotNull(iterMap(~this~, ~0~))
     imports:
-      iterMap: map from khrysalis/dist/kotlin/lazyOp
-      iterableFilterNotNull: khrysalis/dist/KotlinCollections
+      iterMap: map from butterfly/dist/kotlin/lazyOp
+      iterableFilterNotNull: butterfly/dist/KotlinCollections
 - id: kotlin.sequences.mapIndexedNotNull
   type: call
   template:
     pattern: iterableFilterNotNull(iterMap(~this~, (_v, _i) => { ~L0~ }))
     imports:
-      iterMap: map from khrysalis/dist/kotlin/lazyOp
-      iterableFilterNotNull: khrysalis/dist/KotlinCollections
+      iterMap: map from butterfly/dist/kotlin/lazyOp
+      iterableFilterNotNull: butterfly/dist/KotlinCollections
     lambdaTransforms:
       0: ["_i", "_v"]
 - id: kotlin.sequences.chunked
@@ -138,7 +138,7 @@
   template:
     pattern: iterChunk(~this~, ~0~)
     imports:
-      iterChunk: chunk from khrysalis/dist/kotlin/lazyOp
+      iterChunk: chunk from butterfly/dist/kotlin/lazyOp
 
 
 - id: kotlin.sequences.sorted
@@ -146,83 +146,83 @@
   template:
     pattern: iterToArray(~this~).sort()
     imports:
-      iterToArray: toArray from khrysalis/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.sortedBy
   type: call
   template:
     pattern: iterToArray(~this~).sort((a, b) => safeCompare(~0~(a), ~0~(b)))
     imports:
-      iterToArray: toArray from khrysalis/dist/kotlin/lazyOp
-      safeCompare: khrysalis/dist/kotlin/Comparable
+      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      safeCompare: butterfly/dist/kotlin/Comparable
 - id: kotlin.sequences.sortedByDescending
   type: call
   template:
     pattern: iterToArray(~this~).sort((a, b) => -safeCompare(~0~(a), ~0~(b)))
     imports:
-      iterToArray: toArray from khrysalis/dist/kotlin/lazyOp
-      safeCompare: khrysalis/dist/kotlin/Comparable
+      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      safeCompare: butterfly/dist/kotlin/Comparable
 - id: kotlin.sequences.sortedWith
   type: call
   template:
     pattern: iterToArray(~this~).sort(~0~)
     imports:
-      iterToArray: toArray from khrysalis/dist/kotlin/lazyOp
-      safeCompare: khrysalis/dist/kotlin/Comparable
+      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      safeCompare: butterfly/dist/kotlin/Comparable
 
 - id: kotlin.sequences.associate
   type: call
   template:
     pattern: new Map(iterMap(~this~, ~0~))
     imports:
-      iterToArray: toArray from khrysalis/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.associateBy
   type: call
   template:
     pattern: new Map(iterMap(~this~, (_x)=>{ [~0~(_x), _x] }))
     imports:
-      iterToArray: toArray from khrysalis/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.sequences.toList
   type: call
   template:
     pattern: iterToArray(~this~)
     imports:
-      iterToArray: toArray from khrysalis/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.sequences.toMutableList
   type: call
   template:
     pattern: iterToArray(~this~)
     imports:
-      iterToArray: toArray from khrysalis/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.sequences.distinct
   type: call
   template:
     pattern: "[...new EqualOverrideSet(~this~)]"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.sequences.toSet
   type: call
   template:
     pattern: "new EqualOverrideSet(~this~)"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.sequences.toMutableSet
   type: call
   template:
     pattern: "new EqualOverrideSet(~this~)"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.sequences.toHashSet
   type: call
   template:
     pattern: "new EqualOverrideSet(~this~)"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.sequences.distinct
   type: call
@@ -259,21 +259,21 @@
   template:
     pattern: iterSome(~this~, ~0~)
     imports:
-      iterSome: some from khrysalis/dist/kotlin/lazyOp
+      iterSome: some from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.sequences.all
   type: call
   template:
     pattern: iterEvery(~this~, ~0~)
     imports:
-      iterEvery: every from khrysalis/dist/kotlin/lazyOp
+      iterEvery: every from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.sequences.none
   type: call
   template:
     pattern: (!iterSome(~this~, ~0~))
     imports:
-      iterSome: some from khrysalis/dist/kotlin/lazyOp
+      iterSome: some from butterfly/dist/kotlin/lazyOp
 
 
 - id: kotlin.sequences.forEach
@@ -289,28 +289,28 @@
   template:
     pattern: iterFirst(~this~)
     imports:
-      iterFirst: first from khrysalis/dist/kotlin/lazyOp
+      iterFirst: first from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.sequences.firstOrNull
   type: call
   template:
     pattern: iterFirstOrNull(~this~)
     imports:
-      iterFirstOrNull: khrysalis/dist/KotlinCollections
+      iterFirstOrNull: butterfly/dist/KotlinCollections
 
 - id: kotlin.sequences.last
   type: call
   template:
     pattern: (iterLast(~this~) ?? null)
     imports:
-      iterLast: last from khrysalis/dist/kotlin/lazyOp
+      iterLast: last from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.sequences.lastOrNull
   type: call
   template:
     pattern: iterLastOrNull(~this~)
     imports:
-      iterLastOrNull: khrysalis/dist/KotlinCollections
+      iterLastOrNull: butterfly/dist/KotlinCollections
 
 
 - id: kotlin.sequences.maxBy
@@ -318,26 +318,26 @@
   template:
     pattern: iterMaxBy(~this~, ~0~)
     imports:
-      iterMaxBy: khrysalis/dist/kotlin/Collections
+      iterMaxBy: butterfly/dist/kotlin/Collections
 
 - id: kotlin.sequences.minBy
   type: call
   template:
     pattern: iterMinBy(~this~, ~0~)
     imports:
-      iterMinBy: khrysalis/dist/kotlin/Collections
+      iterMinBy: butterfly/dist/kotlin/Collections
 
 - id: kotlin.sequences.max
   type: call
   template:
     pattern: iterMaxBy(~this~, (x)=>x)
     imports:
-      iterMaxBy: khrysalis/dist/kotlin/Collections
+      iterMaxBy: butterfly/dist/kotlin/Collections
 
 - id: kotlin.sequences.min
   type: call
   template:
     pattern: iterMinBy(~this~, (x)=>x)
     imports:
-      iterMinBy: khrysalis/dist/kotlin/Collections
+      iterMinBy: butterfly/dist/kotlin/Collections
 

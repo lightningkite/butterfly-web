@@ -7,9 +7,9 @@
 - id: android.widget.ScrollView
   type: call
   template:
-    pattern: also(document.createElement('div') as HTMLDivElement, (x)=>{ x.classList.add("khrysalis-scroll") })
+    pattern: also(document.createElement('div') as HTMLDivElement, (x)=>{ x.classList.add("butterfly-scroll") })
     imports:
-      also: khrysalis/dist/Kotlin
+      also: butterfly/dist/Kotlin
 
 - id: android.widget.ScrollView.smoothScrollTo
   type: call

@@ -6,7 +6,7 @@ const rxjs_1 = require("rxjs");
 const Image_loadingRx_actual_1 = require("../Image.loadingRx.actual");
 const operators_1 = require("rxjs/operators");
 const Language_1 = require("../kotlin/Language");
-//! Declares com.lightningkite.khrysalis.net.HttpBody
+//! Declares com.lightningkite.butterfly.net.HttpBody
 class HttpBody {
     constructor(data, type) {
         this.data = data;
@@ -14,31 +14,31 @@ class HttpBody {
     }
 }
 exports.HttpBody = HttpBody;
-//! Declares com.lightningkite.khrysalis.net.HttpBodyPart
+//! Declares com.lightningkite.butterfly.net.HttpBodyPart
 class HttpBodyPart {
 }
 exports.HttpBodyPart = HttpBodyPart;
-//! Declares com.lightningkite.khrysalis.net.toJsonHttpBody
+//! Declares com.lightningkite.butterfly.net.toJsonHttpBody
 function xAnyToJsonHttpBody(this_) {
     return new HttpBody(jsonParsing_1.stringify(this_), HttpMediaType_actual_1.HttpMediaTypes.INSTANCE.JSON);
 }
 exports.xAnyToJsonHttpBody = xAnyToJsonHttpBody;
-//! Declares com.lightningkite.khrysalis.net.toHttpBody
+//! Declares com.lightningkite.butterfly.net.toHttpBody
 function xByteArrayToHttpBody(this_, mediaType) {
     return new HttpBody(this_, mediaType);
 }
 exports.xByteArrayToHttpBody = xByteArrayToHttpBody;
-//! Declares com.lightningkite.khrysalis.net.toHttpBody
+//! Declares com.lightningkite.butterfly.net.toHttpBody
 function xStringToHttpBody(this_, mediaType = HttpMediaType_actual_1.HttpMediaTypes.INSTANCE.TEXT) {
     return new HttpBody(this_, mediaType);
 }
 exports.xStringToHttpBody = xStringToHttpBody;
-//! Declares com.lightningkite.khrysalis.net.toHttpBody
+//! Declares com.lightningkite.butterfly.net.toHttpBody
 function xUriToHttpBody(this_) {
     return new HttpBody(this_, this_.type);
 }
 exports.xUriToHttpBody = xUriToHttpBody;
-//! Declares com.lightningkite.khrysalis.net.toHttpBody
+//! Declares com.lightningkite.butterfly.net.toHttpBody
 function xImageToHttpBody(this_, maxDimension = 2048) {
     return Image_loadingRx_actual_1.xImageLoad(this_).pipe(operators_1.flatMap((x) => resize(x, maxDimension)), operators_1.map((x) => new HttpBody(x, "image/png")));
 }
@@ -71,7 +71,7 @@ function resize(image, maxDimension = 2048) {
         }
     });
 }
-//! Declares com.lightningkite.khrysalis.net.multipartFormBody
+//! Declares com.lightningkite.butterfly.net.multipartFormBody
 function multipartFormBody(...parts) {
     var _a;
     const data = new FormData();
@@ -86,7 +86,7 @@ function multipartFormBody(...parts) {
     return new HttpBody(data, HttpMediaType_actual_1.HttpMediaTypes.INSTANCE.MULTIPART_FORM_DATA);
 }
 exports.multipartFormBody = multipartFormBody;
-//! Declares com.lightningkite.khrysalis.net.multipartFormFilePart
+//! Declares com.lightningkite.butterfly.net.multipartFormFilePart
 function multipartFormFilePart(name, valueOrFilename, body) {
     const result = new HttpBodyPart();
     result.name = name;

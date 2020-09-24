@@ -26,7 +26,7 @@ export namespace R {
     }
     export namespace DefaultStrings {
         export const empty: string = "";
-        export const app_name: string = "Khrysalis Template";
+        export const app_name: string = "Butterfly Template";
         export const back: string = "Back";
         export const ok: string = "OK";
         export const cancel: string = "Cancel";
@@ -35,7 +35,7 @@ export namespace R {
         export const go_to_another_screen: string = "Go to Another Screen";
         export const you_made_it_to_another_screen: string = "You made it to another screen!";
         export const welcome: string = "Welcome!";
-        export const welcome_message: string = "This is the template for a Khrysalis project. This screen exists to help you figure out stuff about it.";
+        export const welcome_message: string = "This is the template for a Butterfly project. This screen exists to help you figure out stuff about it.";
         export const increment_the_number: string = "Increment the Number";
         export const text_field: string = "Text Field";
         export const select_demo: string = "Select Demo";

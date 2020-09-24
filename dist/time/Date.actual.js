@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const TimeAlone_actual_1 = require("./TimeAlone.actual");
 const DateAlone_actual_1 = require("./DateAlone.actual");
 const ClockPartSize_shared_1 = require("./ClockPartSize.shared");
-//! Declares com.lightningkite.khrysalis.time.plus
+//! Declares com.lightningkite.butterfly.time.plus
 function xDatePlus(this_, interval) {
     let newDate = new Date();
     newDate.setTime(this_.getTime() + interval.milliseconds);
     return newDate;
 }
 exports.xDatePlus = xDatePlus;
-//! Declares com.lightningkite.khrysalis.time.minus
+//! Declares com.lightningkite.butterfly.time.minus
 function xDateMinus(this_, interval) {
     let newDate = new Date();
     newDate.setTime(this_.getTime() - interval.milliseconds);
@@ -66,7 +66,7 @@ function dateAloneModRelative(on, getter, action, num) {
     return on;
 }
 exports.dateAloneModRelative = dateAloneModRelative;
-//! Declares com.lightningkite.khrysalis.time.set
+//! Declares com.lightningkite.butterfly.time.set
 function xDateSet(this_, ...things) {
     for (const item of things) {
         if (item instanceof DateAlone_actual_1.DateAlone) {
@@ -86,7 +86,7 @@ function xDateSet(this_, ...things) {
     return this_;
 }
 exports.xDateSet = xDateSet;
-//! Declares com.lightningkite.khrysalis.time.set
+//! Declares com.lightningkite.butterfly.time.set
 function xDateAloneSet(this_, date) {
     this_.year = date.getFullYear();
     this_.month = date.getMonth() + 1;
@@ -94,7 +94,7 @@ function xDateAloneSet(this_, date) {
     return this_;
 }
 exports.xDateAloneSet = xDateAloneSet;
-//! Declares com.lightningkite.khrysalis.time.set
+//! Declares com.lightningkite.butterfly.time.set
 function xTimeAloneSet(this_, date) {
     this_.hour = date.getHours();
     this_.minute = date.getMinutes();
@@ -102,27 +102,27 @@ function xTimeAloneSet(this_, date) {
     return this_;
 }
 exports.xTimeAloneSet = xTimeAloneSet;
-//! Declares com.lightningkite.khrysalis.time.dateAlone
+//! Declares com.lightningkite.butterfly.time.dateAlone
 function xDateDateAloneGet(this_) {
     return new DateAlone_actual_1.DateAlone(this_.getFullYear(), this_.getMonth() + 1, this_.getDate());
 }
 exports.xDateDateAloneGet = xDateDateAloneGet;
-//! Declares com.lightningkite.khrysalis.time.timeAlone
+//! Declares com.lightningkite.butterfly.time.timeAlone
 function xDateTimeAloneGet(this_) {
     return new TimeAlone_actual_1.TimeAlone(this_.getHours(), this_.getMinutes(), this_.getSeconds());
 }
 exports.xDateTimeAloneGet = xDateTimeAloneGet;
-//! Declares com.lightningkite.khrysalis.time.dateFrom
+//! Declares com.lightningkite.butterfly.time.dateFrom
 function dateFrom(dateAlone, timeAlone, existing = new Date()) {
     return xDateSet(existing, dateAlone, timeAlone);
 }
 exports.dateFrom = dateFrom;
-//! Declares com.lightningkite.khrysalis.time.dateFromIso
+//! Declares com.lightningkite.butterfly.time.dateFromIso
 function dateFromIso(iso8601) {
     return new Date(iso8601);
 }
 exports.dateFromIso = dateFromIso;
-//! Declares com.lightningkite.khrysalis.time.format>java.util.Date
+//! Declares com.lightningkite.butterfly.time.format>java.util.Date
 function xDateFormat(this_, dateStyle, timeStyle) {
     let dateFormat = {};
     switch (dateStyle) {

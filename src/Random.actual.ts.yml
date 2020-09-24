@@ -62,11 +62,11 @@
   type: call
   arguments: []
   template: ~this~.random()
-- id: com.lightningkite.khrysalis.nextFloat
+- id: com.lightningkite.butterfly.nextFloat
   type: call
   arguments: [kotlin.Float]
   template: (~this~.random() * ~0~)
-- id: com.lightningkite.khrysalis.nextFloat
+- id: com.lightningkite.butterfly.nextFloat
   type: call
   arguments: [kotlin.Float, kotlin.Float]
   template: (~this~.random() * (~1~ - ~0~) + ~0~)
@@ -78,10 +78,10 @@
   template:
     pattern: RandomInstance
     imports:
-      RandomInstance: khrysalis/dist/Random.actual
+      RandomInstance: butterfly/dist/Random.actual
 - id: kotlin.random.Random
   type: get
   template:
     pattern: RandomInstance
     imports:
-      RandomInstance: khrysalis/dist/Random.actual
+      RandomInstance: butterfly/dist/Random.actual

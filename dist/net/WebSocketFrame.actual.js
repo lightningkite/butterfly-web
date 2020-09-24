@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//! Declares com.lightningkite.khrysalis.net.WebSocketFrame
+//! Declares com.lightningkite.butterfly.net.WebSocketFrame
 class WebSocketFrame {
     constructor(binary = null, text = null) {
         this.binary = binary;

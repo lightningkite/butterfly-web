@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//! Declares com.lightningkite.khrysalis.rx.solvePrivateDisposal
+//! Declares com.lightningkite.butterfly.rx.solvePrivateDisposal
 // export function xDisposableSolvePrivateDisposal(this_: SubscriptionLike, items: Array<any>): void{
 //     for (const item of items) {
 //         if(item instanceof View){
@@ -8,7 +8,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //         }
 //     }
 // }
-//! Declares com.lightningkite.khrysalis.rx.add
+//! Declares com.lightningkite.butterfly.rx.add
 function xObservableAdd(this_, listener) {
     let disposable = null;
     const disp = this_.subscribe((item) => {
@@ -22,7 +22,7 @@ function xObservableAdd(this_, listener) {
     return disp;
 }
 exports.xObservableAdd = xObservableAdd;
-//! Declares com.lightningkite.khrysalis.rx.addWeak
+//! Declares com.lightningkite.butterfly.rx.addWeak
 // export function xObservableAddWeak<A extends object, Element extends any>(this_: Observable<Element>, referenceA: A, listener:  (a: A, b: Element) => void): SubscriptionLike{
 //     let disposable: (SubscriptionLike | null) = null;
 //
@@ -43,7 +43,7 @@ exports.xObservableAdd = xObservableAdd;
 //     xDisposableSolvePrivateDisposal(disp, [referenceA]);
 //     return disp;
 // }
-//! Declares com.lightningkite.khrysalis.rx.addWeak
+//! Declares com.lightningkite.butterfly.rx.addWeak
 // export function xObservableAddWeak<A extends object, B extends object, Element extends any>(this_: Observable<Element>, referenceA: A, referenceB: B, listener:  (a: A, b: B, c: Element) => void): SubscriptionLike{
 //     let disposable: (SubscriptionLike | null) = null;
 //
@@ -68,7 +68,7 @@ exports.xObservableAdd = xObservableAdd;
 //     xDisposableSolvePrivateDisposal(disp, [referenceA, referenceB]);
 //     return disp;
 // }
-//! Declares com.lightningkite.khrysalis.rx.addWeak
+//! Declares com.lightningkite.butterfly.rx.addWeak
 // export function xObservableAddWeak<A extends object, B extends object, C extends object, Element extends any>(this_: Observable<Element>, referenceA: A, referenceB: B, referenceC: C, listener:  (a: A, b: B, c: C, d: Element) => void): SubscriptionLike{
 //     let disposable: (SubscriptionLike | null) = null;
 //

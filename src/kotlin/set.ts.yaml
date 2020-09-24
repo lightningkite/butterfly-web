@@ -35,7 +35,7 @@
   template:
     pattern: "new EqualOverrideSet<~T0~>()"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: java.util.HashSet
   type: call
@@ -43,7 +43,7 @@
   template:
     pattern: "new EqualOverrideSet<~T0~>()"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.HashSet
   type: call
@@ -62,7 +62,7 @@
   template:
     pattern: "new EqualOverrideSet()"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.setOf
   type: call
@@ -83,13 +83,13 @@
   template:
     pattern: "new EqualOverrideSet<~T0~>([~*~])"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 - id: kotlin.collections.setOf
   type: call
   template:
     pattern: "new EqualOverrideSet([~*~])"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.mutableSetOf
   type: call
@@ -109,13 +109,13 @@
   template:
     pattern: "new EqualOverrideSet<~T0~>([~*~])"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 - id: kotlin.collections.mutableSetOf
   type: call
   template:
     pattern: "new EqualOverrideSet([~*~])"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.hashSetOf
   type: call
@@ -135,13 +135,13 @@
   template:
     pattern: "new EqualOverrideSet<~T0~>([~*~])"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 - id: kotlin.collections.hashSetOf
   type: call
   template:
     pattern: "new EqualOverrideSet([~*~])"
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 ## Operations
 
@@ -158,7 +158,7 @@
   template:
     pattern: setAddCausedChange(~this~, ~0~)
     imports:
-      setAddCausedChange: khrysalis/dist/KotlinCollections
+      setAddCausedChange: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.MutableSet.add
   type: call
@@ -174,7 +174,7 @@
   template:
     pattern: setAddCausedChange(~this~, ~0~)
     imports:
-      setAddCausedChange: khrysalis/dist/KotlinCollections
+      setAddCausedChange: butterfly/dist/KotlinCollections
 
 - id: java.util.HashSet.add
   type: call
@@ -192,7 +192,7 @@
   template:
     pattern: new EqualOverrideSet([...~this~, ...~0~])
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.plus
   receiver: kotlin.collections.Set
@@ -201,7 +201,7 @@
   template:
     pattern: new EqualOverrideSet([...~this~, ~0~])
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.minus
   receiver: kotlin.collections.Set
@@ -210,7 +210,7 @@
   template:
     pattern: new EqualOverrideSet([...~this~].filter(x => !~0~.has(x)))
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.minus
   receiver: kotlin.collections.Set
@@ -219,7 +219,7 @@
   template:
     pattern: new EqualOverrideSet([...~this~].filter(x => x !== ~0~))
     imports:
-      EqualOverrideSet: khrysalis/dist/KotlinCollections
+      EqualOverrideSet: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.plus
   receiver: kotlin.collections.Set

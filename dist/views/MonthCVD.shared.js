@@ -18,7 +18,7 @@ const Colors_actual_1 = require("./Colors.actual");
 const CustomView_actual_1 = require("./CustomView.actual");
 const RectF_actual_1 = require("./geometry/RectF.actual");
 const Path_actual_1 = require("./draw/Path.actual");
-//! Declares com.lightningkite.khrysalis.views.MonthCVD
+//! Declares com.lightningkite.butterfly.views.MonthCVD
 class MonthCVD extends CustomViewDelegate_shared_1.CustomViewDelegate {
     constructor() {
         super();
@@ -77,12 +77,12 @@ class MonthCVD extends CustomViewDelegate_shared_1.CustomViewDelegate {
     generateAccessibilityView() {
         return null;
     }
-    //! Declares com.lightningkite.khrysalis.views.MonthCVD.currentMonth
+    //! Declares com.lightningkite.butterfly.views.MonthCVD.currentMonth
     get currentMonth() { return this.currentMonthObs.value; }
     set currentMonth(value) {
         this.currentMonthObs.value = value;
     }
-    //! Declares com.lightningkite.khrysalis.views.MonthCVD.currentOffset
+    //! Declares com.lightningkite.butterfly.views.MonthCVD.currentOffset
     get currentOffset() {
         return this._currentOffset;
     }
@@ -276,7 +276,7 @@ class MonthCVD extends CustomViewDelegate_shared_1.CustomViewDelegate {
     }
 }
 exports.MonthCVD = MonthCVD;
-//! Declares com.lightningkite.khrysalis.views.CalendarDrawing
+//! Declares com.lightningkite.butterfly.views.CalendarDrawing
 class CalendarDrawing {
     constructor() {
     }

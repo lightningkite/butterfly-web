@@ -5,13 +5,13 @@
   type: type
   template: HTMLProgressElement
 
-# com.lightningkite.khrysalis.views.VideoPlayer
-- id: com.lightningkite.khrysalis.views.VideoPlayer
+# com.lightningkite.butterfly.views.VideoPlayer
+- id: com.lightningkite.butterfly.views.VideoPlayer
   type: type
   template: HTMLVideoElement
 
-# com.lightningkite.khrysalis.views.android.HorizontalProgressBar
-- id: com.lightningkite.khrysalis.views.android.HorizontalProgressBar
+# com.lightningkite.butterfly.views.android.HorizontalProgressBar
+- id: com.lightningkite.butterfly.views.android.HorizontalProgressBar
   type: type
   template: HTMLProgressElement
 
@@ -30,13 +30,13 @@
   type: type
   template: HTMLDivElement
 
-# com.lightningkite.khrysalis.views.android.ColorRatingBar
-- id: com.lightningkite.khrysalis.views.android.ColorRatingBar
+# com.lightningkite.butterfly.views.android.ColorRatingBar
+- id: com.lightningkite.butterfly.views.android.ColorRatingBar
   type: type
   template: HTMLDivElement
 
-# com.lightningkite.khrysalis.views.android.VerticalRecyclerView
-- id: com.lightningkite.khrysalis.views.android.VerticalRecyclerView
+# com.lightningkite.butterfly.views.android.VerticalRecyclerView
+- id: com.lightningkite.butterfly.views.android.VerticalRecyclerView
   type: type
   template: HTMLDivElement
 
@@ -49,13 +49,13 @@
   template:
     pattern: 'scrollChildIntoView(~this~, ~0~, { behavior: "smooth", block: "nearest", inline: "nearest"})'
     imports:
-      scrollChildIntoView: khrysalis/dist/views/RecyclerView.actual
+      scrollChildIntoView: butterfly/dist/views/RecyclerView.actual
 - id: androidx.recyclerview.widget.RecyclerView.scrollToPosition
   type: call
   template:
     pattern: 'scrollChildIntoView(~this~, ~0~, { behavior: "auto", block: "nearest", inline: "nearest"})'
     imports:
-      scrollChildIntoView: khrysalis/dist/views/RecyclerView.actual
+      scrollChildIntoView: butterfly/dist/views/RecyclerView.actual
 
 # android.widget.SeekBar
 - id: android.widget.SeekBar
@@ -72,8 +72,8 @@
   type: type
   template: HTMLDivElement
 
-# com.lightningkite.khrysalis.views.android.SwapView
-- id: com.lightningkite.khrysalis.views.android.SwapView
+# com.lightningkite.butterfly.views.android.SwapView
+- id: com.lightningkite.butterfly.views.android.SwapView
   type: type
   template: HTMLDivElement
 

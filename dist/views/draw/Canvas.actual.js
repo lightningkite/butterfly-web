@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Align_shared_1 = require("../geometry/Align.shared");
-//! Declares com.lightningkite.khrysalis.views.draw.drawTextCentered>android.graphics.Canvas
+//! Declares com.lightningkite.butterfly.views.draw.drawTextCentered>android.graphics.Canvas
 function xCanvasDrawTextCentered(this_, text, centerX, centerY, paint) {
     this_.textBaseline = "middle";
     this_.textAlign = "center";
     paint.text(this_, text, centerX, centerY);
 }
 exports.xCanvasDrawTextCentered = xCanvasDrawTextCentered;
-//! Declares com.lightningkite.khrysalis.views.draw.drawText>android.graphics.Canvas
+//! Declares com.lightningkite.butterfly.views.draw.drawText>android.graphics.Canvas
 function xCanvasDrawText(this_, text, x, y, gravity, paint) {
     switch (gravity.vertical) {
         case Align_shared_1.Align.start:
@@ -26,7 +26,7 @@ function xCanvasDrawText(this_, text, x, y, gravity, paint) {
     paint.text(this_, text, x, y);
 }
 exports.xCanvasDrawText = xCanvasDrawText;
-//! Declares com.lightningkite.khrysalis.views.draw.drawBitmap
+//! Declares com.lightningkite.butterfly.views.draw.drawBitmap
 function xCanvasDrawBitmap(this_, bitmap, left, top, right, bottom) {
     this_.drawImage(bitmap, left, top, right - left, bottom - top);
 }

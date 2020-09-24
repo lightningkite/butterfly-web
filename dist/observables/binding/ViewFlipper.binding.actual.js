@@ -1,18 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const DisposeCondition_actual_1 = require("../../rx/DisposeCondition.actual");
-//! Declares com.lightningkite.khrysalis.observables.binding.bindLoading>android.widget.ViewFlipper
+//! Declares com.lightningkite.butterfly.observables.binding.bindLoading>android.widget.ViewFlipper
 function xViewFlipperBindLoading(this_, loading, color = null) {
     var _a;
     const mainChild = this_.firstElementChild;
     const loadingChild = (_a = this_.children.item(1)) !== null && _a !== void 0 ? _a : (() => {
         const newElement = document.createElement("div");
-        newElement.classList.add("khrysalis-flipper-progress");
+        newElement.classList.add("butterfly-flipper-progress");
         newElement.classList.add("khr");
         this_.appendChild(newElement);
         return newElement;
     })();
-    const animation = "khrysalis-animate-fade";
+    const animation = "butterfly-animate-fade";
     let currentView = mainChild;
     let hiddenView = loadingChild;
     DisposeCondition_actual_1.xDisposableUntil(loading.onChange.subscribe((e) => {

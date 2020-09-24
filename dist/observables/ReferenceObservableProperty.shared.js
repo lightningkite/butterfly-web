@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const MutableObservableProperty_shared_1 = require("./MutableObservableProperty.shared");
-//! Declares com.lightningkite.khrysalis.observables.ReferenceObservableProperty
+//! Declares com.lightningkite.butterfly.observables.ReferenceObservableProperty
 class ReferenceObservableProperty extends MutableObservableProperty_shared_1.MutableObservableProperty {
     constructor(get, set, event) {
         super();
@@ -9,9 +9,9 @@ class ReferenceObservableProperty extends MutableObservableProperty_shared_1.Mut
         this.set = set;
         this.event = event;
     }
-    //! Declares com.lightningkite.khrysalis.observables.ReferenceObservableProperty.onChange
+    //! Declares com.lightningkite.butterfly.observables.ReferenceObservableProperty.onChange
     get onChange() { return this.event; }
-    //! Declares com.lightningkite.khrysalis.observables.ReferenceObservableProperty.value
+    //! Declares com.lightningkite.butterfly.observables.ReferenceObservableProperty.value
     get value() { return this.get(); }
     set value(value) {
         this.set(value);

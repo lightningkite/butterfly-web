@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const DisposeCondition_shared_1 = require("../rx/DisposeCondition.shared");
 const CustomView_actual_1 = require("./CustomView.actual");
-//! Declares com.lightningkite.khrysalis.views.CustomViewDelegate
+//! Declares com.lightningkite.butterfly.views.CustomViewDelegate
 class CustomViewDelegate {
     constructor() {
         this.customView = null;
@@ -47,7 +47,7 @@ class CustomViewDelegate {
         }
         ;
     }
-    //! Declares com.lightningkite.khrysalis.views.CustomViewDelegate.removed
+    //! Declares com.lightningkite.butterfly.views.CustomViewDelegate.removed
     get removed() { return this._removed; }
     dispose() {
         for (const item of this.toDispose) {

@@ -13,7 +13,7 @@ export interface UntypedFormField {
     readonly error: StandardObservableProperty<(ViewString | null)>;
 }
 export declare class FormField<T> implements UntypedFormField {
-    static implementsInterfaceComLightningkiteKhrysalisViewsUntypedFormField: boolean;
+    static implementsInterfaceComLightningkiteButterflyViewsUntypedFormField: boolean;
     readonly name: ViewString;
     readonly observable: MutableObservableProperty<T>;
     readonly validation: ((a: UntypedFormField) => (ViewString | null));

@@ -3,7 +3,7 @@
   type: type
   template: File
 
-- id: com.lightningkite.khrysalis.Uri
+- id: com.lightningkite.butterfly.Uri
   type: type
   template: File
 

@@ -40,7 +40,7 @@
   template:
     pattern: new CharRange(~this~, ~0~)
     imports:
-      Range: khrysalis/dist/Kotlin
+      Range: butterfly/dist/Kotlin
 
 - id: kotlin.text.plus
   receiver: kotlin.Char
@@ -142,13 +142,13 @@
   template:
     pattern: '!xCharSequenceIsBlank(~this~)'
     imports:
-      xCharSequenceIsBlank: khrysalis/dist/kotlin/kotlin.text
+      xCharSequenceIsBlank: butterfly/dist/kotlin/kotlin.text
 - id: kotlin.text.isNullOrBlank
   type: call
   template:
     pattern: xCharSequenceIsBlank(~this~)
     imports:
-      xCharSequenceIsBlank: khrysalis/dist/kotlin/kotlin.text
+      xCharSequenceIsBlank: butterfly/dist/kotlin/kotlin.text
 - id: kotlin.text.orEmpty
   type: call
   template: (~this~ ?? "")
@@ -160,13 +160,13 @@
   template:
     pattern: xStringSubstringAfter(~this~, ~0~, undefined)
     imports:
-      xStringSubstringAfter: khrysalis/dist/kotlin/kotlin.text
+      xStringSubstringAfter: butterfly/dist/kotlin/kotlin.text
 - id: kotlin.text.removeSuffix
   type: call
   template:
     pattern: xStringSubstringBeforeLast(~this~, ~0~, undefined)
     imports:
-      xStringSubstringBeforeLast: khrysalis/dist/kotlin/kotlin.text
+      xStringSubstringBeforeLast: butterfly/dist/kotlin/kotlin.text
 - id: kotlin.text.replace
   type: call
   template: ~this~.replace(~0~, ~1~)
@@ -204,7 +204,7 @@
   template:
     pattern: new StringBuilder()
     imports:
-      StringBuilder: khrysalis/dist/kotlin/kotlin.text
+      StringBuilder: butterfly/dist/kotlin/kotlin.text
 - id: kotlin.text.StringBuilder.append
   type: call
   template: ~this~.value += ~0~
@@ -224,7 +224,7 @@
     pattern: sprintf(~this~, ~*~)
     imports:
       sprintf: sprintf-js
-- id: com.lightningkite.khrysalis.formatList
+- id: com.lightningkite.butterfly.formatList
   type: call
   template:
     pattern: vsprintf(~this~, ~0~)
@@ -238,37 +238,37 @@
   template:
     pattern: parseIntOrNull(~this~)
     imports:
-      parseIntOrNull: khrysalis/dist/Kotlin
+      parseIntOrNull: butterfly/dist/Kotlin
 - id: kotlin.text.toShortOrNull
   type: call
   template:
     pattern: parseIntOrNull(~this~)
     imports:
-      parseIntOrNull: khrysalis/dist/Kotlin
+      parseIntOrNull: butterfly/dist/Kotlin
 - id: kotlin.text.toIntOrNull
   type: call
   template:
     pattern: parseIntOrNull(~this~)
     imports:
-      parseIntOrNull: khrysalis/dist/Kotlin
+      parseIntOrNull: butterfly/dist/Kotlin
 - id: kotlin.text.toLongOrNull
   type: call
   template:
     pattern: parseIntOrNull(~this~)
     imports:
-      parseIntOrNull: khrysalis/dist/Kotlin
+      parseIntOrNull: butterfly/dist/Kotlin
 - id: kotlin.text.toFloatOrNull
   type: call
   template:
     pattern: parseFloatOrNull(~this~)
     imports:
-      parseFloatOrNull: khrysalis/dist/Kotlin
+      parseFloatOrNull: butterfly/dist/Kotlin
 - id: kotlin.text.toDoubleOrNull
   type: call
   template:
     pattern: parseFloatOrNull(~this~)
     imports:
-      parseFloatOrNull: khrysalis/dist/Kotlin
+      parseFloatOrNull: butterfly/dist/Kotlin
 
 - id: kotlin.text.toByte
   type: call

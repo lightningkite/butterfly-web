@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const ConstantObservableProperty_shared_1 = require("./observables/ConstantObservableProperty.shared");
 const WriteAddedObservableProperty_shared_1 = require("./observables/WriteAddedObservableProperty.shared");
-//! Declares com.lightningkite.khrysalis.ApplicationAccess
+//! Declares com.lightningkite.butterfly.ApplicationAccess
 class ApplicationAccess {
     constructor() {
         this.foreground = new ConstantObservableProperty_shared_1.ConstantObservableProperty(true);

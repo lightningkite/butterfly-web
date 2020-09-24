@@ -5,7 +5,7 @@ import {TimeInterval} from './TimeInterval.actual'
 import {also} from 'Kotlin'
 import {ClockPartSize} from './ClockPartSize.shared'
 
-//! Declares com.lightningkite.khrysalis.time.plus
+//! Declares com.lightningkite.butterfly.time.plus
 export function xDatePlus(this_: Date, interval: TimeInterval): Date {
     let newDate = new Date();
     newDate.setTime(this_.getTime() + interval.milliseconds);
@@ -13,7 +13,7 @@ export function xDatePlus(this_: Date, interval: TimeInterval): Date {
 }
 
 
-//! Declares com.lightningkite.khrysalis.time.minus
+//! Declares com.lightningkite.butterfly.time.minus
 export function xDateMinus(this_: Date, interval: TimeInterval): Date {
     let newDate = new Date();
     newDate.setTime(this_.getTime() - interval.milliseconds);
@@ -70,7 +70,7 @@ export function dateAloneModRelative(on: DateAlone, getter: () => number, action
 }
 
 
-//! Declares com.lightningkite.khrysalis.time.set
+//! Declares com.lightningkite.butterfly.time.set
 export function xDateSet(this_: Date, ...things: Array<any>): Date {
     for (const item of things) {
         if (item instanceof DateAlone) {
@@ -88,7 +88,7 @@ export function xDateSet(this_: Date, ...things: Array<any>): Date {
     return this_;
 }
 
-//! Declares com.lightningkite.khrysalis.time.set
+//! Declares com.lightningkite.butterfly.time.set
 export function xDateAloneSet(this_: DateAlone, date: Date): DateAlone {
     this_.year = date.getFullYear()
     this_.month = date.getMonth() + 1
@@ -96,7 +96,7 @@ export function xDateAloneSet(this_: DateAlone, date: Date): DateAlone {
     return this_;
 }
 
-//! Declares com.lightningkite.khrysalis.time.set
+//! Declares com.lightningkite.butterfly.time.set
 export function xTimeAloneSet(this_: TimeAlone, date: Date): TimeAlone {
     this_.hour = date.getHours()
     this_.minute = date.getMinutes()
@@ -104,7 +104,7 @@ export function xTimeAloneSet(this_: TimeAlone, date: Date): TimeAlone {
     return this_;
 }
 
-//! Declares com.lightningkite.khrysalis.time.dateAlone
+//! Declares com.lightningkite.butterfly.time.dateAlone
 export function xDateDateAloneGet(this_: Date): DateAlone {
     return new DateAlone(
         this_.getFullYear(),
@@ -113,7 +113,7 @@ export function xDateDateAloneGet(this_: Date): DateAlone {
     );
 }
 
-//! Declares com.lightningkite.khrysalis.time.timeAlone
+//! Declares com.lightningkite.butterfly.time.timeAlone
 export function xDateTimeAloneGet(this_: Date): TimeAlone {
     return new TimeAlone(
         this_.getHours(),
@@ -122,17 +122,17 @@ export function xDateTimeAloneGet(this_: Date): TimeAlone {
     );
 }
 
-//! Declares com.lightningkite.khrysalis.time.dateFrom
+//! Declares com.lightningkite.butterfly.time.dateFrom
 export function dateFrom(dateAlone: DateAlone, timeAlone: TimeAlone, existing: Date = new Date()): Date {
     return xDateSet(existing, dateAlone, timeAlone);
 }
 
-//! Declares com.lightningkite.khrysalis.time.dateFromIso
+//! Declares com.lightningkite.butterfly.time.dateFromIso
 export function dateFromIso(iso8601: string): (Date | null) {
     return new Date(iso8601);
 }
 
-//! Declares com.lightningkite.khrysalis.time.format>java.util.Date
+//! Declares com.lightningkite.butterfly.time.format>java.util.Date
 export function xDateFormat(this_: Date, dateStyle: ClockPartSize, timeStyle: ClockPartSize): string {
 
     let dateFormat: Intl.DateTimeFormatOptions = {}

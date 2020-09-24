@@ -6,7 +6,7 @@ var R;
     let DefaultStrings;
     (function (DefaultStrings) {
         DefaultStrings.empty = "";
-        DefaultStrings.app_name = "Khrysalis Template";
+        DefaultStrings.app_name = "Butterfly Template";
         DefaultStrings.back = "Back";
         DefaultStrings.ok = "OK";
         DefaultStrings.cancel = "Cancel";
@@ -15,7 +15,7 @@ var R;
         DefaultStrings.go_to_another_screen = "Go to Another Screen";
         DefaultStrings.you_made_it_to_another_screen = "You made it to another screen!";
         DefaultStrings.welcome = "Welcome!";
-        DefaultStrings.welcome_message = "This is the template for a Khrysalis project. This screen exists to help you figure out stuff about it.";
+        DefaultStrings.welcome_message = "This is the template for a Butterfly project. This screen exists to help you figure out stuff about it.";
         DefaultStrings.increment_the_number = "Increment the Number";
         DefaultStrings.text_field = "Text Field";
         DefaultStrings.select_demo = "Select Demo";

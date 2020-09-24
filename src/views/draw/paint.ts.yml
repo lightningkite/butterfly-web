@@ -4,7 +4,7 @@
   template:
     pattern: CanvasGradientMaker
     imports:
-      CanvasGradientMaker: khrysalis/dist/views/draw/LinearGradient.actual
+      CanvasGradientMaker: butterfly/dist/views/draw/LinearGradient.actual
 
 
 - id: android.graphics.Paint
@@ -12,4 +12,4 @@
   template:
     pattern: new Paint()
     imports:
-      Paint: khrysalis/dist/views/draw/Paint.actual
+      Paint: butterfly/dist/views/draw/Paint.actual

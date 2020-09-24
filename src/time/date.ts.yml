@@ -23,47 +23,47 @@
   type: call
   template: (~this~ < ~0~)
 
-- id: com.lightningkite.khrysalis.time.dayOfWeek
+- id: com.lightningkite.butterfly.time.dayOfWeek
   type: get
   template: (~this~.getDay() + 1)
 
-- id: com.lightningkite.khrysalis.time.dayOfMonth
+- id: com.lightningkite.butterfly.time.dayOfMonth
   type: get
   template: ~this~.getDate()
 
-- id: com.lightningkite.khrysalis.time.monthOfYear
+- id: com.lightningkite.butterfly.time.monthOfYear
   type: get
   template: (~this~.getMonth() + 1)
 
-- id: com.lightningkite.khrysalis.time.yearAd
+- id: com.lightningkite.butterfly.time.yearAd
   type: get
   template: ~this~.getFullYear()
 
-- id: com.lightningkite.khrysalis.time.hourOfDay
+- id: com.lightningkite.butterfly.time.hourOfDay
   type: get
   template: ~this~.getHours()
 
-- id: com.lightningkite.khrysalis.time.minuteOfHour
+- id: com.lightningkite.butterfly.time.minuteOfHour
   type: get
   template: ~this~.getMinutes()
 
-- id: com.lightningkite.khrysalis.time.secondOfMinute
+- id: com.lightningkite.butterfly.time.secondOfMinute
   type: get
   template: ~this~.getSeconds()
 
-#- id: com.lightningkite.khrysalis.time.sameDay
+#- id: com.lightningkite.butterfly.time.sameDay
 #  type: call
 #  template: (~this~.getX() === ~0~.getX()) # TODO
 #
-#- id: com.lightningkite.khrysalis.time.sameMonth
+#- id: com.lightningkite.butterfly.time.sameMonth
 #  type: call
 #  template: (~this~.getX() === ~0~.getX()) # TODO
 
-- id: com.lightningkite.khrysalis.time.sameYear
+- id: com.lightningkite.butterfly.time.sameYear
   type: call
   template: (~this~.getFullYear() === ~0~.getFullYear())
 
-- id: com.lightningkite.khrysalis.time.dayOfWeek
+- id: com.lightningkite.butterfly.time.dayOfWeek
   type: call
   receiver: java.util.Date
   template:
@@ -73,114 +73,114 @@
         d.setDate(d.getDate() + diff);
       })
     imports:
-      also: khrysalis/dist/Kotlin
+      also: butterfly/dist/Kotlin
 
 
-- id: com.lightningkite.khrysalis.time.dayOfMonth
+- id: com.lightningkite.butterfly.time.dayOfMonth
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateMod(~this~, Date.prototype.setDate, ~0~)
     imports:
-      copyDateMod: khrysalis/dist/time/Date.actual
+      copyDateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.monthOfYear
+- id: com.lightningkite.butterfly.time.monthOfYear
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateMod(~this~, Date.prototype.setMonth, ~0~ - 1)
     imports:
-      copyDateMod: khrysalis/dist/time/Date.actual
+      copyDateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.yearAd
+- id: com.lightningkite.butterfly.time.yearAd
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateMod(~this~, Date.prototype.setFullYear, ~0~)
     imports:
-      copyDateMod: khrysalis/dist/time/Date.actual
+      copyDateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.hourOfDay
+- id: com.lightningkite.butterfly.time.hourOfDay
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateMod(~this~, Date.prototype.setHours, ~0~)
     imports:
-      copyDateMod: khrysalis/dist/time/Date.actual
+      copyDateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.minuteOfHour
+- id: com.lightningkite.butterfly.time.minuteOfHour
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateMod(~this~, Date.prototype.setMinutes, ~0~)
     imports:
-      copyDateMod: khrysalis/dist/time/Date.actual
+      copyDateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.secondOfMinute
+- id: com.lightningkite.butterfly.time.secondOfMinute
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateMod(~this~, Date.prototype.setSeconds, ~0~)
     imports:
-      copyDateMod: khrysalis/dist/time/Date.actual
+      copyDateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addDayOfWeek
+- id: com.lightningkite.butterfly.time.addDayOfWeek
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateModRelative(~this~, Date.prototype.getDate, Date.prototype.setDate, ~0~)
     imports:
-      copyDateModRelative: khrysalis/dist/time/Date.actual
+      copyDateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addDayOfMonth
+- id: com.lightningkite.butterfly.time.addDayOfMonth
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateModRelative(~this~, Date.prototype.getDate, Date.prototype.setDate, ~0~)
     imports:
-      copyDateModRelative: khrysalis/dist/time/Date.actual
+      copyDateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addMonthOfYear
+- id: com.lightningkite.butterfly.time.addMonthOfYear
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateModRelative(~this~, Date.prototype.getMonth, Date.prototype.setMonth, ~0~)
     imports:
-      copyDateModRelative: khrysalis/dist/time/Date.actual
+      copyDateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addYearAd
+- id: com.lightningkite.butterfly.time.addYearAd
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateModRelative(~this~, Date.prototype.getFullYear, Date.prototype.setFullYear, ~0~)
     imports:
-      copyDateModRelative: khrysalis/dist/time/Date.actual
+      copyDateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addHourOfDay
+- id: com.lightningkite.butterfly.time.addHourOfDay
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateModRelative(~this~, Date.prototype.getHours, Date.prototype.setHours, ~0~)
     imports:
-      copyDateModRelative: khrysalis/dist/time/Date.actual
+      copyDateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addMinuteOfHour
+- id: com.lightningkite.butterfly.time.addMinuteOfHour
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateModRelative(~this~, Date.prototype.getMinutes, Date.prototype.setMinutes, ~0~)
     imports:
-      copyDateModRelative: khrysalis/dist/time/Date.actual
+      copyDateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addSecondOfMinute
+- id: com.lightningkite.butterfly.time.addSecondOfMinute
   type: call
   receiver: java.util.Date
   template:
     pattern: copyDateModRelative(~this~, Date.prototype.getSeconds, Date.prototype.setSeconds, ~0~)
     imports:
-      copyDateModRelative: khrysalis/dist/time/Date.actual
+      copyDateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setDayOfWeek
+- id: com.lightningkite.butterfly.time.setDayOfWeek
   type: call
   receiver: java.util.Date
   template:
@@ -190,111 +190,111 @@
         d.setDate(d.getDate() + diff);
       })
     imports:
-      also: khrysalis/dist/Kotlin
+      also: butterfly/dist/Kotlin
 
-- id: com.lightningkite.khrysalis.time.setDayOfMonth
+- id: com.lightningkite.butterfly.time.setDayOfMonth
   type: call
   receiver: java.util.Date
   template:
     pattern: dateMod(~this~, Date.prototype.setDate, ~0~)
     imports:
-      dateMod: khrysalis/dist/time/Date.actual
+      dateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setMonthOfYear
+- id: com.lightningkite.butterfly.time.setMonthOfYear
   type: call
   receiver: java.util.Date
   template:
     pattern: dateMod(~this~, Date.prototype.setMonth, ~0~ - 1)
     imports:
-      dateMod: khrysalis/dist/time/Date.actual
+      dateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setYearAd
+- id: com.lightningkite.butterfly.time.setYearAd
   type: call
   receiver: java.util.Date
   template:
     pattern: dateMod(~this~, Date.prototype.setFullYear, ~0~)
     imports:
-      dateMod: khrysalis/dist/time/Date.actual
+      dateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setHourOfDay
+- id: com.lightningkite.butterfly.time.setHourOfDay
   type: call
   receiver: java.util.Date
   template:
     pattern: dateMod(~this~, Date.prototype.setHours, ~0~)
     imports:
-      dateMod: khrysalis/dist/time/Date.actual
+      dateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setMinuteOfHour
+- id: com.lightningkite.butterfly.time.setMinuteOfHour
   type: call
   receiver: java.util.Date
   template:
     pattern: dateMod(~this~, Date.prototype.setMinutes, ~0~)
     imports:
-      dateMod: khrysalis/dist/time/Date.actual
+      dateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setSecondOfMinute
+- id: com.lightningkite.butterfly.time.setSecondOfMinute
   type: call
   receiver: java.util.Date
   template:
     pattern: dateMod(~this~, Date.prototype.setSeconds, ~0~)
     imports:
-      dateMod: khrysalis/dist/time/Date.actual
+      dateMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddDayOfWeek
+- id: com.lightningkite.butterfly.time.setAddDayOfWeek
   type: call
   receiver: java.util.Date
   template:
     pattern: dateModRelative(~this~, Date.prototype.getDate, Date.prototype.setDate, ~0~)
     imports:
-      dateModRelative: khrysalis/dist/time/Date.actual
+      dateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddDayOfMonth
+- id: com.lightningkite.butterfly.time.setAddDayOfMonth
   type: call
   receiver: java.util.Date
   template:
     pattern: dateModRelative(~this~, Date.prototype.getDate, Date.prototype.setDate, ~0~)
     imports:
-      dateModRelative: khrysalis/dist/time/Date.actual
+      dateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddMonthOfYear
+- id: com.lightningkite.butterfly.time.setAddMonthOfYear
   type: call
   receiver: java.util.Date
   template:
     pattern: dateModRelative(~this~, Date.prototype.getMonth, Date.prototype.setMonth, ~0~)
     imports:
-      dateModRelative: khrysalis/dist/time/Date.actual
+      dateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddYearAd
+- id: com.lightningkite.butterfly.time.setAddYearAd
   type: call
   receiver: java.util.Date
   template:
     pattern: dateModRelative(~this~, Date.prototype.getFullYear, Date.prototype.setFullYear, ~0~)
     imports:
-      dateModRelative: khrysalis/dist/time/Date.actual
+      dateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddHourOfDay
+- id: com.lightningkite.butterfly.time.setAddHourOfDay
   type: call
   receiver: java.util.Date
   template:
     pattern: dateModRelative(~this~, Date.prototype.getHours, Date.prototype.setHours, ~0~)
     imports:
-      dateModRelative: khrysalis/dist/time/Date.actual
+      dateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddMinuteOfHour
+- id: com.lightningkite.butterfly.time.setAddMinuteOfHour
   type: call
   receiver: java.util.Date
   template:
     pattern: dateModRelative(~this~, Date.prototype.getMinutes, Date.prototype.setMinutes, ~0~)
     imports:
-      dateModRelative: khrysalis/dist/time/Date.actual
+      dateModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddSecondOfMinute
+- id: com.lightningkite.butterfly.time.setAddSecondOfMinute
   type: call
   receiver: java.util.Date
   template:
     pattern: dateModRelative(~this~, Date.prototype.getSeconds, Date.prototype.setSeconds, ~0~)
     imports:
-      dateModRelative: khrysalis/dist/time/Date.actual
+      dateModRelative: butterfly/dist/time/Date.actual
 
 - id: java.util.Date.equals
   type: call
@@ -304,7 +304,7 @@
   type: call
   template: ~this~.getTime()
 
-- id: com.lightningkite.khrysalis.time.iso8601
+- id: com.lightningkite.butterfly.time.iso8601
   type: call
   template: ~this~.toISOString()
 
@@ -312,9 +312,9 @@
 
 
 
-- id: com.lightningkite.khrysalis.time.dayOfWeek
+- id: com.lightningkite.butterfly.time.dayOfWeek
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: |
       copyDateAloneMod(~this~, function(this: Date, newDay: number){
@@ -322,70 +322,70 @@
         d.setDate(d.getDate() + diff);
       }, ~0~)
     imports:
-      copyDateAloneMod: khrysalis/dist/time/Date.actual
+      copyDateAloneMod: butterfly/dist/time/Date.actual
 
 
-- id: com.lightningkite.khrysalis.time.dayOfMonth
+- id: com.lightningkite.butterfly.time.dayOfMonth
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: copyDateAloneMod(~this~, Date.prototype.setDate, ~0~)
     imports:
-      copyDateAloneMod: khrysalis/dist/time/Date.actual
+      copyDateAloneMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.monthOfYear
+- id: com.lightningkite.butterfly.time.monthOfYear
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: copyDateAloneMod(~this~, Date.prototype.setMonth, ~0~ - 1)
     imports:
-      copyDateAloneMod: khrysalis/dist/time/Date.actual
+      copyDateAloneMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.yearAd
+- id: com.lightningkite.butterfly.time.yearAd
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: copyDateAloneMod(~this~, Date.prototype.setFullYear, ~0~)
     imports:
-      copyDateAloneMod: khrysalis/dist/time/Date.actual
+      copyDateAloneMod: butterfly/dist/time/Date.actual
 
 
-- id: com.lightningkite.khrysalis.time.addDayOfWeek
+- id: com.lightningkite.butterfly.time.addDayOfWeek
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: copyDateAloneModRelative(~this~, Date.prototype.getDate, Date.prototype.setDate, ~0~)
     imports:
-      copyDateAloneModRelative: khrysalis/dist/time/Date.actual
+      copyDateAloneModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addDayOfMonth
+- id: com.lightningkite.butterfly.time.addDayOfMonth
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: copyDateAloneModRelative(~this~, Date.prototype.getDate, Date.prototype.setDate, ~0~)
     imports:
-      copyDateAloneModRelative: khrysalis/dist/time/Date.actual
+      copyDateAloneModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addMonthOfYear
+- id: com.lightningkite.butterfly.time.addMonthOfYear
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: copyDateAloneModRelative(~this~, Date.prototype.getMonth, Date.prototype.setMonth, ~0~)
     imports:
-      copyDateAloneModRelative: khrysalis/dist/time/Date.actual
+      copyDateAloneModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.addYearAd
+- id: com.lightningkite.butterfly.time.addYearAd
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: copyDateAloneModRelative(~this~, Date.prototype.getFullYear, Date.prototype.setFullYear, ~0~)
     imports:
-      copyDateAloneModRelative: khrysalis/dist/time/Date.actual
+      copyDateAloneModRelative: butterfly/dist/time/Date.actual
 
 
-- id: com.lightningkite.khrysalis.time.setDayOfWeek
+- id: com.lightningkite.butterfly.time.setDayOfWeek
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: |
       dateAloneMod(~this~, function(this: Date, newDay: number){
@@ -393,61 +393,61 @@
         this.setDate(this.getDate() + diff);
       }, ~0~)
     imports:
-      dateAloneMod: khrysalis/dist/time/Date.actual
+      dateAloneMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setDayOfMonth
+- id: com.lightningkite.butterfly.time.setDayOfMonth
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: dateAloneMod(~this~, Date.prototype.setDate, ~0~)
     imports:
-      dateAloneMod: khrysalis/dist/time/Date.actual
+      dateAloneMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setMonthOfYear
+- id: com.lightningkite.butterfly.time.setMonthOfYear
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: dateAloneMod(~this~, Date.prototype.setMonth, ~0~ - 1)
     imports:
-      dateAloneMod: khrysalis/dist/time/Date.actual
+      dateAloneMod: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setYearAd
+- id: com.lightningkite.butterfly.time.setYearAd
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: dateAloneMod(~this~, Date.prototype.setFullYear, ~0~)
     imports:
-      dateAloneMod: khrysalis/dist/time/Date.actual
+      dateAloneMod: butterfly/dist/time/Date.actual
 
 
-- id: com.lightningkite.khrysalis.time.setAddDayOfWeek
+- id: com.lightningkite.butterfly.time.setAddDayOfWeek
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: dateAloneModRelative(~this~, Date.prototype.getDate, Date.prototype.setDate, ~0~)
     imports:
-      dateAloneModRelative: khrysalis/dist/time/Date.actual
+      dateAloneModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddDayOfMonth
+- id: com.lightningkite.butterfly.time.setAddDayOfMonth
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: dateAloneModRelative(~this~, Date.prototype.getDate, Date.prototype.setDate, ~0~)
     imports:
-      dateAloneModRelative: khrysalis/dist/time/Date.actual
+      dateAloneModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddMonthOfYear
+- id: com.lightningkite.butterfly.time.setAddMonthOfYear
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: dateAloneModRelative(~this~, Date.prototype.getMonth, Date.prototype.setMonth, ~0~)
     imports:
-      dateAloneModRelative: khrysalis/dist/time/Date.actual
+      dateAloneModRelative: butterfly/dist/time/Date.actual
 
-- id: com.lightningkite.khrysalis.time.setAddYearAd
+- id: com.lightningkite.butterfly.time.setAddYearAd
   type: call
-  receiver: com.lightningkite.khrysalis.time.DateAlone
+  receiver: com.lightningkite.butterfly.time.DateAlone
   template:
     pattern: dateAloneModRelative(~this~, Date.prototype.getFullYear, Date.prototype.setFullYear, ~0~)
     imports:
-      dateAloneModRelative: khrysalis/dist/time/Date.actual
+      dateAloneModRelative: butterfly/dist/time/Date.actual

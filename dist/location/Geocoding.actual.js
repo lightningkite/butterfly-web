@@ -6,7 +6,7 @@ function setGeocodingMethod(method) {
     geoMethod = method;
 }
 exports.setGeocodingMethod = setGeocodingMethod;
-//! Declares com.lightningkite.khrysalis.location.geocode
+//! Declares com.lightningkite.butterfly.location.geocode
 function xActivityAccessGeocode(this_Geocode, coordinate, maxResults = 1) {
     return geoMethod(this_Geocode, coordinate);
 }

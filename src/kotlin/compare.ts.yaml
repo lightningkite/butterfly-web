@@ -22,7 +22,7 @@
   template:
     pattern: safeCompare(~this~, ~0~)
     imports:
-      safeCompare: khrysalis/dist/kotlin/Comparable
+      safeCompare: butterfly/dist/kotlin/Comparable
 
 - id: java.util.Comparable.compareTo
   type: call
@@ -30,7 +30,7 @@
   template:
     pattern: safeCompare(~this~, ~0~)
     imports:
-      safeCompare: khrysalis/dist/kotlin/Comparable
+      safeCompare: butterfly/dist/kotlin/Comparable
 
 # Coerce
 - id: kotlin.ranges.coerceIn
@@ -38,18 +38,18 @@
   template:
     pattern: cCoerce(~this~, ~0~, ~1~)
     imports:
-      cCoerce: khrysalis/dist/kotlin/Comparable
+      cCoerce: butterfly/dist/kotlin/Comparable
 
 - id: kotlin.ranges.coerceAtMost
   type: call
   template:
     pattern: cMin(~this~, ~0~)
     imports:
-      cMin: khrysalis/dist/kotlin/Comparable
+      cMin: butterfly/dist/kotlin/Comparable
 
 - id: kotlin.ranges.coerceAtLeast
   type: call
   template:
     pattern: cMax(~this~, ~0~)
     imports:
-      cMax: khrysalis/dist/kotlin/Comparable
+      cMax: butterfly/dist/kotlin/Comparable

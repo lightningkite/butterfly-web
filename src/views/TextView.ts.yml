@@ -9,33 +9,33 @@
   type: call
   template: document.createElement('p')
 
-- id: com.lightningkite.khrysalis.views.textResource
+- id: com.lightningkite.butterfly.views.textResource
   type: set
   template:
     pattern: setViewText(~this~, ~0~)
     imports:
-      setViewText: khrysalis/dist/views/ViewWithText.ext.actual
-- id: com.lightningkite.khrysalis.views.textString
+      setViewText: butterfly/dist/views/ViewWithText.ext.actual
+- id: com.lightningkite.butterfly.views.textString
   type: set
   template:
     pattern: setViewText(~this~, ~0~)
     imports:
-      setViewText: khrysalis/dist/views/ViewWithText.ext.actual
+      setViewText: butterfly/dist/views/ViewWithText.ext.actual
 - id: android.widget.TextView.text
   type: set
   template:
     pattern: setViewText(~this~, ~0~)
     imports:
-      setViewText: khrysalis/dist/views/ViewWithText.ext.actual
+      setViewText: butterfly/dist/views/ViewWithText.ext.actual
 - id: android.widget.TextView.setText
   type: call
   template:
     pattern: setViewText(~this~, ~0~)
     imports:
-      setViewText: khrysalis/dist/views/ViewWithText.ext.actual
+      setViewText: butterfly/dist/views/ViewWithText.ext.actual
 - id: android.widget.TextView.setTextColor
   type: call
   template: ~this~.style.color = ~0~
-- id: com.lightningkite.khrysalis.views.setTextColorResource
+- id: com.lightningkite.butterfly.views.setTextColorResource
   type: call
   template: ~this~.style.color = ~0~

@@ -47,28 +47,28 @@
   template:
     pattern: getViewVisibility(~this~)
     imports:
-      getViewVisibility: khrysalis/dist/views/View.ext.actual
+      getViewVisibility: butterfly/dist/views/View.ext.actual
 
 - id: android.view.View.visibility
   type: set
   template:
     pattern: setViewVisibility(~this~, ~value~)
     imports:
-      setViewVisibility: khrysalis/dist/views/View.ext.actual
+      setViewVisibility: butterfly/dist/views/View.ext.actual
 
 - id: android.view.View.getVisibility
   type: call
   template:
     pattern: getViewVisibility(~this~)
     imports:
-      getViewVisibility: khrysalis/dist/views/View.ext.actual
+      getViewVisibility: butterfly/dist/views/View.ext.actual
 
 - id: android.view.View.setVisibility
   type: call
   template:
     pattern: setViewVisibility(~this~, ~value~)
     imports:
-      setViewVisibility: khrysalis/dist/views/View.ext.actual
+      setViewVisibility: butterfly/dist/views/View.ext.actual
 
 - id: android.view.View.rotation
   type: set
@@ -112,16 +112,16 @@
   template:
     pattern: setViewBackgroundClass(~this~, ~0~.cssClass)
     imports:
-      setViewBackgroundClass: khrysalis/dist/views/View.ext.actual
+      setViewBackgroundClass: butterfly/dist/views/View.ext.actual
 
-- id: com.lightningkite.khrysalis.views.backgroundResource
+- id: com.lightningkite.butterfly.views.backgroundResource
   type: set
   template:
     pattern: setViewBackgroundClass(~this~, ~0~.cssClass)
     imports:
-      setViewBackgroundClass: khrysalis/dist/views/View.ext.actual
+      setViewBackgroundClass: butterfly/dist/views/View.ext.actual
 
-- id: com.lightningkite.khrysalis.views.setBackgroundColorResource
+- id: com.lightningkite.butterfly.views.setBackgroundColorResource
   type: call
   template: ~this~.style.backgroundColor = ~0~
 
@@ -137,11 +137,11 @@
   type: call
   template: /* Request layout.  Not needed in JS.*/
 
-#- id: com.lightningkite.khrysalis.views.backgroundDrawable
+#- id: com.lightningkite.butterfly.views.backgroundDrawable
 #  type: get
 #  template:
 #
-#- id: com.lightningkite.khrysalis.views.backgroundDrawable
+#- id: com.lightningkite.butterfly.views.backgroundDrawable
 #  type: set
 #  template:
 
@@ -159,14 +159,14 @@
     lambdaTransforms:
       0: ["_ev.target as HTMLElement"]
 
-- id: com.lightningkite.khrysalis.views.onClick
+- id: com.lightningkite.butterfly.views.onClick
   type: call
   template:
     pattern: ~this~.onclick = (_ev) => { _ev.stopPropagation(); ~L1~}
     lambdaTransforms:
       0: ["_ev.target as HTMLElement"]
 
-- id: com.lightningkite.khrysalis.views.onLongClick
+- id: com.lightningkite.butterfly.views.onLongClick
   type: call
   template:
     pattern: ~this~.oncontextmenu = (_ev) => { _ev.preventDefault(); ~L0~}

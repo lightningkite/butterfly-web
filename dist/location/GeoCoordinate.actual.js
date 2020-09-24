@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//! Declares com.lightningkite.khrysalis.location.distanceToMiles
+//! Declares com.lightningkite.butterfly.location.distanceToMiles
 function xGeoCoordinateDistanceToMiles(this_, other) {
     if ((this_.latitude == other.latitude) && (this_.longitude == other.longitude)) {
         return 0;

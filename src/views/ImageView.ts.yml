@@ -18,4 +18,4 @@
   template:
     pattern: imageViewSetImageResource(~this~, ~0~)
     imports:
-      imageViewSetImageResource: khrysalis/dist/views/ImageView.actual
+      imageViewSetImageResource: butterfly/dist/views/ImageView.actual

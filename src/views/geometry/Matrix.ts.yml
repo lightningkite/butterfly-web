@@ -7,36 +7,36 @@
   type: call
   template: new DOMMatrix()
 
-- id: com.lightningkite.khrysalis.views.geometry.mapPoint
+- id: com.lightningkite.butterfly.views.geometry.mapPoint
   type: call
   template:
     pattern: new PointF(~this~.transformPoint(~0~))
     imports:
-      PointF: khrysalis/dist/views/geometry/PointF.actual
+      PointF: butterfly/dist/views/geometry/PointF.actual
 
-- id: com.lightningkite.khrysalis.views.geometry.inverted
+- id: com.lightningkite.butterfly.views.geometry.inverted
   type: call
   template: ~this~.inverse()
 
-- id: com.lightningkite.khrysalis.views.geometry.setInvert
+- id: com.lightningkite.butterfly.views.geometry.setInvert
   type: call
   template:
     pattern: matrixSet(~this~, ~0~.inverse())
     imports:
-      matrixSet: khrysalis/dist/views/geometry/Matrix.actual
+      matrixSet: butterfly/dist/views/geometry/Matrix.actual
 
 - id: android.graphics.Matrix.reset
   type: call
   template:
     pattern: matrixReset(~this~)
     imports:
-      matrixReset: khrysalis/dist/views/geometry/Matrix.actual
+      matrixReset: butterfly/dist/views/geometry/Matrix.actual
 - id: android.graphics.Matrix.set
   type: call
   template:
     pattern: matrixSet(~this~, ~0~)
     imports:
-      matrixSet: khrysalis/dist/views/geometry/Matrix.actual
+      matrixSet: butterfly/dist/views/geometry/Matrix.actual
 - id: android.graphics.Matrix.preTranslate
   type: call
   template: '~this~.translateSelf(~0~, ~1~)'

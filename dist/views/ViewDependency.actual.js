@@ -11,19 +11,19 @@ function listenForDialogs() {
             top.classList.add("khr");
             // const dialog = document.createElement("dialog");
             const dialog = document.createElement("div");
-            dialog.classList.add("khrysalis-dialog-front");
+            dialog.classList.add("butterfly-dialog-front");
             dialog.classList.add("khr");
             const message = document.createElement("p");
-            message.classList.add("khrysalis-dialog-message");
+            message.classList.add("butterfly-dialog-message");
             message.classList.add("khr");
             ViewWithText_ext_actual_1.setViewText(message, value._string.get(window));
             dialog.appendChild(message);
             const buttons = document.createElement("div");
-            buttons.classList.add("khrysalis-dialog-buttons");
+            buttons.classList.add("butterfly-dialog-buttons");
             buttons.classList.add("khr");
             if (value.confirmation) {
                 const cancel = document.createElement("button");
-                cancel.classList.add("khrysalis-dialog-cancel");
+                cancel.classList.add("butterfly-dialog-cancel");
                 cancel.classList.add("khr");
                 cancel.textContent = "Cancel";
                 cancel.onclick = (e) => {
@@ -33,7 +33,7 @@ function listenForDialogs() {
                 buttons.appendChild(cancel);
             }
             const ok = document.createElement("button");
-            ok.classList.add("khrysalis-dialog-ok");
+            ok.classList.add("butterfly-dialog-ok");
             ok.classList.add("khr");
             ok.textContent = "OK";
             ok.onclick = (e) => {
@@ -58,7 +58,7 @@ function listenForDialogs() {
     });
 }
 exports.listenForDialogs = listenForDialogs;
-//! Declares com.lightningkite.khrysalis.views.share>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.share>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessShare(this_, shareTitle, message = null, url = null, image = null) {
     const escapedTitle = encodeURIComponent(shareTitle);
     const escapedUrl = url ? encodeURIComponent(url) : null;
@@ -197,14 +197,14 @@ function xActivityAccessShare(this_, shareTitle, message = null, url = null, ima
     document.body.appendChild(topLevel);
 }
 exports.xActivityAccessShare = xActivityAccessShare;
-//! Declares com.lightningkite.khrysalis.views.getColor
+//! Declares com.lightningkite.butterfly.views.getColor
 function xActivityAccessGetColor(this_, variableName) {
     if (!variableName.startsWith("var("))
         return variableName;
     return this_.getComputedStyle(this_.document.body).getPropertyValue(variableName.slice(4, variableName.length - 1)).trim();
 }
 exports.xActivityAccessGetColor = xActivityAccessGetColor;
-//! Declares com.lightningkite.khrysalis.views.openMap>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.openMap>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessOpenMap(this_, coordinate, label = null, zoom = null) {
     let url = label ?
         `https://www.google.com/maps/search/?api=1&query=${coordinate.latitude},${coordinate.longitude}` //TODO: Use label when it is supported
@@ -213,7 +213,7 @@ function xActivityAccessOpenMap(this_, coordinate, label = null, zoom = null) {
     window.open(url, "_blank");
 }
 exports.xActivityAccessOpenMap = xActivityAccessOpenMap;
-//! Declares com.lightningkite.khrysalis.views.openEvent>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.openEvent>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessOpenEvent(this_, title, description, location, start, end) {
     let calText = "BEGIN:VCALENDAR\nVERSION:2.0\nCALSCALE:GREGORIAN\nPRODID:adamgibbons/ics\nMETHOD:PUBLISH\nBEGIN:VEVENT\n";
     calText += "UID:" + uuid_1.v4() + "\n";
@@ -230,42 +230,42 @@ function xActivityAccessOpenEvent(this_, title, description, location, start, en
     a.click();
 }
 exports.xActivityAccessOpenEvent = xActivityAccessOpenEvent;
-//! Declares com.lightningkite.khrysalis.views.requestImagesGallery>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.requestImagesGallery>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessRequestImagesGallery(this_, callback) {
     openFileMulti("image/*", callback);
 }
 exports.xActivityAccessRequestImagesGallery = xActivityAccessRequestImagesGallery;
-//! Declares com.lightningkite.khrysalis.views.requestImageGallery>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.requestImageGallery>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessRequestImageGallery(this_, callback) {
     openFile("image/*", null, callback);
 }
 exports.xActivityAccessRequestImageGallery = xActivityAccessRequestImageGallery;
-//! Declares com.lightningkite.khrysalis.views.requestImageCamera>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.requestImageCamera>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessRequestImageCamera(this_, front = false, callback) {
     openFile("image/*", front, callback);
 }
 exports.xActivityAccessRequestImageCamera = xActivityAccessRequestImageCamera;
-//! Declares com.lightningkite.khrysalis.views.requestVideosGallery>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.requestVideosGallery>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessRequestVideosGallery(this_, callback) {
     openFileMulti("video/*", callback);
 }
 exports.xActivityAccessRequestVideosGallery = xActivityAccessRequestVideosGallery;
-//! Declares com.lightningkite.khrysalis.views.requestVideoGallery>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.requestVideoGallery>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessRequestVideoGallery(this_, callback) {
     openFile("video/*", null, callback);
 }
 exports.xActivityAccessRequestVideoGallery = xActivityAccessRequestVideoGallery;
-//! Declares com.lightningkite.khrysalis.views.requestVideoCamera>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.requestVideoCamera>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessRequestVideoCamera(this_, front = false, callback) {
     openFile("video/*", front, callback);
 }
 exports.xActivityAccessRequestVideoCamera = xActivityAccessRequestVideoCamera;
-//! Declares com.lightningkite.khrysalis.views.requestMediasGallery>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.requestMediasGallery>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessRequestMediasGallery(this_, callback) {
     openFileMulti("video/*,image/*", callback);
 }
 exports.xActivityAccessRequestMediasGallery = xActivityAccessRequestMediasGallery;
-//! Declares com.lightningkite.khrysalis.views.requestMediaGallery>com.lightningkite.khrysalis.android.ActivityAccess
+//! Declares com.lightningkite.butterfly.views.requestMediaGallery>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessRequestMediaGallery(this_, callback) {
     openFile("video/*,image/*", null, callback);
 }

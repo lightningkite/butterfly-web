@@ -1,7 +1,7 @@
 
 import {hashAnything, safeEq} from "../kotlin/Language";
 
-//! Declares com.lightningkite.khrysalis.views.DrawableResource
+//! Declares com.lightningkite.butterfly.views.DrawableResource
 export class DrawableResource {
     public cssClass: string;
     public filePath?: string;
