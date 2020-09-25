@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ObservableProperty_ext_shared_1 = require("../ObservableProperty.ext.shared");
 const DisposeCondition_actual_1 = require("../../rx/DisposeCondition.actual");
 const SwapView_1 = require("../../views/SwapView");
-//! Declares com.lightningkite.butterfly.observables.binding.bindStack>com.lightningkite.butterfly.views.android.SwapView
+//! Declares com.lightningkite.butterfly.observables.binding.bindStack>com.lightningkite.butterfly.views.SwapView
 function xSwapViewBindStack(this_, dependency, obs) {
     let previousStackSize = obs.value.length;
     DisposeCondition_actual_1.xDisposableUntil(ObservableProperty_ext_shared_1.xObservablePropertySubscribeBy(obs, undefined, undefined, (stack) => {

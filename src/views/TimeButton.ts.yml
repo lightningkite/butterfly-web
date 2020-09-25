@@ -1,10 +1,10 @@
 
 ---
-- id: com.lightningkite.butterfly.views.android.TimeButton
+- id: com.lightningkite.butterfly.views.TimeButton
   type: type
   template: HTMLInputElement
 
-- id: com.lightningkite.butterfly.views.android.TimeButton
+- id: com.lightningkite.butterfly.views.TimeButton
   type: call
   template:
     pattern: also(document.createElement('input') as HTMLInputElement, (x)=>{ x.type = "time" })

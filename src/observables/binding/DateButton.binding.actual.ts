@@ -8,7 +8,7 @@ import {xTimeAloneIso8601, TimeAlone} from '../../time/TimeAlone.actual'
 import {MutableObservableProperty} from '../MutableObservableProperty.shared'
 import {xDateAloneIso8601, DateAlone} from '../../time/DateAlone.actual'
 
-//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.android.DateButton
+//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.DateButton
 export function xDateButtonBind(this_: HTMLInputElement, date: MutableObservableProperty<Date>): void {
     let suppress = false;
     xDisposableUntil(xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {
@@ -35,7 +35,7 @@ export function xDateButtonBind(this_: HTMLInputElement, date: MutableObservable
 }
 
 
-//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.android.TimeButton
+//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.TimeButton
 export function xTimeButtonBind(this_: HTMLInputElement, date: MutableObservableProperty<Date>, minuteInterval: number = 1): void {
     let suppress = false;
     xDisposableUntil(xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {
@@ -62,7 +62,7 @@ export function xTimeButtonBind(this_: HTMLInputElement, date: MutableObservable
 }
 
 
-//! Declares com.lightningkite.butterfly.observables.binding.bindDateAlone>com.lightningkite.butterfly.views.android.DateButton
+//! Declares com.lightningkite.butterfly.observables.binding.bindDateAlone>com.lightningkite.butterfly.views.DateButton
 export function xDateButtonBindDateAlone(this_: HTMLInputElement, date: MutableObservableProperty<DateAlone>): void {
     let suppress = false;
     xDisposableUntil(xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {
@@ -86,7 +86,7 @@ export function xDateButtonBindDateAlone(this_: HTMLInputElement, date: MutableO
 }
 
 
-//! Declares com.lightningkite.butterfly.observables.binding.bindTimeAlone>com.lightningkite.butterfly.views.android.TimeButton
+//! Declares com.lightningkite.butterfly.observables.binding.bindTimeAlone>com.lightningkite.butterfly.views.TimeButton
 export function xTimeButtonBindTimeAlone(this_: HTMLInputElement, date: MutableObservableProperty<TimeAlone>, minuteInterval: number = 1): void {
     let suppress = false;
     xDisposableUntil(xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {

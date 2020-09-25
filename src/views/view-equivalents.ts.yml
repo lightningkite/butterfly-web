@@ -10,8 +10,8 @@
   type: type
   template: HTMLVideoElement
 
-# com.lightningkite.butterfly.views.android.HorizontalProgressBar
-- id: com.lightningkite.butterfly.views.android.HorizontalProgressBar
+# com.lightningkite.butterfly.views.HorizontalProgressBar
+- id: com.lightningkite.butterfly.views.HorizontalProgressBar
   type: type
   template: HTMLProgressElement
 
@@ -30,13 +30,13 @@
   type: type
   template: HTMLDivElement
 
-# com.lightningkite.butterfly.views.android.ColorRatingBar
-- id: com.lightningkite.butterfly.views.android.ColorRatingBar
+# com.lightningkite.butterfly.views.ColorRatingBar
+- id: com.lightningkite.butterfly.views.ColorRatingBar
   type: type
   template: HTMLDivElement
 
-# com.lightningkite.butterfly.views.android.VerticalRecyclerView
-- id: com.lightningkite.butterfly.views.android.VerticalRecyclerView
+# com.lightningkite.butterfly.views.VerticalRecyclerView
+- id: com.lightningkite.butterfly.views.VerticalRecyclerView
   type: type
   template: HTMLDivElement
 
@@ -72,8 +72,8 @@
   type: type
   template: HTMLDivElement
 
-# com.lightningkite.butterfly.views.android.SwapView
-- id: com.lightningkite.butterfly.views.android.SwapView
+# com.lightningkite.butterfly.views.SwapView
+- id: com.lightningkite.butterfly.views.SwapView
   type: type
   template: HTMLDivElement
 

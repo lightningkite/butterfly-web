@@ -9,7 +9,7 @@
   type: call
   template: (document.createElement('input') as HTMLInputElement)
 
-- id: com.lightningkite.butterfly.views.android.MultilineEditText
+- id: com.lightningkite.butterfly.views.MultilineEditText
   type: type
   template: HTMLTextAreaElement
 
