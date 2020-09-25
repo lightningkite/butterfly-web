@@ -1,6 +1,6 @@
 import {find} from "iterable-operator";
-import {TimeAlone} from "../time/TimeAlone.actual";
-import {DateAlone} from "../time/DateAlone.actual";
+import {TimeAlone} from "../time/TimeAlone";
+import {DateAlone} from "../time/DateAlone";
 
 export function parse(item: any, asType: Array<any>): any {
     if(item === null || item === undefined) return item;

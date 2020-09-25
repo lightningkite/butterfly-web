@@ -95,7 +95,7 @@
   template:
     pattern: ~this~.pipe(rxRetryWhenAlt(~0~))
     imports:
-      rxRetryWhenAlt: butterfly/dist/rx/RxActual.actual
+      rxRetryWhenAlt: butterfly/dist/rx/RxActual
 
 - id: io.reactivex.Observable.delay
   type: call
@@ -291,14 +291,14 @@
   template:
     pattern: ~this~.pipe(rxDoOnSubscribe(~0~))
     imports:
-      rxDoOnSubscribe: doOnSubscribe from butterfly/dist/rx/RxActual.actual
+      rxDoOnSubscribe: doOnSubscribe from butterfly/dist/rx/RxActual
 
 - id: io.reactivex.Observable.doOnDispose
   type: call
   template:
     pattern: ~this~.pipe(rxDoOnDispose(~0~))
     imports:
-      rxDoOnDispose: doOnDispose from butterfly/dist/rx/RxActual.actual
+      rxDoOnDispose: doOnDispose from butterfly/dist/rx/RxActual
 
 - id: io.reactivex.Observable.doOnError
   type: call
@@ -452,7 +452,7 @@
   template:
     pattern: ~this~.subscribe(new SingleObserver(~0~))
     imports:
-      SingleObserver: butterfly/dist/rx/RxActual.actual
+      SingleObserver: butterfly/dist/rx/RxActual
 
 - id: io.reactivex.rxkotlin.subscribeBy
   type: call

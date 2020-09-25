@@ -5,4 +5,4 @@
   template:
     pattern: new RectF(~*~)
     imports:
-      RectF: butterfly/dist/views/geometry/RectF.actual
+      RectF: butterfly/dist/views/geometry/RectF

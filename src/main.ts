@@ -1,6 +1,6 @@
-import {ViewGenerator} from "./views/ViewGenerator.shared";
-import {listenForDialogs} from "./views/ViewDependency.actual";
-import {HttpClient} from "./net/HttpClient.actual";
+import {ViewGenerator} from "./views/ViewGenerator";
+import {listenForDialogs} from "./views/ViewDependency";
+import {HttpClient} from "./net/HttpClient";
 import {asyncScheduler} from "rxjs";
 
 export function main(rootVg: ViewGenerator){

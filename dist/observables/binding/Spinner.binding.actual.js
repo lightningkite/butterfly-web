@@ -8,7 +8,7 @@ const DisposeCondition_actual_1 = require("../../rx/DisposeCondition.actual");
 const StandardObservableProperty_shared_1 = require("../StandardObservableProperty.shared");
 const Language_1 = require("../../kotlin/Language");
 const viewAttached_1 = require("../../views/viewAttached");
-const FlatMappedObservableProperty_shared_1 = require("../FlatMappedObservableProperty.shared");
+const FlatMappedObservableProperty_1 = require("../FlatMappedObservableProperty");
 //! Declares com.lightningkite.butterfly.observables.binding.bind>android.widget.Spinner
 function spinnerBindAdvanced(this_, options, selected, makeView) {
     const observables = options.value.map((x) => {
@@ -108,7 +108,7 @@ function spinnerBindString(this_, options, selected, toString) {
                 const newOpt = document.createElement("option");
                 newOpt.value = (options.length - 1 - diff + i).toString();
                 const newObs = new StandardObservableProperty_shared_1.StandardObservableProperty(options[options.length - diff + i]);
-                DisposeCondition_actual_1.xDisposableUntil(ObservableProperty_ext_shared_1.xObservablePropertySubscribeBy(FlatMappedObservableProperty_shared_1.xObservablePropertyFlatMap(newObs, toString), undefined, undefined, (x) => {
+                DisposeCondition_actual_1.xDisposableUntil(ObservableProperty_ext_shared_1.xObservablePropertySubscribeBy(FlatMappedObservableProperty_1.xObservablePropertyFlatMap(newObs, toString), undefined, undefined, (x) => {
                     newOpt.innerText = x;
                 }), DisposeCondition_actual_1.xViewRemovedGet(newOpt));
                 this_.options.add(newOpt);

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const iterable_operator_1 = require("iterable-operator");
-const TimeAlone_actual_1 = require("../time/TimeAlone.actual");
-const DateAlone_actual_1 = require("../time/DateAlone.actual");
+const TimeAlone_1 = require("../time/TimeAlone");
+const DateAlone_1 = require("../time/DateAlone");
 function parse(item, asType) {
     if (item === null || item === undefined)
         return item;
@@ -31,10 +31,10 @@ function parse(item, asType) {
             return map;
         case Date:
             return new Date(item);
-        case DateAlone_actual_1.DateAlone:
-            return DateAlone_actual_1.DateAlone.Companion.INSTANCE.iso(item);
-        case TimeAlone_actual_1.TimeAlone:
-            return TimeAlone_actual_1.TimeAlone.Companion.INSTANCE.iso(item);
+        case DateAlone_1.DateAlone:
+            return DateAlone_1.DateAlone.Companion.INSTANCE.iso(item);
+        case TimeAlone_1.TimeAlone:
+            return TimeAlone_1.TimeAlone.Companion.INSTANCE.iso(item);
         default:
             if (mainType.fromJson) {
                 return mainType.fromJson(item, ...asType.slice(1));

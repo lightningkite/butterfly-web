@@ -1,8 +1,8 @@
 import { Observable, SchedulerLike } from 'rxjs';
 import { ConnectedWebSocket } from "./ConnectedWebSocket.actual";
 import { HttpBody } from "./HttpBody.actual";
-import { HttpOptions, HttpProgress } from "./HttpModels.shared";
-import { ObservableProperty } from "../observables/ObservableProperty.shared";
+import { HttpOptions, HttpProgress } from "./HttpModels";
+import { ObservableProperty } from "../observables/ObservableProperty";
 export declare class HttpClient {
     static INSTANCE: HttpClient;
     readonly GET = "GET";

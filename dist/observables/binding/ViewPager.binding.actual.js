@@ -8,7 +8,7 @@ const DisposeCondition_actual_1 = require("../../rx/DisposeCondition.actual");
 const StandardObservableProperty_shared_1 = require("../StandardObservableProperty.shared");
 const View_ext_actual_1 = require("../../views/View.ext.actual");
 const SwapView_1 = require("../../views/SwapView");
-const CombineObservableProperty_shared_1 = require("../CombineObservableProperty.shared");
+const CombineObservableProperty_1 = require("../CombineObservableProperty");
 /*
 We need:
 - A main view that swaps
@@ -60,7 +60,7 @@ function xViewPagerBind(this_, items, _default, showIndex = new StandardObservab
     if (!content || !left || !right)
         return;
     let pastIndex = showIndex.value;
-    const combined = CombineObservableProperty_shared_1.xObservablePropertyCombine(items, showIndex, (a, b) => [a, b]);
+    const combined = CombineObservableProperty_1.xObservablePropertyCombine(items, showIndex, (a, b) => [a, b]);
     let currentObs = new StandardObservableProperty_shared_1.StandardObservableProperty(_default);
     DisposeCondition_actual_1.xDisposableUntil(ObservableProperty_ext_shared_1.xObservablePropertySubscribeBy(items, undefined, undefined, (newItems) => {
         let newItem = newItems[showIndex.value];

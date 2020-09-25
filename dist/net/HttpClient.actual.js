@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const rxjs_1 = require("rxjs");
 const ConnectedWebSocket_actual_1 = require("./ConnectedWebSocket.actual");
 const operators_1 = require("rxjs/operators");
-const HttpModels_shared_1 = require("./HttpModels.shared");
-const EventToObservableProperty_shared_1 = require("../observables/EventToObservableProperty.shared");
+const HttpModels_1 = require("./HttpModels");
+const EventToObservableProperty_1 = require("../observables/EventToObservableProperty");
 //! Declares com.lightningkite.butterfly.net.HttpClient
 class HttpClient {
     constructor() {
@@ -20,7 +20,7 @@ class HttpClient {
         this.ioScheduler = null;
         //--- HttpClient.responseScheduler
         this.responseScheduler = null;
-        this.defaultOptions = new HttpModels_shared_1.HttpOptions();
+        this.defaultOptions = new HttpModels_1.HttpOptions();
     }
     call(url, method = HttpClient.INSTANCE.GET, headers = new Map([]), body = null, options = this.defaultOptions) {
         var _a, _b, _c, _d;
@@ -30,22 +30,22 @@ class HttpClient {
         }
         let cacheString = "default";
         switch (options.cacheMode) {
-            case HttpModels_shared_1.HttpCacheMode.Default:
+            case HttpModels_1.HttpCacheMode.Default:
                 cacheString = "default";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.NoStore:
+            case HttpModels_1.HttpCacheMode.NoStore:
                 cacheString = "no-store";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.Reload:
+            case HttpModels_1.HttpCacheMode.Reload:
                 cacheString = "reload";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.NoCache:
+            case HttpModels_1.HttpCacheMode.NoCache:
                 cacheString = "no-cache";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.ForceCache:
+            case HttpModels_1.HttpCacheMode.ForceCache:
                 cacheString = "force-cache";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.OnlyIfCached:
+            case HttpModels_1.HttpCacheMode.OnlyIfCached:
                 cacheString = "only-if-cached";
                 break;
         }
@@ -65,22 +65,22 @@ class HttpClient {
         }
         let cacheString = "default";
         switch (options.cacheMode) {
-            case HttpModels_shared_1.HttpCacheMode.Default:
+            case HttpModels_1.HttpCacheMode.Default:
                 cacheString = "default";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.NoStore:
+            case HttpModels_1.HttpCacheMode.NoStore:
                 cacheString = "no-store";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.Reload:
+            case HttpModels_1.HttpCacheMode.Reload:
                 cacheString = "reload";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.NoCache:
+            case HttpModels_1.HttpCacheMode.NoCache:
                 cacheString = "no-cache";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.ForceCache:
+            case HttpModels_1.HttpCacheMode.ForceCache:
                 cacheString = "force-cache";
                 break;
-            case HttpModels_shared_1.HttpCacheMode.OnlyIfCached:
+            case HttpModels_1.HttpCacheMode.OnlyIfCached:
                 cacheString = "only-if-cached";
                 break;
         }
@@ -106,7 +106,7 @@ class HttpClient {
                             newReader.read().then(({ done, value }) => {
                                 if (done) {
                                     //on progress complete
-                                    progSubj.next(new HttpModels_shared_1.HttpProgress(HttpModels_shared_1.HttpPhase.Read, 1));
+                                    progSubj.next(new HttpModels_1.HttpProgress(HttpModels_1.HttpPhase.Read, 1));
                                     controller.close();
                                     return;
                                 }
@@ -114,10 +114,10 @@ class HttpClient {
                                     loadedBytes += value.byteLength;
                                     //on progress
                                     if (contentLength) {
-                                        progSubj.next(new HttpModels_shared_1.HttpProgress(HttpModels_shared_1.HttpPhase.Read, loadedBytes / contentLength));
+                                        progSubj.next(new HttpModels_1.HttpProgress(HttpModels_1.HttpPhase.Read, loadedBytes / contentLength));
                                     }
                                     else {
-                                        progSubj.next(new HttpModels_shared_1.HttpProgress(HttpModels_shared_1.HttpPhase.Read, approximateCompletion(loadedBytes)));
+                                        progSubj.next(new HttpModels_1.HttpProgress(HttpModels_1.HttpPhase.Read, approximateCompletion(loadedBytes)));
                                     }
                                     controller.enqueue(value);
                                 }
@@ -134,7 +134,7 @@ class HttpClient {
                 return new Response(null, response);
             }
         }));
-        let progObs = EventToObservableProperty_shared_1.xObservableAsObservableProperty(progSubj, HttpModels_shared_1.HttpProgress.Companion.INSTANCE.connecting);
+        let progObs = EventToObservableProperty_1.xObservableAsObservableProperty(progSubj, HttpModels_1.HttpProgress.Companion.INSTANCE.connecting);
         return [progObs, obsResp];
     }
     webSocket(url) {

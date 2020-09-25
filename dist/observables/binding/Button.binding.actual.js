@@ -4,10 +4,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // File: observables/binding/Button.binding.actual.kt
 // Package: com.lightningkite.butterfly.observables.binding
 const DisposeCondition_actual_1 = require("../../rx/DisposeCondition.actual");
-const ObservableProperty_ext_shared_1 = require("../ObservableProperty.ext.shared");
+const ObservableProperty_ext_1 = require("../ObservableProperty.ext");
 //! Declares com.lightningkite.butterfly.observables.binding.bindActive>android.widget.Button
 function xButtonBindActive(this_, observable, activeColorResource = null, inactiveColorResource = null) {
-    DisposeCondition_actual_1.xDisposableUntil(ObservableProperty_ext_shared_1.xObservablePropertySubscribeBy(observable, undefined, undefined, (x) => {
+    DisposeCondition_actual_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(observable, undefined, undefined, (x) => {
         this_.disabled = !x;
     }), DisposeCondition_actual_1.xViewRemovedGet(this_));
 }

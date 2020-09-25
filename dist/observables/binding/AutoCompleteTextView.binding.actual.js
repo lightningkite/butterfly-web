@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const DisposeCondition_actual_1 = require("../../rx/DisposeCondition.actual");
-const ObservableProperty_ext_shared_1 = require("../ObservableProperty.ext.shared");
-const CombineObservableProperty_shared_1 = require("../CombineObservableProperty.shared");
-const StandardObservableProperty_shared_1 = require("../StandardObservableProperty.shared");
+const ObservableProperty_ext_1 = require("../ObservableProperty.ext");
+const CombineObservableProperty_1 = require("../CombineObservableProperty");
+const StandardObservableProperty_1 = require("../StandardObservableProperty");
 //! Declares com.lightningkite.butterfly.observables.binding.bind>android.widget.AutoCompleteTextView
 function xAutoCompleteTextViewBind(this_, options, toString, onItemSelected) {
-    let query = new StandardObservableProperty_shared_1.StandardObservableProperty("");
+    let query = new StandardObservableProperty_1.StandardObservableProperty("");
     this_.addEventListener("change", () => {
         query.value = this_.value;
     });
-    xAutoCompleteTextViewBindList(this_, CombineObservableProperty_shared_1.xObservablePropertyCombine(options, query, (options, query) => options.filter((x) => toString(x).toLowerCase().indexOf(query.toLowerCase()) != -1)), toString, onItemSelected);
+    xAutoCompleteTextViewBindList(this_, CombineObservableProperty_1.xObservablePropertyCombine(options, query, (options, query) => options.filter((x) => toString(x).toLowerCase().indexOf(query.toLowerCase()) != -1)), toString, onItemSelected);
 }
 exports.xAutoCompleteTextViewBind = xAutoCompleteTextViewBind;
 //! Declares com.lightningkite.butterfly.observables.binding.bindList>android.widget.AutoCompleteTextView
@@ -101,7 +101,7 @@ function xAutoCompleteTextViewBindList(this_, options, toString, onItemSelected)
                 break;
         }
     });
-    DisposeCondition_actual_1.xDisposableUntil(ObservableProperty_ext_shared_1.xObservablePropertySubscribeBy(options, undefined, undefined, (x) => {
+    DisposeCondition_actual_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(options, undefined, undefined, (x) => {
         if (this_ === document.activeElement) {
             showOptions(this_.value, x);
         }

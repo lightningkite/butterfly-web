@@ -18,4 +18,4 @@
   template:
     pattern: imageViewSetImageResource(~this~, ~0~)
     imports:
-      imageViewSetImageResource: butterfly/dist/views/ImageView.actual
+      imageViewSetImageResource: butterfly/dist/views/ImageViewcom.lightningkite.butterfly.views.widget.CustomView

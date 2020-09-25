@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const uuid_1 = require("uuid");
-const showDialog_shared_1 = require("./showDialog.shared");
+const showDialog_1 = require("./showDialog");
 const ViewWithText_ext_actual_1 = require("./ViewWithText.ext.actual");
 function listenForDialogs() {
-    showDialog_shared_1._showDialogEvent.subscribe({
+    showDialog_1._showDialogEvent.subscribe({
         next(value) {
             const top = document.createElement("div");
             top.classList.add("resp-sharing-dialog-back");

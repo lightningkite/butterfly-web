@@ -9,11 +9,11 @@
   template:
     pattern: numberToColor(~this~)
     imports:
-      numberToColor: butterfly/dist/views/Colors.actual
+      numberToColor: butterfly/dist/views/Colors
 
 - id: com.lightningkite.butterfly.views.colorAlpha
   type: call
   template:
     pattern: applyAlphaToColor(~this~, ~0~)
     imports:
-      applyAlphaToColor: butterfly/dist/views/Colors.actual
+      applyAlphaToColor: butterfly/dist/views/Colors

@@ -1,7 +1,7 @@
 import { Codable } from '../Codable.actual';
 import { HttpMediaType } from './HttpMediaType.actual';
 import { Observable } from "rxjs";
-import { Image } from "../Image.shared";
+import { Image } from "../Image";
 export declare class HttpBody {
     data: BodyInit;
     type: HttpMediaType;

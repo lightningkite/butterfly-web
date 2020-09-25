@@ -7,7 +7,7 @@ const ObservableProperty_ext_shared_1 = require("../ObservableProperty.ext.share
 const DisposeCondition_actual_1 = require("../../rx/DisposeCondition.actual");
 const StandardObservableProperty_shared_1 = require("../StandardObservableProperty.shared");
 const Kotlin_1 = require("../../Kotlin");
-const LinearLayout_binding_shared_1 = require("./LinearLayout.binding.shared");
+const LinearLayout_binding_1 = require("./LinearLayout.binding");
 const viewAttached_1 = require("../../views/viewAttached");
 //! Declares com.lightningkite.butterfly.observables.binding.whenScrolledToEnd>androidx.recyclerview.widget.RecyclerView
 function xRecyclerViewWhenScrolledToEnd(this_, action) {
@@ -46,7 +46,7 @@ function xRecyclerViewReverseDirectionSet(this_, value) {
 exports.xRecyclerViewReverseDirectionSet = xRecyclerViewReverseDirectionSet;
 //! Declares com.lightningkite.butterfly.observables.binding.bind>androidx.recyclerview.widget.RecyclerView
 function xRecyclerViewBind(this_, data, defaultValue, makeView) {
-    LinearLayout_binding_shared_1.xLinearLayoutBind(this_, data, defaultValue, makeView);
+    LinearLayout_binding_1.xLinearLayoutBind(this_, data, defaultValue, makeView);
 }
 exports.xRecyclerViewBind = xRecyclerViewBind;
 class RVTypeHandler {
