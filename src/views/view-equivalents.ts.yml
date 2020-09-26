@@ -6,12 +6,12 @@
   template: HTMLProgressElement
 
 # com.lightningkite.butterfly.views.VideoPlayer
-- id: com.lightningkite.butterfly.views.VideoPlayer
+- id: com.lightningkite.butterfly.views.widget.VideoPlayer
   type: type
   template: HTMLVideoElement
 
 # com.lightningkite.butterfly.views.HorizontalProgressBar
-- id: com.lightningkite.butterfly.views.HorizontalProgressBar
+- id: com.lightningkite.butterfly.views.widget.HorizontalProgressBar
   type: type
   template: HTMLProgressElement
 
@@ -31,12 +31,12 @@
   template: HTMLDivElement
 
 # com.lightningkite.butterfly.views.ColorRatingBar
-- id: com.lightningkite.butterfly.views.ColorRatingBar
+- id: com.lightningkite.butterfly.views.widget.ColorRatingBar
   type: type
   template: HTMLDivElement
 
 # com.lightningkite.butterfly.views.VerticalRecyclerView
-- id: com.lightningkite.butterfly.views.VerticalRecyclerView
+- id: com.lightningkite.butterfly.views.widget.VerticalRecyclerView
   type: type
   template: HTMLDivElement
 
@@ -73,7 +73,7 @@
   template: HTMLDivElement
 
 # com.lightningkite.butterfly.views.SwapView
-- id: com.lightningkite.butterfly.views.SwapView
+- id: com.lightningkite.butterfly.views.widget.SwapView
   type: type
   template: HTMLDivElement
 

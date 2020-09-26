@@ -6,7 +6,7 @@ import {xDisposableUntil, xViewRemovedGet} from "../../rx/DisposeCondition.ext";
 import {xObservablePropertySubscribeBy} from "../ObservableProperty.ext";
 import {IllegalArgumentException} from "../../kotlin/Language";
 
-//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.VideoPlayer
+//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.widget.VideoPlayer
 export function xVideoPlayerBind(this_: HTMLVideoElement, video: ObservableProperty<Video | null>) {
     xDisposableUntil(xObservablePropertySubscribeBy(video, undefined, undefined, (x)=>{
         xVideoPlayerLoadVideo(this_, x);

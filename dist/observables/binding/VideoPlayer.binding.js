@@ -5,7 +5,7 @@ const Video_1 = require("../../Video");
 const DisposeCondition_ext_1 = require("../../rx/DisposeCondition.ext");
 const ObservableProperty_ext_1 = require("../ObservableProperty.ext");
 const Language_1 = require("../../kotlin/Language");
-//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.VideoPlayer
+//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.widget.VideoPlayer
 function xVideoPlayerBind(this_, video) {
     DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(video, undefined, undefined, (x) => {
         xVideoPlayerLoadVideo(this_, x);

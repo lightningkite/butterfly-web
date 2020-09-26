@@ -7,7 +7,7 @@ import {ViewGenerator} from '../../views/ViewGenerator'
 import {ObservableStack} from '../ObservableStack'
 import {swapViewSwap} from "../../views/SwapView";
 
-//! Declares com.lightningkite.butterfly.observables.binding.bindStack>com.lightningkite.butterfly.views.SwapView
+//! Declares com.lightningkite.butterfly.observables.binding.bindStack>com.lightningkite.butterfly.views.widget.SwapView
 export function xSwapViewBindStack<T extends ViewGenerator>(this_: HTMLDivElement, dependency: Window, obs: ObservableStack<T>): void {
     let previousStackSize = obs.value.length;
     xDisposableUntil(xObservablePropertySubscribeBy(obs, undefined, undefined, (stack) => {

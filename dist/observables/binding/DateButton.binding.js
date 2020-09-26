@@ -8,7 +8,7 @@ const Date_1 = require("../../time/Date");
 const DisposeCondition_ext_1 = require("../../rx/DisposeCondition.ext");
 const TimeAlone_1 = require("../../time/TimeAlone");
 const DateAlone_1 = require("../../time/DateAlone");
-//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.DateButton
+//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.widget.DateButton
 function xDateButtonBind(this_, date) {
     let suppress = false;
     DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {
@@ -37,7 +37,7 @@ function xDateButtonBind(this_, date) {
     };
 }
 exports.xDateButtonBind = xDateButtonBind;
-//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.TimeButton
+//! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.widget.TimeButton
 function xTimeButtonBind(this_, date, minuteInterval = 1) {
     let suppress = false;
     DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {
@@ -66,7 +66,7 @@ function xTimeButtonBind(this_, date, minuteInterval = 1) {
     };
 }
 exports.xTimeButtonBind = xTimeButtonBind;
-//! Declares com.lightningkite.butterfly.observables.binding.bindDateAlone>com.lightningkite.butterfly.views.DateButton
+//! Declares com.lightningkite.butterfly.observables.binding.bindDateAlone>com.lightningkite.butterfly.views.widget.DateButton
 function xDateButtonBindDateAlone(this_, date) {
     let suppress = false;
     DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {
@@ -92,7 +92,7 @@ function xDateButtonBindDateAlone(this_, date) {
     };
 }
 exports.xDateButtonBindDateAlone = xDateButtonBindDateAlone;
-//! Declares com.lightningkite.butterfly.observables.binding.bindTimeAlone>com.lightningkite.butterfly.views.TimeButton
+//! Declares com.lightningkite.butterfly.observables.binding.bindTimeAlone>com.lightningkite.butterfly.views.widget.TimeButton
 function xTimeButtonBindTimeAlone(this_, date, minuteInterval = 1) {
     let suppress = false;
     DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {
