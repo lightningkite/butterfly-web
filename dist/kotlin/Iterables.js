@@ -89,4 +89,14 @@ function xSequenceDistinctBy(iter, selector) {
     return lazyOp_1.filter(iter, (e) => Collections_1.setAddCausedChange(seen, selector(e)));
 }
 exports.xSequenceDistinctBy = xSequenceDistinctBy;
+//! Declares kotlin.collections.contains
+function xIterableContains(iter, item) {
+    for (const x of iter) {
+        if (Language_1.safeEq(x, item)) {
+            return true;
+        }
+    }
+    return false;
+}
+exports.xIterableContains = xIterableContains;
 //# sourceMappingURL=Iterables.js.map

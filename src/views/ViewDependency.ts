@@ -212,8 +212,8 @@ export function xActivityAccessShare(this_: Window, shareTitle: string, message:
 
 //! Declares com.lightningkite.butterfly.views.getColor
 export function xActivityAccessGetColor(this_: Window, variableName: string): string {
-    if(!variableName.startsWith("var(")) return variableName;
-    return this_.getComputedStyle(this_.document.body).getPropertyValue(variableName.slice(4, variableName.length-1)).trim();
+    if (!variableName.startsWith("var(")) return variableName;
+    return this_.getComputedStyle(this_.document.body).getPropertyValue(variableName.slice(4, variableName.length - 1)).trim();
 }
 
 //! Declares com.lightningkite.butterfly.views.openMap>com.lightningkite.butterfly.android.ActivityAccess
@@ -283,6 +283,29 @@ export function xActivityAccessRequestMediaGallery(this_: Window, callback: (a: 
     openFile("video/*,image/*", null, callback);
 }
 
+//! Declares com.lightningkite.butterfly.views.requestFile>com.lightningkite.butterfly.android.ActivityAccess
+export function xActivityAccessRequestFile(this_: Window, callback: (a: File) => void): void {
+    openFile("*", null, callback)
+}
+
+//! Declares com.lightningkite.butterfly.views.requestFiles>com.lightningkite.butterfly.android.ActivityAccess
+export function xActivityAccessRequestFiles(this_: Window, callback: (a: Array<File>) => void): void {
+    openFileMulti("*", callback)
+}
+
+//! Declares com.lightningkite.butterfly.views.getMimeType>com.lightningkite.butterfly.android.ActivityAccess
+export function xActivityAccessGetMimeType(this_: Window, file: File): string {
+    return file.type
+}
+
+//! Declares com.lightningkite.butterfly.views.downloadFile>com.lightningkite.butterfly.android.ActivityAccess
+export function xActivityAccessDownloadFile(this_: Window, url: string) {
+    const a = document.createElement("a") as HTMLAnchorElement
+    a.href = url
+    a.download = ""
+    a.click()
+}
+
 function openFileMulti(type: string, callback: (a: Array<File>) => void) {
     const f = document.createElement("input") as HTMLInputElement;
     f.type = "file";
@@ -302,6 +325,7 @@ function openFileMulti(type: string, callback: (a: Array<File>) => void) {
     };
     f.click();
 }
+
 function openFile(type: string, capture: boolean | null = null, callback: (a: File) => void) {
     const f = document.createElement("input") as HTMLInputElement;
     f.type = "file";

@@ -270,6 +270,29 @@ function xActivityAccessRequestMediaGallery(this_, callback) {
     openFile("video/*,image/*", null, callback);
 }
 exports.xActivityAccessRequestMediaGallery = xActivityAccessRequestMediaGallery;
+//! Declares com.lightningkite.butterfly.views.requestFile>com.lightningkite.butterfly.android.ActivityAccess
+function xActivityAccessRequestFile(this_, callback) {
+    openFile("*", null, callback);
+}
+exports.xActivityAccessRequestFile = xActivityAccessRequestFile;
+//! Declares com.lightningkite.butterfly.views.requestFiles>com.lightningkite.butterfly.android.ActivityAccess
+function xActivityAccessRequestFiles(this_, callback) {
+    openFileMulti("*", callback);
+}
+exports.xActivityAccessRequestFiles = xActivityAccessRequestFiles;
+//! Declares com.lightningkite.butterfly.views.getMimeType>com.lightningkite.butterfly.android.ActivityAccess
+function xActivityAccessGetMimeType(this_, file) {
+    return file.type;
+}
+exports.xActivityAccessGetMimeType = xActivityAccessGetMimeType;
+//! Declares com.lightningkite.butterfly.views.downloadFile>com.lightningkite.butterfly.android.ActivityAccess
+function xActivityAccessDownloadFile(this_, url) {
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "";
+    a.click();
+}
+exports.xActivityAccessDownloadFile = xActivityAccessDownloadFile;
 function openFileMulti(type, callback) {
     const f = document.createElement("input");
     f.type = "file";

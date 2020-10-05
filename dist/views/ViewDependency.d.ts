@@ -13,3 +13,7 @@ export declare function xActivityAccessRequestVideoGallery(this_: Window, callba
 export declare function xActivityAccessRequestVideoCamera(this_: Window, front: boolean | undefined, callback: (a: File) => void): void;
 export declare function xActivityAccessRequestMediasGallery(this_: Window, callback: (a: Array<File>) => void): void;
 export declare function xActivityAccessRequestMediaGallery(this_: Window, callback: (a: File) => void): void;
+export declare function xActivityAccessRequestFile(this_: Window, callback: (a: File) => void): void;
+export declare function xActivityAccessRequestFiles(this_: Window, callback: (a: Array<File>) => void): void;
+export declare function xActivityAccessGetMimeType(this_: Window, file: File): string;
+export declare function xActivityAccessDownloadFile(this_: Window, url: string): void;

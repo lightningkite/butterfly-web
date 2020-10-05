@@ -1,6 +1,6 @@
 // Kotlin iterables
 
-import {IllegalArgumentException} from "./Language";
+import {IllegalArgumentException, safeEq} from "./Language";
 import {filter, map} from './lazyOp'
 import {EqualOverrideSet, setAddCausedChange} from "./Collections";
 
@@ -87,4 +87,13 @@ export function xIterableDistinctBy<T, D>(iter: Iterable<T>, selector: (t: T)=>D
 export function xSequenceDistinctBy<T, D>(iter: Iterable<T>, selector: (t: T)=>D): Iterable<T> {
     const seen = new EqualOverrideSet<D>()
     return filter(iter, (e) => setAddCausedChange<D>(seen, selector(e)))
+}
+//! Declares kotlin.collections.contains
+export function xIterableContains<T>(iter: Iterable<T>, item: T): boolean {
+    for(const x of iter){
+        if(safeEq(x, item)){
+            return true
+        }
+    }
+    return false
 }
