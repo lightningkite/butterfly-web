@@ -149,6 +149,11 @@
   type: call
   template: ~this~.has(~0~)
 
+- id: kotlin.collections.Collection.size
+  type: call
+  actualReceiver: kotlin.collections.Set
+  template: ~this~.size
+
 - id: java.util.HashSet.contains
   type: call
   template: ~this~.has(~0~)

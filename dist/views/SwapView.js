@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const viewAttached_1 = require("./viewAttached");
+const delay_1 = require("../delay");
 const previousViewSymbol = Symbol("previousView");
 function swapViewSwap(view, to, animation) {
     if (to) {
@@ -18,13 +19,10 @@ function swapViewSwap(view, to, animation) {
     if (current) {
         //animate out
         const animationOut = `${animation}-out`;
-        let animOutHandler;
-        animOutHandler = (ev) => {
-            current.removeEventListener("animationend", animOutHandler);
+        delay_1.delay(250, () => {
             view.removeChild(current);
             viewAttached_1.triggerDetatchEvent(current);
-        };
-        current.addEventListener("animationend", animOutHandler);
+        });
         current.style.animation = `${animationOut} 0.25s`;
         //animate in
         if (to) {

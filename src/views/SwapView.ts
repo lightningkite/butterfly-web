@@ -1,4 +1,5 @@
 import {triggerDetatchEvent} from "./viewAttached";
+import {delay} from "../delay";
 
 const previousViewSymbol = Symbol("previousView")
 
@@ -24,13 +25,10 @@ export function swapViewSwap(view: HTMLDivElement, to: HTMLElement | null, anima
     if (current) {
         //animate out
         const animationOut = `${animation}-out`
-        let animOutHandler: (ev: AnimationEvent) => void;
-        animOutHandler = (ev) => {
-            current.removeEventListener("animationend", animOutHandler)
+        delay(250, ()=>{
             view.removeChild(current);
             triggerDetatchEvent(current);
-        }
-        current.addEventListener("animationend", animOutHandler)
+        })
         current.style.animation = `${animationOut} 0.25s`
 
         //animate in
