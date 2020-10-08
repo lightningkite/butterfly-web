@@ -16,4 +16,9 @@ function xObservableMapNotNull(this_, transform) {
     return this_.pipe(operators_1.map(transform), operators_1.filter((a) => a !== null && a !== undefined));
 }
 exports.xObservableMapNotNull = xObservableMapNotNull;
+//! Declares com.lightningkite.butterfly.rx.filterNotNull
+function xObservableFilterNotNull(this_) {
+    return this_.pipe(operators_1.filter(x => x !== null && x !== undefined));
+}
+exports.xObservableFilterNotNull = xObservableFilterNotNull;
 //# sourceMappingURL=RxExtensions.js.map
