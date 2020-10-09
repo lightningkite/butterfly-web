@@ -200,6 +200,7 @@
   template: ~this~[0]
 - id: kotlin.collections.firstOrNull
   type: call
+  arguments: []
   actualReceiver: kotlin.collections.List
   template: (~this~[0] ?? null)
 - id: kotlin.collections.last

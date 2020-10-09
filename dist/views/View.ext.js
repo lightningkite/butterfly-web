@@ -3,10 +3,10 @@
 // File: views/View.ext.kt
 // Package: com.lightningkite.butterfly.views
 Object.defineProperty(exports, "__esModule", { value: true });
-//! Declares com.lightningkite.butterfly.views.onClick>android.view.View
 const iterable_operator_1 = require("iterable-operator");
+//! Declares com.lightningkite.butterfly.views.onClick>android.view.View
 function xViewOnClick(this_, disabledMilliseconds = 500, action) {
-    let lastActivated = Date.now();
+    let lastActivated = 0;
     this_.onclick = (_ev) => {
         _ev.stopPropagation();
         const it = _ev.target;
@@ -18,14 +18,25 @@ function xViewOnClick(this_, disabledMilliseconds = 500, action) {
 }
 exports.xViewOnClick = xViewOnClick;
 //! Declares com.lightningkite.butterfly.views.onLongClick>android.view.View
-function xOnLongClick(this_, action) {
+function xViewOnLongClick(this_, action) {
     this_.oncontextmenu = (_ev) => {
         _ev.stopPropagation();
-        const it = _ev.target;
         action();
     };
+    let start = Number.MAX_SAFE_INTEGER;
+    this_.onpointerdown = (ev) => {
+        ev.stopPropagation();
+        start = Date.now();
+    };
+    this_.onpointerup = (ev) => {
+        ev.stopPropagation();
+        if (Date.now() - start > 1000) {
+            action();
+        }
+        start = Number.MAX_SAFE_INTEGER;
+    };
 }
-exports.xOnLongClick = xOnLongClick;
+exports.xViewOnLongClick = xViewOnLongClick;
 function getViewVisibility(this_) {
     if (this_.hidden)
         return "gone";

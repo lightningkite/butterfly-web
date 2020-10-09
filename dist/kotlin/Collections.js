@@ -301,6 +301,22 @@ function iterLastOrNull(iterable) {
     return result;
 }
 exports.iterLastOrNull = iterLastOrNull;
+function iterFirstOrNullFind(iterable, condition) {
+    for (const item of iterable) {
+        if (condition(item))
+            return item;
+    }
+    return null;
+}
+exports.iterFirstOrNullFind = iterFirstOrNullFind;
+function iterLastOrNullFind(iterable, condition) {
+    for (const item of [...iterable].reverse()) {
+        if (condition(item))
+            return item;
+    }
+    return null;
+}
+exports.iterLastOrNullFind = iterLastOrNullFind;
 function iterCount(iterable, func) {
     let count = 0;
     for (const item of iterable) {

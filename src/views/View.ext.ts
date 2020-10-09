@@ -2,11 +2,11 @@
 // File: views/View.ext.kt
 // Package: com.lightningkite.butterfly.views
 
-//! Declares com.lightningkite.butterfly.views.onClick>android.view.View
 import {range} from "iterable-operator";
 
+//! Declares com.lightningkite.butterfly.views.onClick>android.view.View
 export function xViewOnClick(this_: HTMLElement, disabledMilliseconds: number = 500, action: () => void): void {
-    let lastActivated = Date.now();
+    let lastActivated = 0;
 
     this_.onclick = (_ev) => {
         _ev.stopPropagation();
@@ -19,12 +19,23 @@ export function xViewOnClick(this_: HTMLElement, disabledMilliseconds: number = 
 }
 
 //! Declares com.lightningkite.butterfly.views.onLongClick>android.view.View
-export function xOnLongClick(this_: HTMLElement, action: () => void): void {
+export function xViewOnLongClick(this_: HTMLElement, action: () => void): void {
     this_.oncontextmenu = (_ev) => {
         _ev.stopPropagation();
-        const it = _ev.target as HTMLElement;
         action();
     };
+    let start = Number.MAX_SAFE_INTEGER
+    this_.onpointerdown = (ev) => {
+        ev.stopPropagation()
+        start = Date.now()
+    }
+    this_.onpointerup = (ev) => {
+        ev.stopPropagation()
+        if(Date.now() - start > 1000) {
+            action()
+        }
+        start = Number.MAX_SAFE_INTEGER
+    }
 }
 
 export function getViewVisibility(this_: HTMLElement): string {

@@ -296,6 +296,7 @@
 
 - id: kotlin.collections.first
   type: call
+  arguments: []
   template:
     pattern: iterFirst(~this~)
     imports:
@@ -303,6 +304,7 @@
 
 - id: kotlin.collections.firstOrNull
   type: call
+  arguments: []
   template:
     pattern: iterFirstOrNull(~this~)
     imports:
@@ -310,6 +312,7 @@
 
 - id: kotlin.collections.last
   type: call
+  arguments: []
   template:
     pattern: iterLast(~this~)
     imports:
@@ -317,10 +320,25 @@
 
 - id: kotlin.collections.lastOrNull
   type: call
+  arguments: []
   template:
     pattern: iterLastOrNull(~this~)
     imports:
       iterLastOrNull: butterfly/dist/KotlinCollections
+
+- id: kotlin.collections.firstOrNull
+  type: call
+  template:
+    pattern: iterFirstOrNullFind(~this~, ~0~)
+    imports:
+      iterFirstOrNullFind: butterfly/dist/KotlinCollections
+
+- id: kotlin.collections.lastOrNull
+  type: call
+  template:
+    pattern: iterLastOrNullFind(~this~, ~0~)
+    imports:
+      iterLastOrNullFind: butterfly/dist/KotlinCollections
 
 - id: kotlin.collections.maxBy
   type: call

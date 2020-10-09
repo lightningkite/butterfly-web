@@ -167,19 +167,19 @@
     lambdaTransforms:
       0: ["_ev.target as HTMLElement"]
 
-- id: com.lightningkite.butterfly.views.onClick
-  type: call
-  template:
-    pattern: ~this~.onclick = (_ev) => { _ev.stopPropagation(); ~L1~}
-    lambdaTransforms:
-      0: ["_ev.target as HTMLElement"]
+#- id: com.lightningkite.butterfly.views.onClick
+#  type: call
+#  template:
+#    pattern: ~this~.onclick = (_ev) => { _ev.stopPropagation(); ~L1~}
+#    lambdaTransforms:
+#      0: ["_ev.target as HTMLElement"]
 
-- id: com.lightningkite.butterfly.views.onLongClick
-  type: call
-  template:
-    pattern: ~this~.oncontextmenu = (_ev) => { _ev.preventDefault(); ~L0~}
-    lambdaTransforms:
-      0: ["_ev.target as HTMLElement"]
+#- id: com.lightningkite.butterfly.views.onLongClick
+#  type: call
+#  template:
+#    pattern: ~this~.oncontextmenu = (_ev) => { _ev.preventDefault(); ~L0~}
+#    lambdaTransforms:
+#      0: ["_ev.target as HTMLElement"]
 
 - id: android.view.View.isEnabled
   type: get

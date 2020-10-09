@@ -367,6 +367,20 @@ export function iterLastOrNull<T>(iterable: Iterable<T>): (T | null) {
     return result;
 }
 
+export function iterFirstOrNullFind<T>(iterable: Iterable<T>, condition: (item: T)=>boolean): (T | null) {
+    for(const item of iterable){
+        if(condition(item)) return item
+    }
+    return null
+}
+
+export function iterLastOrNullFind<T>(iterable: Iterable<T>, condition: (item: T)=>boolean): (T | null) {
+    for(const item of [...iterable].reverse()){
+        if(condition(item)) return item
+    }
+    return null
+}
+
 export function iterCount<T>(iterable: Iterable<T>, func: (a: T)=>boolean): number {
     let count = 0;
     for (const item of iterable) {
