@@ -121,3 +121,11 @@ export function multipartFormFilePart(name: string, valueOrFilename?: string, bo
     return result;
 }
 
+//! Declares com.lightningkite.butterfly.net.multipartFormValuePart
+export function multipartFormValuePart(name: string, value: string): HttpBodyPart {
+    const result = new HttpBodyPart();
+    result.name = name;
+    result.value = value;
+    return result;
+}
+
