@@ -100,4 +100,12 @@ function multipartFormFilePart(name, valueOrFilename, body) {
     return result;
 }
 exports.multipartFormFilePart = multipartFormFilePart;
+//! Declares com.lightningkite.butterfly.net.multipartFormValuePart
+function multipartFormValuePart(name, value) {
+    const result = new HttpBodyPart();
+    result.name = name;
+    result.value = value;
+    return result;
+}
+exports.multipartFormValuePart = multipartFormValuePart;
 //# sourceMappingURL=HttpBody.js.map

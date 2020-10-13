@@ -9,13 +9,13 @@ class Preferences {
     constructor() {
     }
     set(T, key, value) {
-        window.localStorage[key] = Codable_1.xAnyToJsonString(value);
+        window.localStorage.setItem(key, Codable_1.xAnyToJsonString(value));
     }
     remove(key) {
-        delete window.localStorage[key];
+        window.localStorage.removeItem(key);
     }
     get(T, key) {
-        const thing = window.localStorage[key];
+        const thing = window.localStorage.getItem(key);
         if (thing === null || thing === undefined)
             return null;
         try {

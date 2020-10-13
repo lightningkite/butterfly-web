@@ -10,8 +10,16 @@ function parse(item, asType) {
     switch (mainType) {
         case null:
         case String:
+            return item;
         case Number:
+            if (typeof item === "string") {
+                return parseFloat(item);
+            }
+            return item;
         case Boolean:
+            if (typeof item === "string") {
+                return item === "true";
+            }
             return item;
         case Array:
             return item.map(x => parse(x, asType[1]));

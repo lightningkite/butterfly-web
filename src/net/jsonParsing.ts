@@ -8,8 +8,16 @@ export function parse(item: any, asType: Array<any>): any {
     switch (mainType) {
         case null:
         case String:
+            return item;
         case Number:
+            if(typeof item === "string"){
+                return parseFloat(item)
+            }
+            return item;
         case Boolean:
+            if(typeof item === "string"){
+                return item === "true"
+            }
             return item;
         case Array:
             return (item as Array<any>).map(x => parse(x, asType[1]));

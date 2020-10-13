@@ -20,3 +20,4 @@ export declare function xUriToHttpBody(this_: File): HttpBody;
 export declare function xImageToHttpBody(this_: Image, maxDimension?: number): Observable<HttpBody>;
 export declare function multipartFormBody(...parts: HttpBodyPart[]): HttpBody;
 export declare function multipartFormFilePart(name: string, valueOrFilename?: string, body?: Blob): HttpBodyPart;
+export declare function multipartFormValuePart(name: string, value: string): HttpBodyPart;

@@ -10,15 +10,15 @@ export class Preferences {
     public static INSTANCE = new Preferences();
 
     set<T>(T: any, key: string, value: T): void{
-        window.localStorage[key] = xAnyToJsonString(value);
+        window.localStorage.setItem(key, xAnyToJsonString(value))
     }
     
     remove(key: string): void{
-        delete window.localStorage[key]
+        window.localStorage.removeItem(key)
     }
     
     get<T extends IsCodable>(T: any, key: string): (T | null){
-        const thing = window.localStorage[key];
+        const thing = window.localStorage.getItem(key);
         if(thing === null || thing === undefined) return null;
         try {
             return xStringFromJsonString(thing, T);
