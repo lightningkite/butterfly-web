@@ -76,6 +76,9 @@ export function findView(view: HTMLElement, predicate: (e: HTMLElement) => boole
 }
 
 export function setViewBackgroundClass(view: HTMLElement, cssClass: string) {
+    if(view instanceof HTMLInputElement){
+        view = view.parentElement!
+    }
     let existing: Array<string> = [];
     for(const i of range(0, view.classList.length-1)) {
         const item = view.classList.item(i);
@@ -85,4 +88,11 @@ export function setViewBackgroundClass(view: HTMLElement, cssClass: string) {
     }
     view.classList.remove(...existing);
     view.classList.add(cssClass);
+}
+
+export function setViewBackgroundColor(view: HTMLElement, color: string) {
+    if(view instanceof HTMLInputElement){
+        view = view.parentElement!
+    }
+    view.style.backgroundColor = color
 }

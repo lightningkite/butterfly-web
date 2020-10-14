@@ -77,6 +77,9 @@ function findView(view, predicate) {
 }
 exports.findView = findView;
 function setViewBackgroundClass(view, cssClass) {
+    if (view instanceof HTMLInputElement) {
+        view = view.parentElement;
+    }
     let existing = [];
     for (const i of iterable_operator_1.range(0, view.classList.length - 1)) {
         const item = view.classList.item(i);
@@ -88,4 +91,11 @@ function setViewBackgroundClass(view, cssClass) {
     view.classList.add(cssClass);
 }
 exports.setViewBackgroundClass = setViewBackgroundClass;
+function setViewBackgroundColor(view, color) {
+    if (view instanceof HTMLInputElement) {
+        view = view.parentElement;
+    }
+    view.style.backgroundColor = color;
+}
+exports.setViewBackgroundColor = setViewBackgroundColor;
 //# sourceMappingURL=View.ext.js.map

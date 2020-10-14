@@ -111,9 +111,10 @@
 - id: android.view.View.setBackgroundColor
   type: call
   template:
-    pattern: ~this~.style.backgroundColor = ~0~
+    pattern: setViewBackgroundColor(~this~, ~0~)
     imports:
       numberToColor: butterfly/dist/views/Colors
+      setViewBackgroundColor: butterfly/dist/views/View.ext
 
 - id: android.view.View.setBackgroundResource
   type: call

@@ -4,3 +4,4 @@ export declare function getViewVisibility(this_: HTMLElement): string;
 export declare function setViewVisibility(this_: HTMLElement, value: string): void;
 export declare function findView(view: HTMLElement, predicate: (e: HTMLElement) => boolean): HTMLElement | null;
 export declare function setViewBackgroundClass(view: HTMLElement, cssClass: string): void;
+export declare function setViewBackgroundColor(view: HTMLElement, color: string): void;
