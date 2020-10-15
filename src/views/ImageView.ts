@@ -11,17 +11,31 @@ import {xVideoThumbnail} from "../Video.ext";
 
 //! Declares com.lightningkite.butterfly.observables.binding.loadImage>android.widget.ImageView
 //! Declares com.lightningkite.butterfly.views.loadImage>android.widget.ImageView
-export function xImageViewLoadImage(this_: HTMLImageElement, image: (Image | null)) {
+
+function getImageView(element: HTMLElement): HTMLImageElement | null {
+    if(element instanceof HTMLImageElement) {
+        return element
+    }
+    for(let i = 0; i < element.childNodes.length; i++){
+        let node = element.childNodes.item(i)
+        if(node instanceof HTMLImageElement) return node
+    }
+    return null
+}
+
+export function xImageViewLoadImage(this_: HTMLElement, image: (Image | null)) {
+    const imageView = getImageView(this_)
+    if(imageView === null) return
     post(() => {
         if (image instanceof ImageRaw) {
             const url = URL.createObjectURL(new Blob([image.raw]));
-            this_.src = url;
+            imageView.src = url;
         } else if (image instanceof ImageReference) {
             const reader = new FileReader();
             reader.onload = (e) => {
                 const reader = e.target;
                 if (reader !== null) {
-                    this_.src = reader.result as string;
+                    imageView.src = reader.result as string;
                 }
             }
             reader.readAsDataURL(image.uri)
@@ -36,33 +50,37 @@ export function xImageViewLoadImage(this_: HTMLImageElement, image: (Image | nul
             }
             canvasElement.toBlob((blob) => {
                 const url = URL.createObjectURL(blob);
-                this_.src = url;
+                imageView.src = url;
             })
         } else if (image instanceof ImageRemoteUrl) {
-            this_.src = image.url;
+            imageView.src = image.url;
         } else if (image instanceof ImageResource) {
-            imageViewSetImageResource(this_, image.resource)
+            imageViewSetImageResource(imageView, image.resource)
         }
     })
 }
 
-export function imageViewSetImageResource(this_: HTMLImageElement, resource: DrawableResource){
+export function imageViewSetImageResource(this_: HTMLElement, resource: DrawableResource){
+    const imageView = getImageView(this_)
+    if(imageView === null) return
     let path = resource.filePath;
     if (path) {
-        this_.src = path;
+        imageView.src = path;
     } else {
         //Not perfect, because it replaces the background.
-        setViewBackgroundClass(this_, resource.cssClass);
+        setViewBackgroundClass(imageView, resource.cssClass);
     }
 }
 
 //! Declares com.lightningkite.butterfly.observables.binding.loadVideoThumbnail>android.widget.ImageView
 //! Declares com.lightningkite.butterfly.views.loadVideoThumbnail>android.widget.ImageView
-export function xImageViewLoadVideoThumbnail(this_: HTMLImageElement, video: Video | null) {
+export function xImageViewLoadVideoThumbnail(this_: HTMLElement, video: Video | null) {
+    const imageView = getImageView(this_)
+    if(imageView === null) return
     if(video !== null){
-        this_.src = "";
+        imageView.src = "";
         xVideoThumbnail(video).subscribe((x)=>{
-            xImageViewLoadImage(this_, x);
+            xImageViewLoadImage(imageView, x);
         });
     }
 }

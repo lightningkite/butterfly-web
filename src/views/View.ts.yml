@@ -132,7 +132,11 @@
 
 - id: com.lightningkite.butterfly.views.setBackgroundColorResource
   type: call
-  template: ~this~.style.backgroundColor = ~0~
+  template:
+    pattern: setViewBackgroundColor(~this~, ~0~)
+    imports:
+      numberToColor: butterfly/dist/views/Colors
+      setViewBackgroundColor: butterfly/dist/views/View.ext
 
 #- id: android.view.View.setBackground
 #  type: call

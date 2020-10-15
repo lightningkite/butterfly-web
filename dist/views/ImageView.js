@@ -9,18 +9,32 @@ const View_ext_1 = require("./View.ext");
 const Video_ext_1 = require("../Video.ext");
 //! Declares com.lightningkite.butterfly.observables.binding.loadImage>android.widget.ImageView
 //! Declares com.lightningkite.butterfly.views.loadImage>android.widget.ImageView
+function getImageView(element) {
+    if (element instanceof HTMLImageElement) {
+        return element;
+    }
+    for (let i = 0; i < element.childNodes.length; i++) {
+        let node = element.childNodes.item(i);
+        if (node instanceof HTMLImageElement)
+            return node;
+    }
+    return null;
+}
 function xImageViewLoadImage(this_, image) {
+    const imageView = getImageView(this_);
+    if (imageView === null)
+        return;
     delay_1.post(() => {
         if (image instanceof Image_1.ImageRaw) {
             const url = URL.createObjectURL(new Blob([image.raw]));
-            this_.src = url;
+            imageView.src = url;
         }
         else if (image instanceof Image_1.ImageReference) {
             const reader = new FileReader();
             reader.onload = (e) => {
                 const reader = e.target;
                 if (reader !== null) {
-                    this_.src = reader.result;
+                    imageView.src = reader.result;
                 }
             };
             reader.readAsDataURL(image.uri);
@@ -36,36 +50,42 @@ function xImageViewLoadImage(this_, image) {
             }
             canvasElement.toBlob((blob) => {
                 const url = URL.createObjectURL(blob);
-                this_.src = url;
+                imageView.src = url;
             });
         }
         else if (image instanceof Image_1.ImageRemoteUrl) {
-            this_.src = image.url;
+            imageView.src = image.url;
         }
         else if (image instanceof Image_1.ImageResource) {
-            imageViewSetImageResource(this_, image.resource);
+            imageViewSetImageResource(imageView, image.resource);
         }
     });
 }
 exports.xImageViewLoadImage = xImageViewLoadImage;
 function imageViewSetImageResource(this_, resource) {
+    const imageView = getImageView(this_);
+    if (imageView === null)
+        return;
     let path = resource.filePath;
     if (path) {
-        this_.src = path;
+        imageView.src = path;
     }
     else {
         //Not perfect, because it replaces the background.
-        View_ext_1.setViewBackgroundClass(this_, resource.cssClass);
+        View_ext_1.setViewBackgroundClass(imageView, resource.cssClass);
     }
 }
 exports.imageViewSetImageResource = imageViewSetImageResource;
 //! Declares com.lightningkite.butterfly.observables.binding.loadVideoThumbnail>android.widget.ImageView
 //! Declares com.lightningkite.butterfly.views.loadVideoThumbnail>android.widget.ImageView
 function xImageViewLoadVideoThumbnail(this_, video) {
+    const imageView = getImageView(this_);
+    if (imageView === null)
+        return;
     if (video !== null) {
-        this_.src = "";
+        imageView.src = "";
         Video_ext_1.xVideoThumbnail(video).subscribe((x) => {
-            xImageViewLoadImage(this_, x);
+            xImageViewLoadImage(imageView, x);
         });
     }
 }
