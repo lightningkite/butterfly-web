@@ -12,6 +12,44 @@ class HttpBody {
         this.data = data;
         this.type = type;
     }
+    getBlobOrString() {
+        if (typeof this.data === "string") {
+            return this.data;
+        }
+        else if (this.data instanceof Blob) {
+            return this.data;
+        }
+        else if (this.data instanceof ArrayBuffer) {
+            return new Blob([this.data]);
+        }
+        else if (this.data instanceof Int8Array) {
+            return new Blob([this.data]);
+        }
+        else if (this.data instanceof Int16Array) {
+            return new Blob([this.data]);
+        }
+        else if (this.data instanceof Int32Array) {
+            return new Blob([this.data]);
+        }
+        else if (this.data instanceof Uint8Array) {
+            return new Blob([this.data]);
+        }
+        else if (this.data instanceof Uint16Array) {
+            return new Blob([this.data]);
+        }
+        else if (this.data instanceof Uint32Array) {
+            return new Blob([this.data]);
+        }
+        else if (this.data instanceof Float32Array) {
+            return new Blob([this.data]);
+        }
+        else if (this.data instanceof Float64Array) {
+            return new Blob([this.data]);
+        }
+        else {
+            throw new Language_1.IllegalArgumentException(`Can't transform ${this.data} into a blob or string.`, undefined);
+        }
+    }
 }
 exports.HttpBody = HttpBody;
 //! Declares com.lightningkite.butterfly.net.HttpBodyPart
@@ -35,7 +73,7 @@ function xStringToHttpBody(this_, mediaType = HttpMediaType_1.HttpMediaTypes.INS
 exports.xStringToHttpBody = xStringToHttpBody;
 //! Declares com.lightningkite.butterfly.net.toHttpBody
 function xUriToHttpBody(this_) {
-    return new HttpBody(this_, this_.type);
+    return rxjs_1.of(new HttpBody(this_, this_.type));
 }
 exports.xUriToHttpBody = xUriToHttpBody;
 //! Declares com.lightningkite.butterfly.net.toHttpBody
@@ -77,7 +115,7 @@ function multipartFormBody(...parts) {
     const data = new FormData();
     for (const part of parts) {
         if (part.body != null) {
-            data.append(part.name, part.body, (_a = part.filename) !== null && _a !== void 0 ? _a : "file");
+            data.append(part.name, part.body.getBlobOrString(), (_a = part.filename) !== null && _a !== void 0 ? _a : "file");
         }
         else {
             data.append(part.name, part.value);

@@ -548,6 +548,14 @@
     imports:
       rxZip: zip from rxjs
 
+- id: io.reactivex.Single.onErrorReturnItem
+  type: call
+  template:
+    pattern: ~this~.pipe(rxOnErrorResumeNext(rxOf(~0~)))
+    imports:
+      rxOnErrorResumeNext: onErrorResumeNext from rxjs/operators
+      rxOf: of from rxjs
+
 - id: io.reactivex.Single.error
   type: call
   template:
@@ -598,7 +606,10 @@
 
 - id: io.reactivex.SingleEmitter
   type: type
-  template: Observer<~T0~>
+  template:
+    pattern: Observer<~T0~>
+    imports:
+      Observer: rxjs
 
 - id: io.reactivex.SingleEmitter.onSuccess
   type: call

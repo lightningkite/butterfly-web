@@ -4,11 +4,11 @@
 import {Codable, xAnyToJsonString} from '../Codable'
 import {HttpMediaType, HttpMediaTypes} from './HttpMediaType'
 import {stringify} from "./jsonParsing";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {Image, ImageImageBitmap} from "../Image";
 import {xImageLoad} from "../Image.loadingRx";
 import {flatMap, map} from "rxjs/operators";
-import {Exception} from "../kotlin/Language";
+import {Exception, IllegalArgumentException} from "../kotlin/Language";
 
 //! Declares com.lightningkite.butterfly.net.HttpBody
 export class HttpBody {
@@ -19,6 +19,34 @@ export class HttpBody {
         this.data = data;
         this.type = type;
     }
+
+    getBlobOrString(): Blob | string {
+        if (typeof this.data === "string") {
+            return this.data
+        } else if (this.data instanceof Blob) {
+            return this.data
+        } else if (this.data instanceof ArrayBuffer) {
+            return new Blob([this.data])
+        } else if (this.data instanceof Int8Array) {
+            return new Blob([this.data])
+        } else if (this.data instanceof Int16Array) {
+            return new Blob([this.data])
+        } else if (this.data instanceof Int32Array) {
+            return new Blob([this.data])
+        } else if (this.data instanceof Uint8Array) {
+            return new Blob([this.data])
+        } else if (this.data instanceof Uint16Array) {
+            return new Blob([this.data])
+        } else if (this.data instanceof Uint32Array) {
+            return new Blob([this.data])
+        } else if (this.data instanceof Float32Array) {
+            return new Blob([this.data])
+        } else if (this.data instanceof Float64Array) {
+            return new Blob([this.data])
+        } else {
+            throw new IllegalArgumentException(`Can't transform ${this.data} into a blob or string.`, undefined)
+        }
+    }
 }
 
 //! Declares com.lightningkite.butterfly.net.HttpBodyPart
@@ -26,7 +54,7 @@ export class HttpBodyPart {
     name: string;
     value: string | null;
     filename: string | null;
-    body: Blob;
+    body: HttpBody;
 }
 
 
@@ -46,11 +74,11 @@ export function xStringToHttpBody(this_: string, mediaType: HttpMediaType = Http
 }
 
 //! Declares com.lightningkite.butterfly.net.toHttpBody
-export function xUriToHttpBody(this_: File): HttpBody {
-    return new HttpBody(
+export function xUriToHttpBody(this_: File): Observable<HttpBody> {
+    return of(new HttpBody(
         this_,
         this_.type
-    )
+    ))
 }
 
 //! Declares com.lightningkite.butterfly.net.toHttpBody
@@ -97,7 +125,7 @@ export function multipartFormBody(...parts: HttpBodyPart[]): HttpBody {
     const data = new FormData();
     for (const part of parts) {
         if (part.body != null) {
-            data.append(part.name, part.body, part.filename ?? "file");
+            data.append(part.name, part.body.getBlobOrString(), part.filename ?? "file");
         } else {
             data.append(part.name, part.value as string);
         }
@@ -109,7 +137,7 @@ export function multipartFormBody(...parts: HttpBodyPart[]): HttpBody {
 }
 
 //! Declares com.lightningkite.butterfly.net.multipartFormFilePart
-export function multipartFormFilePart(name: string, valueOrFilename?: string, body?: Blob): HttpBodyPart {
+export function multipartFormFilePart(name: string, valueOrFilename?: string, body?: HttpBody): HttpBodyPart {
     const result = new HttpBodyPart();
     result.name = name;
     if (body) {
