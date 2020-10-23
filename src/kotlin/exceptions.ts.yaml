@@ -24,13 +24,6 @@
     imports:
       NoSuchElementException: butterfly/dist/Kotlin
 
-- id: kotlin.Throwable.printStackTrace
-  type: call
-  template:
-    pattern: printStackTrace(~this~)
-    imports:
-      printStackTrace: butterfly/dist/kotlin/Language
-
 - id: kotlin.Exception
   type: call
   template:
@@ -55,3 +48,60 @@
     pattern: new NoSuchElementException(~0~, ~1~)
     imports:
       NoSuchElementException: butterfly/dist/Kotlin
+
+- id: kotlin.Exception
+  type: type
+  template:
+    pattern: Exception
+    imports:
+      Exception: butterfly/dist/Kotlin
+- id: kotlin.IllegalArgumentException
+  type: type
+  template:
+    pattern: IllegalArgumentException
+    imports:
+      IllegalArgumentException: butterfly/dist/Kotlin
+- id: kotlin.IllegalStateException
+  type: type
+  template:
+    pattern: IllegalStateException
+    imports:
+      IllegalStateException: butterfly/dist/Kotlin
+- id: kotlin.NoSuchElementException
+  type: type
+  template:
+    pattern: NoSuchElementException
+    imports:
+      NoSuchElementException: butterfly/dist/Kotlin
+
+- id: java.lang.Exception
+  type: type
+  template:
+    pattern: Exception
+    imports:
+      Exception: butterfly/dist/Kotlin
+- id: java.lang.IllegalArgumentException
+  type: type
+  template:
+    pattern: IllegalArgumentException
+    imports:
+      IllegalArgumentException: butterfly/dist/Kotlin
+- id: java.lang.IllegalStateException
+  type: type
+  template:
+    pattern: IllegalStateException
+    imports:
+      IllegalStateException: butterfly/dist/Kotlin
+- id: java.lang.NoSuchElementException
+  type: type
+  template:
+    pattern: NoSuchElementException
+    imports:
+      NoSuchElementException: butterfly/dist/Kotlin
+
+- id: kotlin.Throwable.printStackTrace
+  type: call
+  template:
+    pattern: printStackTrace(~this~)
+    imports:
+      printStackTrace: butterfly/dist/kotlin/Language
