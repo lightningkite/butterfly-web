@@ -22,7 +22,7 @@
 - id: androidx.recyclerview.widget.GridLayoutManager
   type: call
   arguments: [android.content.Context, kotlin.Int]
-  template: '{ display: "grid", gridTemplateColumns: `repeat(${~1~}, 1fr)`, alignContent: "start" }'
+  template: '{ display: "grid", gridTemplateColumns: `repeat(${~1~}, 1fr)`, alignContent: "start", gridAutoRows: "min-content" }'
 
 # TODO
 #- id: androidx.recyclerview.widget.LinearLayoutManager

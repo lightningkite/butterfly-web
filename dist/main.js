@@ -23,6 +23,15 @@ function main(rootVg) {
         }
         r.handleDeepLink(window.location.protocol, window.location.host, window.location.pathname.substring(1, window.location.pathname.length), params);
     }
+    function setupBoundaryAction(newView) {
+        newView.khrysalisResizeBoundaryAction = () => {
+            document.body.removeChild(newView);
+            let newerView = rootVg.generate(window);
+            setupBoundaryAction(newerView);
+            document.body.appendChild(newerView);
+        };
+    }
+    setupBoundaryAction(view);
 }
 exports.main = main;
 //# sourceMappingURL=main.js.map

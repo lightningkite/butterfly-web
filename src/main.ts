@@ -6,6 +6,7 @@ import {checkIsInterface, tryCastInterface} from "./kotlin/Language";
 import {root} from "rxjs/internal-compatibility";
 import {EntryPoint} from "./views/EntryPoint";
 import {xStringSubstringAfter, xStringSubstringBefore} from "./kotlin/kotlin.text";
+import {swapViewSwap} from "./views/SwapView";
 
 export function main(rootVg: ViewGenerator){
     HttpClient.INSTANCE.ioScheduler = asyncScheduler
@@ -31,4 +32,14 @@ export function main(rootVg: ViewGenerator){
             params
         )
     }
+
+    function setupBoundaryAction(newView: HTMLElement) {
+        newView.khrysalisResizeBoundaryAction = () => {
+            document.body.removeChild(newView)
+            let newerView = rootVg.generate(window)
+            setupBoundaryAction(newerView)
+            document.body.appendChild(newerView)
+        }
+    }
+    setupBoundaryAction(view)
 }
