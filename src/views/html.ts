@@ -1,4 +1,6 @@
 import {post} from "../delay";
+import {xViewRemovedGet} from "../rx/DisposeCondition.ext";
+import {DisposableLambda} from "../rx/DisposableLambda";
 
 export function loadHtmlFromString(data: string): HTMLElement {
     const d = document.createElement("div");
@@ -32,38 +34,42 @@ declare global {
 }
 
 export function startupAutoResize(element: HTMLElement, sizeBoundaries: Array<number>){
-    function doIt(){
-        const startSize = element.scrollWidth
-        let minSize = 0
-        let maxSize = Number.MAX_SAFE_INTEGER
-        for(const boundary of sizeBoundaries){
-            if(startSize > boundary) {
-                minSize = boundary
-                break
-            }
-            maxSize = boundary
-        }
-        let lastCall = Date.now()
-        const o = new ResizeObserver(() => {
-            const newSize = element.scrollWidth
-            if(newSize > 0 && newSize < minSize || newSize > maxSize) {
-                if(element.khrysalisResizeBoundaryAction && Date.now() - lastCall > 2000) {
-                    lastCall = Date.now()
-                    console.log(`Broke boundary box from ${minSize} to ${maxSize} with ${newSize}`)
-                    element.khrysalisResizeBoundaryAction()
-                }
-            }
-        })
-        o.observe(element)
-    }
-    function wait(){
-        post(()=>{
-            if(element.scrollWidth > 0) {
-                doIt()
-            } else {
-                wait()
-            }
-        })
-    }
-    wait()
+    // function doIt(){
+    //     const startSize = window.innerWidth
+    //     let minSize = 0
+    //     let maxSize = Number.MAX_SAFE_INTEGER
+    //     for(const boundary of sizeBoundaries){
+    //         if(startSize > boundary) {
+    //             minSize = boundary
+    //             break
+    //         }
+    //         maxSize = boundary
+    //     }
+    //     let lastCall = Date.now()
+    //     const listener = () => {
+    //         const newSize = window.innerWidth
+    //         if(newSize > 0 && newSize < minSize || newSize > maxSize) {
+    //             if(element.khrysalisResizeBoundaryAction && Date.now() - lastCall > 2000) {
+    //                 window.removeEventListener("resize", listener)
+    //                 lastCall = Date.now()
+    //                 console.log(`Broke boundary box from ${minSize} to ${maxSize} with ${newSize}`)
+    //                 element.khrysalisResizeBoundaryAction()
+    //             }
+    //         }
+    //     }
+    //     window.addEventListener("resize", listener)
+    //     xViewRemovedGet(element).call(new DisposableLambda(() => {
+    //         window.removeEventListener("resize", listener)
+    //     }))
+    // }
+    // function wait(){
+    //     post(()=>{
+    //         if(element.scrollWidth > 0) {
+    //             doIt()
+    //         } else {
+    //             wait()
+    //         }
+    //     })
+    // }
+    // wait()
 }

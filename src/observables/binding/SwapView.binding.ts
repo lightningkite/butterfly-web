@@ -21,16 +21,16 @@ export function xSwapViewBindStack<T extends ViewGenerator>(this_: HTMLDivElemen
         previousStackSize = newStackSize;
         const newVG = stack[stack.length - 1] ?? null;
         const newView = newVG?.generate(dependency) ?? null;
-        if(newVG && newView){
-            function setupBoundaryAction(newView: HTMLElement) {
-                newView.khrysalisResizeBoundaryAction = () => {
-                    let newerView = newVG.generate(dependency)
-                    setupBoundaryAction(newerView)
-                    swapViewSwap(this_, newerView, "butterfly-animate-fade")
-                }
-            }
-            setupBoundaryAction(newView)
-        }
+        // if(newVG && newView){
+        //     function setupBoundaryAction(newView: HTMLElement) {
+        //         newView.khrysalisResizeBoundaryAction = () => {
+        //             let newerView = newVG.generate(dependency)
+        //             setupBoundaryAction(newerView)
+        //             swapViewSwap(this_, newerView, "butterfly-animate-fade")
+        //         }
+        //     }
+        //     setupBoundaryAction(newView)
+        // }
         swapViewSwap(this_, newView, animation);
     }), xViewRemovedGet(this_));
 }

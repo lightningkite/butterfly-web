@@ -33,13 +33,13 @@ export function main(rootVg: ViewGenerator){
         )
     }
 
-    function setupBoundaryAction(newView: HTMLElement) {
-        newView.khrysalisResizeBoundaryAction = () => {
-            document.body.removeChild(newView)
-            let newerView = rootVg.generate(window)
-            setupBoundaryAction(newerView)
-            document.body.appendChild(newerView)
-        }
-    }
-    setupBoundaryAction(view)
+    // function setupBoundaryAction(newView: HTMLElement) {
+    //     newView.khrysalisResizeBoundaryAction = () => {
+    //         document.body.removeChild(newView)
+    //         let newerView = rootVg.generate(window)
+    //         setupBoundaryAction(newerView)
+    //         document.body.appendChild(newerView)
+    //     }
+    // }
+    // setupBoundaryAction(view)
 }

@@ -22,16 +22,16 @@ function xSwapViewBindStack(this_, dependency, obs) {
         previousStackSize = newStackSize;
         const newVG = (_a = stack[stack.length - 1]) !== null && _a !== void 0 ? _a : null;
         const newView = (_b = newVG === null || newVG === void 0 ? void 0 : newVG.generate(dependency)) !== null && _b !== void 0 ? _b : null;
-        if (newVG && newView) {
-            function setupBoundaryAction(newView) {
-                newView.khrysalisResizeBoundaryAction = () => {
-                    let newerView = newVG.generate(dependency);
-                    setupBoundaryAction(newerView);
-                    SwapView_1.swapViewSwap(this_, newerView, "butterfly-animate-fade");
-                };
-            }
-            setupBoundaryAction(newView);
-        }
+        // if(newVG && newView){
+        //     function setupBoundaryAction(newView: HTMLElement) {
+        //         newView.khrysalisResizeBoundaryAction = () => {
+        //             let newerView = newVG.generate(dependency)
+        //             setupBoundaryAction(newerView)
+        //             swapViewSwap(this_, newerView, "butterfly-animate-fade")
+        //         }
+        //     }
+        //     setupBoundaryAction(newView)
+        // }
         SwapView_1.swapViewSwap(this_, newView, animation);
     }), DisposeCondition_ext_1.xViewRemovedGet(this_));
 }

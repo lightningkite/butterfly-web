@@ -20,7 +20,12 @@ function swapViewSwap(view, to, animation) {
         //animate out
         const animationOut = `${animation}-out`;
         delay_1.delay(250, () => {
-            view.removeChild(current);
+            try {
+                view.removeChild(current);
+            }
+            catch (e) {
+                /*squish*/
+            }
             viewAttached_1.triggerDetatchEvent(current);
         });
         current.style.animation = `${animationOut} 0.25s`;
@@ -34,7 +39,7 @@ function swapViewSwap(view, to, animation) {
                 to.style.removeProperty("animation");
             };
             to.addEventListener("animationend", animInHandler);
-            to.style.animation = `${animationIn} 0.25s 0.25s`; //Delay seems to make this work right
+            to.style.animation = `${animationIn} 0.25s`; //Delay seems to make this work right
             view.appendChild(to);
         }
         else {
