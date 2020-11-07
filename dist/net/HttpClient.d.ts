@@ -2,7 +2,6 @@ import { Observable, SchedulerLike } from 'rxjs';
 import { ConnectedWebSocket } from "./ConnectedWebSocket";
 import { HttpBody } from "./HttpBody";
 import { HttpOptions, HttpProgress } from "./HttpModels";
-import { ObservableProperty } from "../observables/ObservableProperty";
 export declare class HttpClient {
     static INSTANCE: HttpClient;
     readonly GET = "GET";
@@ -14,6 +13,6 @@ export declare class HttpClient {
     responseScheduler: SchedulerLike | null;
     defaultOptions: HttpOptions;
     call(url: string, method?: string, headers?: Map<string, string>, body?: (HttpBody | null), options?: HttpOptions): Observable<Response>;
-    callWithProgress(url: string, method?: string, headers?: Map<string, string>, body?: (HttpBody | null), options?: HttpOptions): [ObservableProperty<HttpProgress>, Observable<Response>];
+    callWithProgress<T>(url: string, method: string | undefined, headers: Map<string, string> | undefined, body: HttpBody | null | undefined, options: HttpOptions | undefined, parse: (response: Response) => Observable<T>): Observable<HttpProgress<T>>;
     webSocket(url: string): Observable<ConnectedWebSocket>;
 }

@@ -12,6 +12,14 @@ function xVideoPlayerBind(this_, video) {
     }), DisposeCondition_ext_1.xViewRemovedGet(this_));
 }
 exports.xVideoPlayerBind = xVideoPlayerBind;
+//! Declares com.lightningkite.butterfly.observables.binding.bindAndStart>com.lightningkite.butterfly.views.widget.VideoPlayer
+function xVideoPlayerBindAndStart(this_, video) {
+    DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(video, undefined, undefined, (x) => {
+        xVideoPlayerLoadVideo(this_, x);
+        this_.play();
+    }), DisposeCondition_ext_1.xViewRemovedGet(this_));
+}
+exports.xVideoPlayerBindAndStart = xVideoPlayerBindAndStart;
 //! Declares com.lightningkite.butterfly.observables.binding.bind>com.google.android.exoplayer2.ui.PlayerView
 exports.xPlayerViewBind = xVideoPlayerBind;
 function xVideoPlayerLoadVideo(this_, video) {

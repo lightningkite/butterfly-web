@@ -35,7 +35,7 @@ class ViewStringTemplate {
     }
     get(dependency) {
         const templateResolved = this.template.get(dependency);
-        const fixedArguments = this._arguments.map((it) => { var _a, _b; return (_b = (_a = (Kotlin_1.tryCastInterface(it, "ComLightningkiteButterflyViewsViewString"))) === null || _a === void 0 ? void 0 : _a.get(dependency)) !== null && _b !== void 0 ? _b : it; });
+        const fixedArguments = this._arguments.map((it) => { var _a, _b, _c; return (_c = ((_b = (_a = (Kotlin_1.tryCastInterface(it, "ComLightningkiteButterflyViewsViewString"))) === null || _a === void 0 ? void 0 : _a.get(dependency)) !== null && _b !== void 0 ? _b : null)) !== null && _c !== void 0 ? _c : it; });
         return sprintf_js_1.vsprintf(templateResolved, fixedArguments);
     }
 }

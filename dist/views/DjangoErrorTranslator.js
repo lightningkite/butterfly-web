@@ -4,9 +4,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // File: views/DjangoErrorTranslator.kt
 // Package: com.lightningkite.butterfly.views
 const Kotlin_1 = require("../Kotlin");
+const rxjs_1 = require("rxjs");
+const RxHttpAssist_1 = require("../net/RxHttpAssist");
+const HttpResponse_1 = require("../net/HttpResponse");
 const kotlin_text_1 = require("../kotlin/kotlin.text");
 const ViewString_1 = require("./ViewString");
+const operators_1 = require("rxjs/operators");
 const Codable_1 = require("../Codable");
+const HttpResponseError_1 = require("../net/HttpResponseError");
 //! Declares com.lightningkite.butterfly.views.DjangoErrorTranslator
 class DjangoErrorTranslator {
     constructor(connectivityErrorResource, serverErrorResource, otherErrorResource) {
@@ -38,11 +43,9 @@ class DjangoErrorTranslator {
         }
     }
     parseError(code, error) {
-        let resultError = null;
         switch (code / 100) {
             case 0:
-                resultError = new ViewString_1.ViewStringResource(this.connectivityErrorResource);
-                break;
+                return new ViewString_1.ViewStringResource(this.connectivityErrorResource);
             case 1:
             case 2:
             case 3:
@@ -59,20 +62,18 @@ class DjangoErrorTranslator {
                 if (errorJson !== null) {
                     const builder = new kotlin_text_1.StringBuilder();
                     this.handleNode(builder, errorJson);
-                    resultError = new ViewString_1.ViewStringRaw(builder.toString());
+                    return new ViewString_1.ViewStringRaw(builder.toString());
                 }
                 else {
-                    resultError = new ViewString_1.ViewStringRaw(error !== null && error !== void 0 ? error : "");
+                    return new ViewString_1.ViewStringRaw(error !== null && error !== void 0 ? error : "");
                 }
                 break;
             case 5:
-                resultError = new ViewString_1.ViewStringResource(this.serverErrorResource);
-                break;
+                return new ViewString_1.ViewStringResource(this.serverErrorResource);
             default:
-                resultError = new ViewString_1.ViewStringResource(this.otherErrorResource);
                 break;
         }
-        return resultError;
+        return new ViewString_1.ViewStringResource(this.otherErrorResource);
     }
     wrap(callback) {
         return (code, result, error) => {
@@ -83,6 +84,19 @@ class DjangoErrorTranslator {
         return (code, error) => {
             callback(this.parseError(code, error));
         };
+    }
+    parseException(exception) {
+        return (() => {
+            if (exception instanceof HttpResponseError_1.HttpResponseException) {
+                return RxHttpAssist_1.xResponseReadText(exception.response).pipe(operators_1.map((it) => this.parseError(HttpResponse_1.xResponseCodeGet(exception.response), it)));
+            }
+            else if (exception instanceof rxjs_1.TimeoutError) {
+                return rxjs_1.of(new ViewString_1.ViewStringResource(this.connectivityErrorResource));
+            }
+            else {
+                return rxjs_1.of(new ViewString_1.ViewStringResource(this.otherErrorResource));
+            }
+        })();
     }
 }
 exports.DjangoErrorTranslator = DjangoErrorTranslator;

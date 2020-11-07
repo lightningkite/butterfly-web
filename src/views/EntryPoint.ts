@@ -2,10 +2,11 @@
 // File: views/EntryPoint.kt
 // Package: com.lightningkite.butterfly.views
 import { ViewGenerator } from './ViewGenerator'
+import { HasBackAction } from './HasBackAction'
 import { ObservableStack } from '../observables/ObservableStack'
 
 //! Declares com.lightningkite.butterfly.views.EntryPoint
-export interface EntryPoint {
+export interface EntryPoint extends HasBackAction {
     
     handleDeepLink(schema: string, host: string, path: string, params: Map<string, string>): void 
     readonly mainStack: (ObservableStack<ViewGenerator> | null);

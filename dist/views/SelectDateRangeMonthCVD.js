@@ -18,9 +18,9 @@ class SelectDateRangeMonthCVD extends MonthCVD_1.MonthCVD {
         this.draggingStart = true;
         this.start = new StandardObservableProperty_1.StandardObservableProperty(null, undefined);
         this.endInclusive = new StandardObservableProperty_1.StandardObservableProperty(null, undefined);
-        const it_352 = this.start.value;
-        if (it_352 !== null) {
-            this.currentMonthObs.value = Date_1.copyDateAloneMod(it_352, Date.prototype.setDate, 1);
+        const it_356 = this.start.value;
+        if (it_356 !== null) {
+            this.currentMonthObs.value = Date_1.copyDateAloneMod(it_356, Date.prototype.setDate, 1);
         }
         ;
         DisposeCondition_ext_1.xDisposableForever(this.start.onChange.subscribe((value) => {

@@ -14,9 +14,9 @@ class SelectDateMonthCVD extends MonthCVD_1.MonthCVD {
     constructor() {
         super();
         this.selected = new StandardObservableProperty_1.StandardObservableProperty(null, undefined);
-        const it_349 = this.selected.value;
-        if (it_349 !== null) {
-            this.currentMonthObs.value = Date_1.copyDateAloneMod(it_349, Date.prototype.setDate, 1);
+        const it_353 = this.selected.value;
+        if (it_353 !== null) {
+            this.currentMonthObs.value = Date_1.copyDateAloneMod(it_353, Date.prototype.setDate, 1);
         }
         ;
         DisposeCondition_ext_1.xDisposableForever(this.selected.onChange.subscribe((value) => {

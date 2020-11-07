@@ -29,22 +29,25 @@ export class HttpPhase {
     public toJSON(): string { return this.jsonName }
 }
 //! Declares com.lightningkite.butterfly.net.HttpProgress
-export class HttpProgress {
+export class HttpProgress<T> {
     public readonly phase: HttpPhase;
     public readonly ratio: number;
-    public constructor(phase: HttpPhase, ratio: number) {
+    public readonly response: (T | null);
+    public constructor(phase: HttpPhase, ratio: number = 0.5, response: (T | null) = null) {
         this.phase = phase;
         this.ratio = ratio;
+        this.response = response;
     }
     public hashCode(): number {
         let hash = 17;
         hash = 31 * hash + hashAnything(this.phase);
         hash = 31 * hash + hashAnything(this.ratio);
+        hash = 31 * hash + hashAnything(this.response);
         return hash;
     }
-    public equals(other: any): boolean { return other instanceof HttpProgress && safeEq(this.phase, other.phase) && safeEq(this.ratio, other.ratio) }
-    public toString(): string { return `HttpProgress(phase = ${this.phase}, ratio = ${this.ratio})` }
-    public copy(phase: HttpPhase = this.phase, ratio: number = this.ratio): HttpProgress { return new HttpProgress(phase, ratio); }
+    public equals(other: any): boolean { return other instanceof HttpProgress && safeEq(this.phase, other.phase) && safeEq(this.ratio, other.ratio) && safeEq(this.response, other.response) }
+    public toString(): string { return `HttpProgress(phase = ${this.phase}, ratio = ${this.ratio}, response = ${this.response})` }
+    public copy(phase: HttpPhase = this.phase, ratio: number = this.ratio, response: (T | null) = this.response): HttpProgress<T> { return new HttpProgress(phase, ratio, response); }
     
     //! Declares com.lightningkite.butterfly.net.HttpProgress.approximate
     public get approximate(): number { return ((): number => {
@@ -65,25 +68,6 @@ export class HttpProgress {
                 
     })(); }
     
-    
-}
-export namespace HttpProgress {
-    //! Declares com.lightningkite.butterfly.net.HttpProgress.Companion
-    export class Companion {
-        private constructor() {
-            this.connecting = new HttpProgress(HttpPhase.Connect, 0);
-            this.waiting = new HttpProgress(HttpPhase.Waiting, 0);
-            this.done = new HttpProgress(HttpPhase.Done, 0);
-        }
-        public static INSTANCE = new Companion();
-        
-        public readonly connecting: HttpProgress;
-        
-        public readonly waiting: HttpProgress;
-        
-        public readonly done: HttpProgress;
-        
-    }
 }
 
 //! Declares com.lightningkite.butterfly.net.HttpOptions

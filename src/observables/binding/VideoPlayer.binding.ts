@@ -12,6 +12,14 @@ export function xVideoPlayerBind(this_: HTMLVideoElement, video: ObservablePrope
         xVideoPlayerLoadVideo(this_, x);
     }), xViewRemovedGet(this_));
 }
+
+//! Declares com.lightningkite.butterfly.observables.binding.bindAndStart>com.lightningkite.butterfly.views.widget.VideoPlayer
+export function xVideoPlayerBindAndStart(this_: HTMLVideoElement, video: ObservableProperty<Video | null>) {
+    xDisposableUntil(xObservablePropertySubscribeBy(video, undefined, undefined, (x)=>{
+        xVideoPlayerLoadVideo(this_, x);
+        this_.play()
+    }), xViewRemovedGet(this_));
+}
 //! Declares com.lightningkite.butterfly.observables.binding.bind>com.google.android.exoplayer2.ui.PlayerView
 export let xPlayerViewBind = xVideoPlayerBind
 

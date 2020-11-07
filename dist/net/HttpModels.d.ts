@@ -13,24 +13,16 @@ export declare class HttpPhase {
     toString(): string;
     toJSON(): string;
 }
-export declare class HttpProgress {
+export declare class HttpProgress<T> {
     readonly phase: HttpPhase;
     readonly ratio: number;
-    constructor(phase: HttpPhase, ratio: number);
+    readonly response: (T | null);
+    constructor(phase: HttpPhase, ratio?: number, response?: (T | null));
     hashCode(): number;
     equals(other: any): boolean;
     toString(): string;
-    copy(phase?: HttpPhase, ratio?: number): HttpProgress;
+    copy(phase?: HttpPhase, ratio?: number, response?: (T | null)): HttpProgress<T>;
     get approximate(): number;
-}
-export declare namespace HttpProgress {
-    class Companion {
-        private constructor();
-        static INSTANCE: Companion;
-        readonly connecting: HttpProgress;
-        readonly waiting: HttpProgress;
-        readonly done: HttpProgress;
-    }
 }
 export declare class HttpOptions {
     readonly callTimeout: (number | null);

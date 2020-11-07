@@ -24,19 +24,21 @@ HttpPhase.Done = new HttpPhase("Done", "Done");
 HttpPhase._values = [HttpPhase.Connect, HttpPhase.Write, HttpPhase.Waiting, HttpPhase.Read, HttpPhase.Done];
 //! Declares com.lightningkite.butterfly.net.HttpProgress
 class HttpProgress {
-    constructor(phase, ratio) {
+    constructor(phase, ratio = 0.5, response = null) {
         this.phase = phase;
         this.ratio = ratio;
+        this.response = response;
     }
     hashCode() {
         let hash = 17;
         hash = 31 * hash + Kotlin_1.hashAnything(this.phase);
         hash = 31 * hash + Kotlin_1.hashAnything(this.ratio);
+        hash = 31 * hash + Kotlin_1.hashAnything(this.response);
         return hash;
     }
-    equals(other) { return other instanceof HttpProgress && Kotlin_1.safeEq(this.phase, other.phase) && Kotlin_1.safeEq(this.ratio, other.ratio); }
-    toString() { return `HttpProgress(phase = ${this.phase}, ratio = ${this.ratio})`; }
-    copy(phase = this.phase, ratio = this.ratio) { return new HttpProgress(phase, ratio); }
+    equals(other) { return other instanceof HttpProgress && Kotlin_1.safeEq(this.phase, other.phase) && Kotlin_1.safeEq(this.ratio, other.ratio) && Kotlin_1.safeEq(this.response, other.response); }
+    toString() { return `HttpProgress(phase = ${this.phase}, ratio = ${this.ratio}, response = ${this.response})`; }
+    copy(phase = this.phase, ratio = this.ratio, response = this.response) { return new HttpProgress(phase, ratio, response); }
     //! Declares com.lightningkite.butterfly.net.HttpProgress.approximate
     get approximate() {
         return (() => {
@@ -58,18 +60,6 @@ class HttpProgress {
     }
 }
 exports.HttpProgress = HttpProgress;
-(function (HttpProgress) {
-    //! Declares com.lightningkite.butterfly.net.HttpProgress.Companion
-    class Companion {
-        constructor() {
-            this.connecting = new HttpProgress(HttpPhase.Connect, 0);
-            this.waiting = new HttpProgress(HttpPhase.Waiting, 0);
-            this.done = new HttpProgress(HttpPhase.Done, 0);
-        }
-    }
-    Companion.INSTANCE = new Companion();
-    HttpProgress.Companion = Companion;
-})(HttpProgress = exports.HttpProgress || (exports.HttpProgress = {}));
 //! Declares com.lightningkite.butterfly.net.HttpOptions
 class HttpOptions {
     constructor(callTimeout = null, writeTimeout = 10000, readTimeout = 10000, connectTimeout = 10000, cacheMode = HttpCacheMode.Default) {

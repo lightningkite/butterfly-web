@@ -2,9 +2,14 @@
 // File: views/DjangoErrorTranslator.kt
 // Package: com.lightningkite.butterfly.views
 import { checkIsInterface } from '../Kotlin'
+import { Observable, TimeoutError, of as rxOf } from 'rxjs'
+import { xResponseReadText } from '../net/RxHttpAssist'
+import { xResponseCodeGet } from '../net/HttpResponse'
 import { StringBuilder, xCharIsUpperCase } from '../kotlin/kotlin.text'
 import { ViewString, ViewStringRaw, ViewStringResource } from './ViewString'
+import { map as rxMap } from 'rxjs/operators'
 import { xStringFromJsonStringUntyped } from '../Codable'
+import { HttpResponseException } from '../net/HttpResponseError'
 
 //! Declares com.lightningkite.butterfly.views.DjangoErrorTranslator
 export class DjangoErrorTranslator {
@@ -39,13 +44,10 @@ export class DjangoErrorTranslator {
             }
         }
     }
-    public parseError(code: number, error: (string | null)): (ViewString | null) {
-        let resultError: (ViewString | null) = null;
-        
+    public parseError(code: number, error: (string | null)): ViewString {
         switch(code / 100) {
             case 0:
-            resultError = new ViewStringResource(this.connectivityErrorResource)
-            break;
+            return new ViewStringResource(this.connectivityErrorResource)
             case 1:
             case 2:
             case 3:
@@ -62,20 +64,19 @@ export class DjangoErrorTranslator {
                 const builder = new StringBuilder();
                 
                 this.handleNode(builder, errorJson);
-                resultError = new ViewStringRaw(builder.toString());
+                return new ViewStringRaw(builder.toString());
             } else {
-                resultError = new ViewStringRaw(error ?? "");
+                return new ViewStringRaw(error ?? "");
             }
             break;
             case 5:
-            resultError = new ViewStringResource(this.serverErrorResource)
-            break;
+            return new ViewStringResource(this.serverErrorResource)
             default:
-            resultError = new ViewStringResource(this.otherErrorResource)
+            
             break;
         }
         
-        return resultError;
+        return new ViewStringResource(this.otherErrorResource);
     }
     
     public wrap<T>(callback:  ((result: (T | null), error: (ViewString | null)) => void)): ((code: number, result: (T | null), error: (string | null)) => void) {
@@ -90,5 +91,16 @@ export class DjangoErrorTranslator {
         };
     }
     
+    public parseException(exception: any): Observable<ViewString> {
+        return ((): Observable<ViewString> => {
+                if (exception instanceof HttpResponseException) {
+                    return xResponseReadText((exception as HttpResponseException).response).pipe(rxMap((it: string): ViewString => this.parseError(xResponseCodeGet((exception as HttpResponseException).response), it)))
+                } else if (exception instanceof TimeoutError) {
+                    return rxOf(new ViewStringResource(this.connectivityErrorResource))
+                } else  {
+                    return rxOf(new ViewStringResource(this.otherErrorResource))
+                }
+        })();
+    }
 }
 

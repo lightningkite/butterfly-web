@@ -5,7 +5,7 @@ import {from, Observable, SchedulerLike, Subject, using} from 'rxjs'
 import {ConnectedWebSocket} from "./ConnectedWebSocket";
 import {HttpBody} from "./HttpBody";
 import {Exception} from "../kotlin/Language";
-import {map, timeout} from "rxjs/operators";
+import {map, mergeMap, timeout} from "rxjs/operators";
 import {HttpCacheMode, HttpOptions, HttpPhase, HttpProgress} from "./HttpModels";
 import {ObservableProperty} from "../observables/ObservableProperty";
 import {xObservableAsObservableProperty} from "../observables/EventToObservableProperty";
@@ -71,96 +71,15 @@ export class HttpClient {
         )))
     }
 
-    callWithProgress(
+    callWithProgress<T>(
         url: string,
         method: string = HttpClient.INSTANCE.GET,
         headers: Map<string, string> = new Map([]),
         body: (HttpBody | null) = null,
-        options: HttpOptions = this.defaultOptions
-    ): [ObservableProperty<HttpProgress>, Observable<Response>] {
-        let h = new Array(...headers.entries());
-        if(body !== null){
-            h.push(["Content-Type", body.type]);
-        }
-        let cacheString: RequestCache = "default";
-        switch(options.cacheMode) {
-            case HttpCacheMode.Default:
-                cacheString = "default";
-                break
-            case HttpCacheMode.NoStore:
-                cacheString = "no-store";
-                break
-            case HttpCacheMode.Reload:
-                cacheString = "reload";
-                break
-            case HttpCacheMode.NoCache:
-                cacheString = "no-cache";
-                break
-            case HttpCacheMode.ForceCache:
-                cacheString = "force-cache";
-                break
-            case HttpCacheMode.OnlyIfCached:
-                cacheString = "only-if-cached";
-                break
-        }
-        let progSubj = new Subject<HttpProgress>();
-        let obsResp = from(fetch(url, {
-            body: body?.data,
-            cache: cacheString,
-            credentials: "omit",
-            headers: h,
-            method: method
-        })).pipe(timeout(options.callTimeout ?? (
-            (options.connectTimeout ?? 5_000) + (options.readTimeout ?? 5_000) + (options.writeTimeout ?? 5_000)
-        ))).pipe(map((response)=>{
-            const contentEncoding = response.headers.get('content-encoding');
-            const contentLengthStr = response.headers.get(contentEncoding ? 'x-file-size' : 'content-length');
-            const contentLength = contentLengthStr ? parseInt(contentLengthStr) : null;
-            const existingBody = response.body;
-            if(existingBody){
-                const newReader = existingBody.getReader();
-                let loadedBytes = 0;
-                return new Response(
-                    new ReadableStream({
-                        start(controller) {
-                            read();
-                            function read() {
-                                newReader.read().then(({done, value}) => {
-                                    if (done) {
-                                        //on progress complete
-                                        progSubj.next(new HttpProgress(HttpPhase.Read, 1))
-                                        controller.close();
-                                        return;
-                                    }
-                                    if(value){
-                                        loadedBytes += value.byteLength;
-                                        //on progress
-                                        if(contentLength) {
-                                            progSubj.next(new HttpProgress(HttpPhase.Read, loadedBytes / contentLength))
-                                        } else {
-                                            progSubj.next(new HttpProgress(HttpPhase.Read, approximateCompletion(loadedBytes)))
-                                        }
-                                        controller.enqueue(value);
-                                    }
-                                    read();
-                                }).catch(error => {
-                                    console.error(error);
-                                    controller.error(error)
-                                });
-                            }
-                        }
-                    }),
-                    response
-                );
-            } else {
-                return new Response(
-                    null,
-                    response
-                );
-            }
-        }))
-        let progObs = xObservableAsObservableProperty(progSubj, HttpProgress.Companion.INSTANCE.connecting);
-        return [progObs, obsResp];
+        options: HttpOptions = this.defaultOptions,
+        parse: (response: Response) => Observable<T>
+    ): Observable<HttpProgress<T>> {
+        return this.call(url, method, headers, body, options).pipe(mergeMap(parse), map(x => new HttpProgress(HttpPhase.Done, 1, x)))
     }
     
     webSocket(url: string): Observable<ConnectedWebSocket>{

@@ -285,6 +285,11 @@ function xActivityAccessGetMimeType(this_, file) {
     return file.type;
 }
 exports.xActivityAccessGetMimeType = xActivityAccessGetMimeType;
+//! Declares com.lightningkite.butterfly.views.getFileName>com.lightningkite.butterfly.android.ActivityAccess
+function xActivityAccessGetFileName(this_, file) {
+    return file.name;
+}
+exports.xActivityAccessGetFileName = xActivityAccessGetFileName;
 //! Declares com.lightningkite.butterfly.views.downloadFile>com.lightningkite.butterfly.android.ActivityAccess
 function xActivityAccessDownloadFile(this_, url) {
     const a = document.createElement("a");

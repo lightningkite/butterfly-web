@@ -298,6 +298,11 @@ export function xActivityAccessGetMimeType(this_: Window, file: File): string {
     return file.type
 }
 
+//! Declares com.lightningkite.butterfly.views.getFileName>com.lightningkite.butterfly.android.ActivityAccess
+export function xActivityAccessGetFileName(this_: Window, file: File): string {
+    return file.name
+}
+
 //! Declares com.lightningkite.butterfly.views.downloadFile>com.lightningkite.butterfly.android.ActivityAccess
 export function xActivityAccessDownloadFile(this_: Window, url: string) {
     const a = document.createElement("a") as HTMLAnchorElement
