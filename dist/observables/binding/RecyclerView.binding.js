@@ -41,6 +41,7 @@ function xRecyclerViewReverseDirectionSet(this_, value) {
             this_.style.flexDirection = "column";
         }
     }
+    this_.style.display = "flex";
     return;
 }
 exports.xRecyclerViewReverseDirectionSet = xRecyclerViewReverseDirectionSet;

@@ -44,6 +44,7 @@ export function xRecyclerViewReverseDirectionSet(this_: HTMLDivElement, value: b
             this_.style.flexDirection = "column"
         }
     }
+    this_.style.display = "flex"
     return
 }
 
