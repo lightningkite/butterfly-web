@@ -18,7 +18,7 @@ export declare function xAnyToJsonHttpBody(this_: Codable): HttpBody;
 export declare function xByteArrayToHttpBody(this_: ArrayBuffer, mediaType: HttpMediaType): HttpBody;
 export declare function xStringToHttpBody(this_: string, mediaType?: HttpMediaType): HttpBody;
 export declare function xUriToHttpBody(this_: File): Observable<HttpBody>;
-export declare function xImageToHttpBody(this_: Image, maxDimension?: number): Observable<HttpBody>;
+export declare function xImageToHttpBody(this_: Image, maxDimension?: number, maxBytes?: number): Observable<HttpBody>;
 export declare function multipartFormBody(...parts: HttpBodyPart[]): HttpBody;
 export declare function multipartFormFilePart(name: string, valueOrFilename?: string, body?: HttpBody): HttpBodyPart;
 export declare function multipartFormValuePart(name: string, value: string): HttpBodyPart;

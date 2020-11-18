@@ -82,7 +82,7 @@ export function xUriToHttpBody(this_: File): Observable<HttpBody> {
 }
 
 //! Declares com.lightningkite.butterfly.net.toHttpBody
-export function xImageToHttpBody(this_: Image, maxDimension: number = 2048): Observable<HttpBody> {
+export function xImageToHttpBody(this_: Image, maxDimension: number = 2048, maxBytes: number = 10_000_000): Observable<HttpBody> {
     return xImageLoad(this_).pipe(
         flatMap((x) => resize(x, maxDimension)),
         map((x) => new HttpBody(x, "image/png"))

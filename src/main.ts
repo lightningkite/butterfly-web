@@ -33,6 +33,8 @@ export function main(rootVg: ViewGenerator){
         )
     }
 
+    //TODO: Get resize working again - this code previously caused continous reloading
+    //
     // function setupBoundaryAction(newView: HTMLElement) {
     //     newView.khrysalisResizeBoundaryAction = () => {
     //         document.body.removeChild(newView)

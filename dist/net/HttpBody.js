@@ -77,7 +77,7 @@ function xUriToHttpBody(this_) {
 }
 exports.xUriToHttpBody = xUriToHttpBody;
 //! Declares com.lightningkite.butterfly.net.toHttpBody
-function xImageToHttpBody(this_, maxDimension = 2048) {
+function xImageToHttpBody(this_, maxDimension = 2048, maxBytes = 10000000) {
     return Image_loadingRx_1.xImageLoad(this_).pipe(operators_1.flatMap((x) => resize(x, maxDimension)), operators_1.map((x) => new HttpBody(x, "image/png")));
 }
 exports.xImageToHttpBody = xImageToHttpBody;
