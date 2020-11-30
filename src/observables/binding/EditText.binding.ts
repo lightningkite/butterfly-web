@@ -61,3 +61,42 @@ export function xEditTextBindDouble(this_: HTMLInputElement | HTMLTextAreaElemen
     }
 }
 
+
+
+//! Declares com.lightningkite.butterfly.observables.binding.bindIntegerNullable>android.widget.EditText
+export function xEditTextBindIntegerNullable(this_: HTMLInputElement | HTMLTextAreaElement, observable: MutableObservableProperty<number | null>): void {
+    xDisposableUntil(xObservablePropertySubscribeBy(observable, undefined, undefined, (value) => {
+        const currentValue = parseIntOrNull(this_.value);
+
+        if (value !== currentValue) {
+            this_.value = value?.toString() ?? "";
+        }
+    }), xViewRemovedGet(this_));
+    this_.oninput = (e) => {
+        const currentValue = parseIntOrNull(this_.value) ?? 0;
+
+        if (observable.value !== currentValue) {
+            observable.value = currentValue;
+        }
+    }
+}
+
+
+//! Declares com.lightningkite.butterfly.observables.binding.bindDoubleNullable>android.widget.EditText
+export function xEditTextBindDoubleNullable(this_: HTMLInputElement | HTMLTextAreaElement, observable: MutableObservableProperty<number | null>): void {
+    xDisposableUntil(xObservablePropertySubscribeBy(observable, undefined, undefined, (value) => {
+        const currentValue = parseFloatOrNull(this_.value);
+
+        if (value !== currentValue) {
+            this_.value = value?.toString() ?? "";
+        }
+    }), xViewRemovedGet(this_));
+    this_.oninput = (e) => {
+        const currentValue = parseFloatOrNull(this_.value) ?? 0;
+
+        if (observable.value !== currentValue) {
+            observable.value = currentValue;
+        }
+    }
+}
+

@@ -23,8 +23,8 @@ function main(rootVg) {
         }
         r.handleDeepLink(window.location.protocol, window.location.host, window.location.pathname.substring(1, window.location.pathname.length), params);
     }
-    //TODO: Get resizing again
-
+    //TODO: Get resize working again - this code previously caused continous reloading
+    //
     // function setupBoundaryAction(newView: HTMLElement) {
     //     newView.khrysalisResizeBoundaryAction = () => {
     //         document.body.removeChild(newView)

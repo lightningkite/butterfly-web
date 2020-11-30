@@ -22,6 +22,11 @@
   type: call
   template: window.open(~0~, "_blank")
 
+- id: com.lightningkite.butterfly.views.openUrl
+  type: call
+  suppliedArguments: [url, newWindow]
+  template: 'window.open(~0~, ~newWindow~ ? "_blank" : "_self")'
+
 - id: com.lightningkite.butterfly.views.openAndroidAppOrStore
   type: call
   template: window.open("https://play.google.com/store/apps/details?id=" + ~0~, "_blank")
