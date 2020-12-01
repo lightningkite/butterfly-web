@@ -14,6 +14,14 @@
 - id: kotlin.collections.asSequence
   type: call
   template: ~this~
+- id: kotlin.sequences.asSequence
+  type: call
+  receiver: kotlin.collections.Map
+  template: ~this~.entries()
+- id: kotlin.collections.asSequence
+  type: call
+  receiver: kotlin.collections.Map
+  template: ~this~.entries()
 
 # Extensions
 
@@ -91,10 +99,10 @@
   type: call
   receiver: kotlin.sequences.Sequence
   template:
-    pattern: iterFlatten(iterMap(~this~, ~0~))
+    pattern: iterFlatMap(~this~, ~0~)
     imports:
-      iterMap: map from butterfly/dist/kotlin/lazyOp
-      iterFlatten: flatten from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      iterFlatMap: iterFlatMap from butterfly/dist/kotlin/Collections
 
 - id: kotlin.sequences.filterIndexed
   type: call
@@ -174,13 +182,13 @@
   template:
     pattern: new Map(iterMap(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      iterMap: map from butterfly/dist/kotlin/lazyOp
 - id: kotlin.sequences.associateBy
   type: call
   template:
     pattern: new Map(iterMap(~this~, (_x)=>{ [~0~(_x), _x] }))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      iterMap: map from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.sequences.toList
   type: call

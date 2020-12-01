@@ -389,6 +389,10 @@ export function iterCount<T>(iterable: Iterable<T>, func: (a: T)=>boolean): numb
     return count;
 }
 
+export function iterFlatMap<A, B>(iterable: Iterable<A>, func: (a: A)=>Iterable<B>): Iterable<B> {
+    return flatten(map(iterable, func)) as Iterable<B>
+}
+
 export function setAddCausedChange<T>(set: Set<T>, item: T): boolean {
     if (set.has(item)) return false;
     set.add(item);
@@ -444,4 +448,12 @@ export function xMapPutAll<K, V>(map: Map<K, V>, other: Map<K, V>) {
     for(let [key, value] of other){
         map.set(key, value);
     }
+}
+//! Declares kotlin.collections.mapValues
+export function xMapMapValues<K, V, VOUT>(this_: Map<K, V>, transform: (entry: [K, V]) => VOUT) {
+    const newMap: Map<K, VOUT> = this_ instanceof EqualOverrideMap ? new EqualOverrideMap() : new Map();
+    for(const entry of this_.entries()) {
+        newMap.set(entry[0], transform(entry))
+    }
+    return newMap
 }

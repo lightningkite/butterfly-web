@@ -326,6 +326,10 @@ function iterCount(iterable, func) {
     return count;
 }
 exports.iterCount = iterCount;
+function iterFlatMap(iterable, func) {
+    return lazyOp_1.flatten(lazyOp_1.map(iterable, func));
+}
+exports.iterFlatMap = iterFlatMap;
 function setAddCausedChange(set, item) {
     if (set.has(item))
         return false;
@@ -386,4 +390,13 @@ function xMapPutAll(map, other) {
     }
 }
 exports.xMapPutAll = xMapPutAll;
+//! Declares kotlin.collections.mapValues
+function xMapMapValues(this_, transform) {
+    const newMap = this_ instanceof EqualOverrideMap ? new EqualOverrideMap() : new Map();
+    for (const entry of this_.entries()) {
+        newMap.set(entry[0], transform(entry));
+    }
+    return newMap;
+}
+exports.xMapMapValues = xMapMapValues;
 //# sourceMappingURL=Collections.js.map

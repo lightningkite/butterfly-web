@@ -57,4 +57,40 @@ function xEditTextBindDouble(this_, observable) {
     };
 }
 exports.xEditTextBindDouble = xEditTextBindDouble;
+//! Declares com.lightningkite.butterfly.observables.binding.bindIntegerNullable>android.widget.EditText
+function xEditTextBindIntegerNullable(this_, observable) {
+    DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(observable, undefined, undefined, (value) => {
+        var _a;
+        const currentValue = Kotlin_1.parseIntOrNull(this_.value);
+        if (value !== currentValue) {
+            this_.value = (_a = value === null || value === void 0 ? void 0 : value.toString()) !== null && _a !== void 0 ? _a : "";
+        }
+    }), DisposeCondition_ext_1.xViewRemovedGet(this_));
+    this_.oninput = (e) => {
+        var _a;
+        const currentValue = (_a = Kotlin_1.parseIntOrNull(this_.value)) !== null && _a !== void 0 ? _a : 0;
+        if (observable.value !== currentValue) {
+            observable.value = currentValue;
+        }
+    };
+}
+exports.xEditTextBindIntegerNullable = xEditTextBindIntegerNullable;
+//! Declares com.lightningkite.butterfly.observables.binding.bindDoubleNullable>android.widget.EditText
+function xEditTextBindDoubleNullable(this_, observable) {
+    DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(observable, undefined, undefined, (value) => {
+        var _a;
+        const currentValue = Kotlin_1.parseFloatOrNull(this_.value);
+        if (value !== currentValue) {
+            this_.value = (_a = value === null || value === void 0 ? void 0 : value.toString()) !== null && _a !== void 0 ? _a : "";
+        }
+    }), DisposeCondition_ext_1.xViewRemovedGet(this_));
+    this_.oninput = (e) => {
+        var _a;
+        const currentValue = (_a = Kotlin_1.parseFloatOrNull(this_.value)) !== null && _a !== void 0 ? _a : 0;
+        if (observable.value !== currentValue) {
+            observable.value = currentValue;
+        }
+    };
+}
+exports.xEditTextBindDoubleNullable = xEditTextBindDoubleNullable;
 //# sourceMappingURL=EditText.binding.js.map

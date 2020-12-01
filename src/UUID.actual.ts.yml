@@ -11,3 +11,6 @@
     pattern: randomUuidV4()
     imports:
       randomUuidV4: v4 from uuid
+- id: java.util.UUID.fromString
+  type: call
+  template: ~0~

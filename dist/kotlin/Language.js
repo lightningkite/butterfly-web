@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class Exception extends Error {
     constructor(message, cause) {
         super(message);
-        this.cause = cause;
+        this.cause = cause !== null && cause !== void 0 ? cause : null;
     }
 }
 exports.Exception = Exception;

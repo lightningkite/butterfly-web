@@ -4,3 +4,22 @@
 - id: com.lightningkite.butterfly.bytes.Data
   type: typeRef
   template: Int8Array
+
+- id: kotlin.collections.toString
+  type: call
+  receiver: kotlin.ByteArray
+  arguments: [charset]
+  template: new TextDecoder(~0~).decode(~this~)
+
+- id: kotlin.text.toByteArray
+  type: call
+  receiver: kotlin.String
+  template: new Int8Array(new TextEncoder().encode(~this~))
+
+- id: kotlin.text.Charsets.UTF_8
+  type: get
+  template: '"utf-8"'
+
+- id: kotlin.text.Charsets.UTF_16
+  type: get
+  template: '"utf-16"'

@@ -171,16 +171,28 @@
     imports:
       EqualOverrideMap: butterfly/dist/KotlinCollections
 
+- id: kotlin.collections.Map.Entry
+  type: type
+  template: '[~T0~, ~T1~]'
+
 ## Usage
 
 - id: kotlin.collections.component1
   type: call
-  receiver: Map.Entry
+  receiver: kotlin.collections.Map.Entry
   template: ~this~[0]
 
 - id: kotlin.collections.component2
   type: call
-  receiver: Map.Entry
+  receiver: kotlin.collections.Map.Entry
+  template: ~this~[1]
+
+- id: kotlin.collections.Map.Entry.key
+  type: get
+  template: ~this~[0]
+
+- id: kotlin.collections.Map.Entry.value
+  type: get
   template: ~this~[1]
 
 - id: kotlin.collections.Map.keys

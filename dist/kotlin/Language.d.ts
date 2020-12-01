@@ -1,6 +1,6 @@
 export declare class Exception extends Error {
     cause: any;
-    constructor(message: string, cause: any);
+    constructor(message: string, cause?: any);
 }
 export declare function printStackTrace(something: any): void;
 export declare class IllegalArgumentException extends Exception {

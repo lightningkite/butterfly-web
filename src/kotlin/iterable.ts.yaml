@@ -93,11 +93,10 @@
 - id: kotlin.collections.flatMap
   type: call
   template:
-    pattern: iterToArray(iterFlatten(iterMap(~this~, ~0~)))
+    pattern: iterToArray(iterFlatMap(~this~, ~0~))
     imports:
       iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterMap: map from butterfly/dist/kotlin/lazyOp
-      iterFlatten: flatten from butterfly/dist/kotlin/lazyOp
+      iterFlatMap: iterFlatMap from butterfly/dist/kotlin/Collections
 
 - id: kotlin.collections.filterIndexed
   type: call
@@ -179,13 +178,13 @@
   template:
     pattern: new Map(iterMap(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      iterMap: map from butterfly/dist/kotlin/lazyOp
 - id: kotlin.collections.associateBy
   type: call
   template:
     pattern: new Map(iterMap(~this~, (_x)=>{ [~0~(_x), _x] }))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      iterMap: map from butterfly/dist/kotlin/lazyOp
 
 - id: kotlin.collections.toList
   type: call

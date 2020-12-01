@@ -5,9 +5,9 @@
 export class Exception extends Error {
     cause: any;
 
-    constructor(message: string, cause: any) {
+    constructor(message: string, cause?: any) {
         super(message);
-        this.cause = cause;
+        this.cause = cause ?? null;
     }
 }
 
