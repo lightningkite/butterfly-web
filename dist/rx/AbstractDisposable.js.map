@@ -1,0 +1,1 @@
+{"version":3,"file":"AbstractDisposable.js","sourceRoot":"","sources":["../../src/rx/AbstractDisposable.ts"],"names":[],"mappings":";;AAEA,8DAA8D;AAC9D,MAAsB,kBAAkB;IAAxC;QACI,WAAM,GAAY,KAAK,CAAC;IAQ5B,CAAC;IANG,WAAW;QACP,IAAG,MAAM;YAAE,OAAM;QACjB,MAAM,GAAG,IAAI,CAAA;QACb,IAAI,CAAC,SAAS,EAAE,CAAA;IACpB,CAAC;CAEJ;AATD,gDASC"}
