@@ -664,10 +664,6 @@
   type: call
   infix: true
   template: ~this~ ~operatorToken~ ~0~
-- id: kotlin.String.compareTo
-  type: call
-  infix: true
-  template: ~this~ ~operatorToken~ ~0~
   
   
 # toByte

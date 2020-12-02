@@ -53,3 +53,17 @@
     pattern: cMax(~this~, ~0~)
     imports:
       cMax: butterfly/dist/kotlin/Comparable
+
+- id: kotlin.comparisons.maxOf
+  type: call
+  template:
+    pattern: cMax(~*~)
+    imports:
+      cMax: butterfly/dist/kotlin/Comparable
+
+- id: kotlin.comparisons.minOf
+  type: call
+  template:
+    pattern: cMin(~*~)
+    imports:
+      cMin: butterfly/dist/kotlin/Comparable
