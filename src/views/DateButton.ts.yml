@@ -9,7 +9,7 @@
   template:
     pattern: also(document.createElement('input') as HTMLInputElement, (x)=>{ x.type = "date" })
     imports:
-      also: butterfly/dist/Kotlin
+      also: butterfly-web/dist/Kotlin
 
 - id: com.lightningkite.butterfly.views.widget.DateButton.date
   type: set

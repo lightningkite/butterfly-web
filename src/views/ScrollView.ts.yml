@@ -9,7 +9,7 @@
   template:
     pattern: also(document.createElement('div') as HTMLDivElement, (x)=>{ x.classList.add("butterfly-scroll") })
     imports:
-      also: butterfly/dist/Kotlin
+      also: butterfly-web/dist/Kotlin
 
 - id: android.widget.HorizontalScrollView
   type: type
@@ -20,7 +20,7 @@
   template:
     pattern: also(document.createElement('div') as HTMLDivElement, (x)=>{ x.classList.add("butterfly-scroll-horizontal") })
     imports:
-      also: butterfly/dist/Kotlin
+      also: butterfly-web/dist/Kotlin
 
 - id: android.widget.ScrollView.smoothScrollTo
   type: call

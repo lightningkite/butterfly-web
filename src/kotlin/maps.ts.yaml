@@ -55,13 +55,13 @@
   template:
     pattern: "new EqualOverrideMap<~T0~, ~T1~>([~*~])"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 - id: kotlin.collections.mapOf
   type: call
   template:
     pattern: "new EqualOverrideMap([~*~])"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.mutableMapOf
   type: call
@@ -81,13 +81,13 @@
   template:
     pattern: "new EqualOverrideMap<~T0~, ~T1~>([~*~])"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 - id: kotlin.collections.mutableMapOf
   type: call
   template:
     pattern: "new EqualOverrideMap([~*~])"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.hashMapOf
   type: call
@@ -107,13 +107,13 @@
   template:
     pattern: "new EqualOverrideMap<~T0~, ~T1~>([~*~])"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 - id: kotlin.collections.hashMapOf
   type: call
   template:
     pattern: "new EqualOverrideMap([~*~])"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.HashMap
   type: call
@@ -134,14 +134,14 @@
   template:
     pattern: "new EqualOverrideMap<~T0~, ~T1~>()"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.HashMap
   type: call
   template:
     pattern: "new EqualOverrideMap()"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 
 - id: java.util.HashMap
   type: call
@@ -162,14 +162,14 @@
   template:
     pattern: "new EqualOverrideMap<~T0~, ~T1~>()"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 
 - id: java.util.HashMap
   type: call
   template:
     pattern: "new EqualOverrideMap()"
     imports:
-      EqualOverrideMap: butterfly/dist/KotlinCollections
+      EqualOverrideMap: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.Map.Entry
   type: type
@@ -224,7 +224,7 @@
   template:
     pattern: xMapPutAll(~this~, ~0~)
     imports:
-      xMapPutAll: butterfly/dist/kotlin/Collections
+      xMapPutAll: butterfly-web/dist/kotlin/Collections
 - id: kotlin.collections.MutableMap.remove
   type: call
   template: ~this~.delete(~0~)

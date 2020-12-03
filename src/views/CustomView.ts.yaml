@@ -12,7 +12,7 @@
   template:
     pattern: customViewSetDelegate(~this~, ~0~)
     imports:
-      customViewSetDelegate: butterfly/dist/views/CustomView
+      customViewSetDelegate: butterfly-web/dist/views/CustomView
 
 - id: android.view.View.invalidate
   type: call
@@ -20,7 +20,7 @@
   template:
     pattern: customViewInvalidate(~this~)
     imports:
-      customViewInvalidate: butterfly/dist/views/CustomView
+      customViewInvalidate: butterfly-web/dist/views/CustomView
 
 - id: android.view.View.postInvalidate
   type: call
@@ -28,4 +28,4 @@
   template:
     pattern: customViewInvalidate(~this~)
     imports:
-      customViewInvalidate: butterfly/dist/views/CustomView
+      customViewInvalidate: butterfly-web/dist/views/CustomView

@@ -97,4 +97,4 @@
   template:
     pattern: xIterableJoinToString(~this~, ~separator~, ~prefix~, ~postfix~, ~limit~, ~truncated~, ~transform~)
     imports:
-      xIterableJoinToString: butterfly/dist/kotlin/Iterables
+      xIterableJoinToString: butterfly-web/dist/kotlin/Iterables

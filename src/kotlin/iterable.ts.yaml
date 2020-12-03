@@ -12,36 +12,36 @@
   template:
     pattern: iterCount(~this~, ~0~)
     imports:
-      iterCount: butterfly/dist/kotlin/Collections
+      iterCount: butterfly-web/dist/kotlin/Collections
 
 - id: kotlin.collections.reversed
   type: call
   template:
     pattern: iterToArray(~this~).reverse()
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.drop
   type: call
   template:
     pattern: iterToArray(iterDrop(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterFilter: filter from butterfly/dist/kotlin/lazyOp
-      iterDrop: drop from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterFilter: filter from butterfly-web/dist/kotlin/lazyOp
+      iterDrop: drop from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.dropLast
   type: call
   template:
     pattern: iterToArray(iterDrop(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterDropRight: dropRight from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterDropRight: dropRight from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.dropWhile
   type: call
   template:
     pattern: iterToArray(iterDropUntil(~this~, (x) => { !~0~(x) }))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterDropUntil: dropUntil from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterDropUntil: dropUntil from butterfly-web/dist/kotlin/lazyOp
 #- id: kotlin.collections.dropLastWhile
 
 - id: kotlin.collections.take
@@ -49,22 +49,22 @@
   template:
     pattern: iterToArray(iterTake(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterTake: take from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterTake: take from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.takeLast
   type: call
   template:
     pattern: iterToArray(iterTake(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterTakeRight: takeRight from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterTakeRight: takeRight from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.takeWhile
   type: call
   template:
     pattern: iterToArray(iterTakeUntil(~this~, (x) => { !~0~(x) }))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterTakeUntil: takeUntil from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterTakeUntil: takeUntil from butterfly-web/dist/kotlin/lazyOp
 #- id: kotlin.collections.takeLastWhile
 
 - id: kotlin.collections.filter
@@ -72,22 +72,22 @@
   template:
     pattern: iterToArray(iterFilter(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterFilter: filter from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterFilter: filter from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.map
   type: call
   template:
     pattern: iterToArray(iterMap(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterMap: map from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterMap: map from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.mapIndexed
   type: call
   template:
     pattern: iterToArray(iterMap(~this~, (_v, _i) => { ~L0~ }))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterMap: map from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterMap: map from butterfly-web/dist/kotlin/lazyOp
     lambdaTransforms:
       0: ["_i", "_v"]
 - id: kotlin.collections.flatMap
@@ -95,46 +95,46 @@
   template:
     pattern: iterToArray(iterFlatMap(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterFlatMap: iterFlatMap from butterfly/dist/kotlin/Collections
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterFlatMap: iterFlatMap from butterfly-web/dist/kotlin/Collections
 
 - id: kotlin.collections.filterIndexed
   type: call
   template:
     pattern: iterToArray(iterFilter(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterFilter: filter from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterFilter: filter from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.filterNot
   type: call
   template:
     pattern: iterToArray(iterFilter(~this~, (x)=>{ !~0~(x) ))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterFilter: filter from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterFilter: filter from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.filterNotNull
   type: call
   template:
     pattern: iterToArray(iterableFilterNotNull(~this~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterableFilterNotNull: butterfly/dist/KotlinCollections
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterableFilterNotNull: butterfly-web/dist/KotlinCollections
 - id: kotlin.collections.mapNotNull
   type: call
   template:
     pattern: iterToArray(iterableFilterNotNull(iterMap(~this~, ~0~)))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterMap: map from butterfly/dist/kotlin/lazyOp
-      iterableFilterNotNull: butterfly/dist/KotlinCollections
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterMap: map from butterfly-web/dist/kotlin/lazyOp
+      iterableFilterNotNull: butterfly-web/dist/KotlinCollections
 - id: kotlin.collections.mapIndexedNotNull
   type: call
   template:
     pattern: iterToArray(iterableFilterNotNull(iterMap(~this~, (_v, _i) => { ~L0~ })))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterMap: map from butterfly/dist/kotlin/lazyOp
-      iterableFilterNotNull: butterfly/dist/KotlinCollections
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterMap: map from butterfly-web/dist/kotlin/lazyOp
+      iterableFilterNotNull: butterfly-web/dist/KotlinCollections
     lambdaTransforms:
       0: ["_i", "_v"]
 - id: kotlin.collections.chunked
@@ -142,91 +142,91 @@
   template:
     pattern: iterToArray(iterChunk(~this~, ~0~))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      iterChunk: chunk from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      iterChunk: chunk from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.sorted
   type: call
   template:
     pattern: iterToArray(~this~).sort()
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.sortedBy
   type: call
   template:
     pattern: iterToArray(~this~).sort((a, b) => safeCompare(~0~(a), ~0~(b)))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      safeCompare: butterfly/dist/kotlin/Comparable
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      safeCompare: butterfly-web/dist/kotlin/Comparable
 - id: kotlin.collections.sortedByDescending
   type: call
   template:
     pattern: iterToArray(~this~).sort((a, b) => -safeCompare(~0~(a), ~0~(b)))
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      safeCompare: butterfly/dist/kotlin/Comparable
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      safeCompare: butterfly-web/dist/kotlin/Comparable
 - id: kotlin.collections.sortedWith
   type: call
   template:
     pattern: iterToArray(~this~).sort(~0~)
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
-      safeCompare: butterfly/dist/kotlin/Comparable
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
+      safeCompare: butterfly-web/dist/kotlin/Comparable
 
 - id: kotlin.collections.associate
   type: call
   template:
     pattern: new Map(iterMap(~this~, ~0~))
     imports:
-      iterMap: map from butterfly/dist/kotlin/lazyOp
+      iterMap: map from butterfly-web/dist/kotlin/lazyOp
 - id: kotlin.collections.associateBy
   type: call
   template:
     pattern: new Map(iterMap(~this~, (_x)=>{ [~0~(_x), _x] }))
     imports:
-      iterMap: map from butterfly/dist/kotlin/lazyOp
+      iterMap: map from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.toList
   type: call
   template:
     pattern: iterToArray(~this~)
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.toMutableList
   type: call
   template:
     pattern: iterToArray(~this~)
     imports:
-      iterToArray: toArray from butterfly/dist/kotlin/lazyOp
+      iterToArray: toArray from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.distinct
   type: call
   template:
     pattern: "[...new EqualOverrideSet(~this~)]"
     imports:
-      EqualOverrideSet: butterfly/dist/KotlinCollections
+      EqualOverrideSet: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.toSet
   type: call
   template:
     pattern: "new EqualOverrideSet(~this~)"
     imports:
-      EqualOverrideSet: butterfly/dist/KotlinCollections
+      EqualOverrideSet: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.toMutableSet
   type: call
   template:
     pattern: "new EqualOverrideSet(~this~)"
     imports:
-      EqualOverrideSet: butterfly/dist/KotlinCollections
+      EqualOverrideSet: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.toHashSet
   type: call
   template:
     pattern: "new EqualOverrideSet(~this~)"
     imports:
-      EqualOverrideSet: butterfly/dist/KotlinCollections
+      EqualOverrideSet: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.distinct
   type: call
@@ -263,28 +263,28 @@
   template:
     pattern: iterFind(~this~, ~0~)
     imports:
-      iterFind: find from butterfly/dist/kotlin/lazyOp
+      iterFind: find from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.any
   type: call
   template:
     pattern: iterSome(~this~, ~0~)
     imports:
-      iterSome: some from butterfly/dist/kotlin/lazyOp
+      iterSome: some from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.all
   type: call
   template:
     pattern: iterEvery(~this~, ~0~)
     imports:
-      iterEvery: every from butterfly/dist/kotlin/lazyOp
+      iterEvery: every from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.none
   type: call
   template:
     pattern: (!iterSome(~this~, ~0~))
     imports:
-      iterSome: some from butterfly/dist/kotlin/lazyOp
+      iterSome: some from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.forEach
   type: call
@@ -299,7 +299,7 @@
   template:
     pattern: iterFirst(~this~)
     imports:
-      iterFirst: first from butterfly/dist/kotlin/lazyOp
+      iterFirst: first from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.firstOrNull
   type: call
@@ -307,7 +307,7 @@
   template:
     pattern: iterFirstOrNull(~this~)
     imports:
-      iterFirstOrNull: butterfly/dist/KotlinCollections
+      iterFirstOrNull: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.last
   type: call
@@ -315,7 +315,7 @@
   template:
     pattern: iterLast(~this~)
     imports:
-      iterLast: last from butterfly/dist/kotlin/lazyOp
+      iterLast: last from butterfly-web/dist/kotlin/lazyOp
 
 - id: kotlin.collections.lastOrNull
   type: call
@@ -323,46 +323,46 @@
   template:
     pattern: iterLastOrNull(~this~)
     imports:
-      iterLastOrNull: butterfly/dist/KotlinCollections
+      iterLastOrNull: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.firstOrNull
   type: call
   template:
     pattern: iterFirstOrNullFind(~this~, ~0~)
     imports:
-      iterFirstOrNullFind: butterfly/dist/KotlinCollections
+      iterFirstOrNullFind: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.lastOrNull
   type: call
   template:
     pattern: iterLastOrNullFind(~this~, ~0~)
     imports:
-      iterLastOrNullFind: butterfly/dist/KotlinCollections
+      iterLastOrNullFind: butterfly-web/dist/KotlinCollections
 
 - id: kotlin.collections.maxBy
   type: call
   template:
     pattern: iterMaxBy(~this~, ~0~)
     imports:
-      iterMaxBy: butterfly/dist/kotlin/Collections
+      iterMaxBy: butterfly-web/dist/kotlin/Collections
 
 - id: kotlin.collections.minBy
   type: call
   template:
     pattern: iterMinBy(~this~, ~0~)
     imports:
-      iterMinBy: butterfly/dist/kotlin/Collections
+      iterMinBy: butterfly-web/dist/kotlin/Collections
 
 - id: kotlin.collections.max
   type: call
   template:
     pattern: iterMaxBy(~this~, (x)=>x)
     imports:
-      iterMaxBy: butterfly/dist/kotlin/Collections
+      iterMaxBy: butterfly-web/dist/kotlin/Collections
 
 - id: kotlin.collections.min
   type: call
   template:
     pattern: iterMinBy(~this~, (x)=>x)
     imports:
-      iterMinBy: butterfly/dist/kotlin/Collections
+      iterMinBy: butterfly-web/dist/kotlin/Collections

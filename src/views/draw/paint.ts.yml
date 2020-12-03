@@ -4,7 +4,7 @@
   template:
     pattern: CanvasGradientMaker
     imports:
-      CanvasGradientMaker: butterfly/dist/views/draw/LinearGradient
+      CanvasGradientMaker: butterfly-web/dist/views/draw/LinearGradient
 
 
 - id: android.graphics.Paint
@@ -12,4 +12,4 @@
   template:
     pattern: new Paint()
     imports:
-      Paint: butterfly/dist/views/draw/Paint
+      Paint: butterfly-web/dist/views/draw/Paint

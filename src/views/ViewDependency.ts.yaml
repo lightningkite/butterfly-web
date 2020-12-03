@@ -16,7 +16,7 @@
   template:
     pattern: DisplayMetrics.INSTANCE
     imports:
-      DisplayMetrics: butterfly/dist/views/DisplayMetrics
+      DisplayMetrics: butterfly-web/dist/views/DisplayMetrics
 
 - id: com.lightningkite.butterfly.views.openUrl
   type: call

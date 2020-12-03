@@ -5,10 +5,10 @@
   template:
     pattern: new PointF(~0~, ~1~)
     imports:
-      PointF: butterfly/dist/views/geometry/PointF
+      PointF: butterfly-web/dist/views/geometry/PointF
 - id: android.graphics.PointF
   type: call
   template:
     pattern: new PointF()
     imports:
-      PointF: butterfly/dist/views/geometry/PointF
+      PointF: butterfly-web/dist/views/geometry/PointF

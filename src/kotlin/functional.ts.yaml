@@ -16,25 +16,25 @@
   template:
     pattern: "also(~this~, ~0~)"
     imports:
-      also: butterfly/dist/Kotlin
+      also: butterfly-web/dist/Kotlin
 
 - id: kotlin.apply
   type: call
   template:
     pattern: "also(~this~, ~0~)"
     imports:
-      also: butterfly/dist/Kotlin
+      also: butterfly-web/dist/Kotlin
 
 - id: kotlin.takeIf
   type: call
   template:
     pattern: takeIf(~this~, ~0~)
     imports:
-      takeIf: butterfly/dist/Kotlin
+      takeIf: butterfly-web/dist/Kotlin
 
 - id: kotlin.takeUnless
   type: call
   template:
     pattern: takeUnless(~this~, ~0~)
     imports:
-      takeUnless: butterfly/dist/Kotlin
+      takeUnless: butterfly-web/dist/Kotlin

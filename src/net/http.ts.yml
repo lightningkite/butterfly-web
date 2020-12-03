@@ -3,7 +3,7 @@
   template:
     pattern: HttpBody
     imports:
-      HttpBody: butterfly/dist/net/HttpBody
+      HttpBody: butterfly-web/dist/net/HttpBody
 
 - id: com.lightningkite.butterfly.net.HttpResponse
   type: type

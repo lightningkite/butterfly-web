@@ -22,7 +22,7 @@
   template:
     pattern: safeCompare(~this~, ~0~)
     imports:
-      safeCompare: butterfly/dist/kotlin/Comparable
+      safeCompare: butterfly-web/dist/kotlin/Comparable
 
 - id: java.util.Comparable.compareTo
   type: call
@@ -30,7 +30,7 @@
   template:
     pattern: safeCompare(~this~, ~0~)
     imports:
-      safeCompare: butterfly/dist/kotlin/Comparable
+      safeCompare: butterfly-web/dist/kotlin/Comparable
 
 # Coerce
 - id: kotlin.ranges.coerceIn
@@ -38,32 +38,32 @@
   template:
     pattern: cCoerce(~this~, ~0~, ~1~)
     imports:
-      cCoerce: butterfly/dist/kotlin/Comparable
+      cCoerce: butterfly-web/dist/kotlin/Comparable
 
 - id: kotlin.ranges.coerceAtMost
   type: call
   template:
     pattern: cMin(~this~, ~0~)
     imports:
-      cMin: butterfly/dist/kotlin/Comparable
+      cMin: butterfly-web/dist/kotlin/Comparable
 
 - id: kotlin.ranges.coerceAtLeast
   type: call
   template:
     pattern: cMax(~this~, ~0~)
     imports:
-      cMax: butterfly/dist/kotlin/Comparable
+      cMax: butterfly-web/dist/kotlin/Comparable
 
 - id: kotlin.comparisons.maxOf
   type: call
   template:
     pattern: cMax(~*~)
     imports:
-      cMax: butterfly/dist/kotlin/Comparable
+      cMax: butterfly-web/dist/kotlin/Comparable
 
 - id: kotlin.comparisons.minOf
   type: call
   template:
     pattern: cMin(~*~)
     imports:
-      cMin: butterfly/dist/kotlin/Comparable
+      cMin: butterfly-web/dist/kotlin/Comparable

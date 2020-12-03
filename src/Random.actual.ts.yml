@@ -78,10 +78,10 @@
   template:
     pattern: RandomInstance
     imports:
-      RandomInstance: butterfly/dist/Random
+      RandomInstance: butterfly-web/dist/Random
 - id: kotlin.random.Random
   type: get
   template:
     pattern: RandomInstance
     imports:
-      RandomInstance: butterfly/dist/Random
+      RandomInstance: butterfly-web/dist/Random

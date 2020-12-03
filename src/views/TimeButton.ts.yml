@@ -9,4 +9,4 @@
   template:
     pattern: also(document.createElement('input') as HTMLInputElement, (x)=>{ x.type = "time" })
     imports:
-      also: butterfly/dist/Kotlin
+      also: butterfly-web/dist/Kotlin

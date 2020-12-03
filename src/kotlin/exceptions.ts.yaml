@@ -4,104 +4,104 @@
   template:
     pattern: new Exception(~0~, ~1~)
     imports:
-      Exception: butterfly/dist/Kotlin
+      Exception: butterfly-web/dist/Kotlin
 - id: java.lang.IllegalArgumentException
   type: call
   template:
     pattern: new IllegalArgumentException(~0~, ~1~)
     imports:
-      IllegalArgumentException: butterfly/dist/Kotlin
+      IllegalArgumentException: butterfly-web/dist/Kotlin
 - id: java.lang.IllegalStateException
   type: call
   template:
     pattern: new IllegalStateException(~0~, ~1~)
     imports:
-      IllegalStateException: butterfly/dist/Kotlin
+      IllegalStateException: butterfly-web/dist/Kotlin
 - id: java.lang.NoSuchElementException
   type: call
   template:
     pattern: new NoSuchElementException(~0~, ~1~)
     imports:
-      NoSuchElementException: butterfly/dist/Kotlin
+      NoSuchElementException: butterfly-web/dist/Kotlin
 
 - id: kotlin.Exception
   type: call
   template:
     pattern: new Exception(~0~, ~1~)
     imports:
-      Exception: butterfly/dist/Kotlin
+      Exception: butterfly-web/dist/Kotlin
 - id: kotlin.IllegalArgumentException
   type: call
   template:
     pattern: new IllegalArgumentException(~0~, ~1~)
     imports:
-      IllegalArgumentException: butterfly/dist/Kotlin
+      IllegalArgumentException: butterfly-web/dist/Kotlin
 - id: kotlin.IllegalStateException
   type: call
   template:
     pattern: new IllegalStateException(~0~, ~1~)
     imports:
-      IllegalStateException: butterfly/dist/Kotlin
+      IllegalStateException: butterfly-web/dist/Kotlin
 - id: kotlin.NoSuchElementException
   type: call
   template:
     pattern: new NoSuchElementException(~0~, ~1~)
     imports:
-      NoSuchElementException: butterfly/dist/Kotlin
+      NoSuchElementException: butterfly-web/dist/Kotlin
 
 - id: kotlin.Exception
   type: type
   template:
     pattern: Exception
     imports:
-      Exception: butterfly/dist/Kotlin
+      Exception: butterfly-web/dist/Kotlin
 - id: kotlin.IllegalArgumentException
   type: type
   template:
     pattern: IllegalArgumentException
     imports:
-      IllegalArgumentException: butterfly/dist/Kotlin
+      IllegalArgumentException: butterfly-web/dist/Kotlin
 - id: kotlin.IllegalStateException
   type: type
   template:
     pattern: IllegalStateException
     imports:
-      IllegalStateException: butterfly/dist/Kotlin
+      IllegalStateException: butterfly-web/dist/Kotlin
 - id: kotlin.NoSuchElementException
   type: type
   template:
     pattern: NoSuchElementException
     imports:
-      NoSuchElementException: butterfly/dist/Kotlin
+      NoSuchElementException: butterfly-web/dist/Kotlin
 
 - id: java.lang.Exception
   type: type
   template:
     pattern: Exception
     imports:
-      Exception: butterfly/dist/Kotlin
+      Exception: butterfly-web/dist/Kotlin
 - id: java.lang.IllegalArgumentException
   type: type
   template:
     pattern: IllegalArgumentException
     imports:
-      IllegalArgumentException: butterfly/dist/Kotlin
+      IllegalArgumentException: butterfly-web/dist/Kotlin
 - id: java.lang.IllegalStateException
   type: type
   template:
     pattern: IllegalStateException
     imports:
-      IllegalStateException: butterfly/dist/Kotlin
+      IllegalStateException: butterfly-web/dist/Kotlin
 - id: java.lang.NoSuchElementException
   type: type
   template:
     pattern: NoSuchElementException
     imports:
-      NoSuchElementException: butterfly/dist/Kotlin
+      NoSuchElementException: butterfly-web/dist/Kotlin
 
 - id: kotlin.Throwable.printStackTrace
   type: call
   template:
     pattern: printStackTrace(~this~)
     imports:
-      printStackTrace: butterfly/dist/kotlin/Language
+      printStackTrace: butterfly-web/dist/kotlin/Language
