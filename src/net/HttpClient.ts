@@ -9,6 +9,7 @@ import {map, mergeMap, timeout} from "rxjs/operators";
 import {HttpCacheMode, HttpOptions, HttpPhase, HttpProgress} from "./HttpModels";
 import {ObservableProperty} from "../observables/ObservableProperty";
 import {xObservableAsObservableProperty} from "../observables/EventToObservableProperty";
+import {HttpMediaTypes} from "./HttpMediaType";
 
 //! Declares com.lightningkite.butterfly.net.HttpClient
 export class HttpClient {
@@ -36,7 +37,7 @@ export class HttpClient {
         options: HttpOptions = this.defaultOptions
     ): Observable<Response> {
         let h = new Array(...headers.entries());
-        if(body !== null){
+        if(body !== null && body.type !== HttpMediaTypes.INSTANCE.MULTIPART_FORM_DATA){
             h.push(["Content-Type", body.type]);
         }
         let cacheString: RequestCache = "default"

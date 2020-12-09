@@ -7,6 +7,7 @@ const rxjs_1 = require("rxjs");
 const ConnectedWebSocket_1 = require("./ConnectedWebSocket");
 const operators_1 = require("rxjs/operators");
 const HttpModels_1 = require("./HttpModels");
+const HttpMediaType_1 = require("./HttpMediaType");
 //! Declares com.lightningkite.butterfly.net.HttpClient
 class HttpClient {
     constructor() {
@@ -24,7 +25,7 @@ class HttpClient {
     call(url, method = HttpClient.INSTANCE.GET, headers = new Map([]), body = null, options = this.defaultOptions) {
         var _a, _b, _c, _d;
         let h = new Array(...headers.entries());
-        if (body !== null) {
+        if (body !== null && body.type !== HttpMediaType_1.HttpMediaTypes.INSTANCE.MULTIPART_FORM_DATA) {
             h.push(["Content-Type", body.type]);
         }
         let cacheString = "default";
