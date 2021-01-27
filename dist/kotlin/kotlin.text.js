@@ -108,6 +108,13 @@ class StringBuilder {
     toString() { return this.value; }
 }
 exports.StringBuilder = StringBuilder;
+//! Declares kotlin.text.buildString
+function buildString(block) {
+    const b = new StringBuilder();
+    block(b);
+    return b.toString();
+}
+exports.buildString = buildString;
 //! Declares kotlin.text.indexOfAny
 function xCharSequenceIndexOfAny(c, set, start, caseSensitive) {
     if (caseSensitive) {

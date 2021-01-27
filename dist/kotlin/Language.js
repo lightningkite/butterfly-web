@@ -34,6 +34,11 @@ exports.IllegalStateException = IllegalStateException;
 class NoSuchElementException extends Exception {
 }
 exports.NoSuchElementException = NoSuchElementException;
+//! Declares kotlin.IndexOutOfBoundsException
+//! Declares java.lang.IndexOutOfBoundsException
+class IndexOutOfBoundsException extends Exception {
+}
+exports.IndexOutOfBoundsException = IndexOutOfBoundsException;
 function hashString(item) {
     if (item == null)
         return 0;

@@ -14,4 +14,5 @@ export declare class StringBuilder {
     value: string;
     toString(): string;
 }
+export declare function buildString(block: (this_: StringBuilder) => void): string;
 export declare function xCharSequenceIndexOfAny(c: string, set: Array<string>, start: number, caseSensitive: boolean): number;

@@ -262,6 +262,13 @@
 
 # TODO: groupBy
 
+- id: kotlin.sequences.find
+  type: call
+  template:
+    pattern: iterFind(~this~, ~0~)
+    imports:
+      iterFind: find from butterfly-web/dist/kotlin/lazyOp
+
 - id: kotlin.sequences.any
   type: call
   template:
@@ -282,6 +289,21 @@
     pattern: (!iterSome(~this~, ~0~))
     imports:
       iterSome: some from butterfly-web/dist/kotlin/lazyOp
+
+- id: kotlin.sequences.plus
+  type: call
+  arguments: [ kotlin.sequences.Sequence ]
+  template:
+    pattern: iterConcat(~this~, ~0~)
+    imports:
+      iterConcat: concat from butterfly-web/dist/kotlin/lazyOp
+
+- id: kotlin.sequences.plus
+  type: call
+  template:
+    pattern: iterConcat(~this~, [~0~])
+    imports:
+      iterConcat: concat from butterfly-web/dist/kotlin/lazyOp
 
 
 - id: kotlin.sequences.forEach

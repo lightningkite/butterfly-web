@@ -5,7 +5,7 @@
 export class Exception extends Error {
     cause: any;
 
-    constructor(message: string, cause?: any) {
+    constructor(message?: string, cause?: any) {
         super(message);
         this.cause = cause ?? null;
     }
@@ -32,6 +32,11 @@ export class IllegalStateException extends Exception {
 //! Declares kotlin.NoSuchElementException
 //! Declares java.lang.NoSuchElementException
 export class NoSuchElementException extends Exception {
+}
+
+//! Declares kotlin.IndexOutOfBoundsException
+//! Declares java.lang.IndexOutOfBoundsException
+export class IndexOutOfBoundsException extends Exception {
 }
 
 export function hashString(item: string | null): number {

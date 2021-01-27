@@ -98,3 +98,18 @@
     pattern: xIterableJoinToString(~this~, ~separator~, ~prefix~, ~postfix~, ~limit~, ~truncated~, ~transform~)
     imports:
       xIterableJoinToString: butterfly-web/dist/kotlin/Iterables
+
+- id: array.get
+  type: call
+  template: ~this~[~0~]
+- id: array.set
+  type: call
+  template: ~this~[~0~] = ~1~
+
+- id: kotlin.collections.indices
+  type: get
+  actualReceiver: array
+  template:
+    pattern: new NumberRange(0, ~this~.length-1)
+    imports:
+      NumberRange: butterfly-web/dist/Kotlin

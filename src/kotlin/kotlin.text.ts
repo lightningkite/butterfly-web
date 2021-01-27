@@ -99,6 +99,12 @@ export class StringBuilder {
     value: string = ""
     toString(): string { return this.value }
 }
+//! Declares kotlin.text.buildString
+export function buildString(block: (this_: StringBuilder)=>void): string {
+    const b = new StringBuilder()
+    block(b)
+    return b.toString()
+}
 
 //! Declares kotlin.text.indexOfAny
 export function xCharSequenceIndexOfAny(c: string, set: Array<string>, start: number, caseSensitive: boolean): number {

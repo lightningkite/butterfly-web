@@ -286,6 +286,21 @@
     imports:
       iterSome: some from butterfly-web/dist/kotlin/lazyOp
 
+- id: kotlin.collections.plus
+  type: call
+  arguments: [ kotlin.collections.Iterable ]
+  template:
+    pattern: iterConcat(~this~, ~0~)
+    imports:
+      iterConcat: concat from butterfly-web/dist/kotlin/lazyOp
+
+- id: kotlin.collections.plus
+  type: call
+  template:
+    pattern: iterConcat(~this~, [~0~])
+    imports:
+      iterConcat: concat from butterfly-web/dist/kotlin/lazyOp
+
 - id: kotlin.collections.forEach
   type: call
   template:

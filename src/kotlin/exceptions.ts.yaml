@@ -23,6 +23,18 @@
     pattern: new NoSuchElementException(~0~, ~1~)
     imports:
       NoSuchElementException: butterfly-web/dist/Kotlin
+- id: java.lang.NoSuchElementException
+  type: call
+  template:
+    pattern: new NoSuchElementException(~0~, ~1~)
+    imports:
+      NoSuchElementException: butterfly-web/dist/Kotlin
+- id: java.lang.IndexOutOfBoundsException
+  type: call
+  template:
+    pattern: new IndexOutOfBoundsException(~0~, ~1~)
+    imports:
+      IndexOutOfBoundsException: butterfly-web/dist/Kotlin
 
 - id: kotlin.Exception
   type: call
@@ -48,6 +60,12 @@
     pattern: new NoSuchElementException(~0~, ~1~)
     imports:
       NoSuchElementException: butterfly-web/dist/Kotlin
+- id: kotlin.IndexOutOfBoundsException
+  type: call
+  template:
+    pattern: new IndexOutOfBoundsException(~0~, ~1~)
+    imports:
+      IndexOutOfBoundsException: butterfly-web/dist/Kotlin
 
 - id: kotlin.Exception
   type: type
@@ -73,6 +91,12 @@
     pattern: NoSuchElementException
     imports:
       NoSuchElementException: butterfly-web/dist/Kotlin
+- id: kotlin.IndexOutOfBoundsException
+  type: type
+  template:
+    pattern: IndexOutOfBoundsException
+    imports:
+      IndexOutOfBoundsException: butterfly-web/dist/Kotlin
 
 - id: java.lang.Exception
   type: type
@@ -98,6 +122,12 @@
     pattern: NoSuchElementException
     imports:
       NoSuchElementException: butterfly-web/dist/Kotlin
+- id: java.lang.IndexOutOfBoundsException
+  type: type
+  template:
+    pattern: IndexOutOfBoundsException
+    imports:
+      IndexOutOfBoundsException: butterfly-web/dist/Kotlin
 
 - id: kotlin.Throwable.printStackTrace
   type: call

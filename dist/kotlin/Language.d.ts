@@ -1,6 +1,6 @@
 export declare class Exception extends Error {
     cause: any;
-    constructor(message: string, cause?: any);
+    constructor(message?: string, cause?: any);
 }
 export declare function printStackTrace(something: any): void;
 export declare class IllegalArgumentException extends Exception {
@@ -8,6 +8,8 @@ export declare class IllegalArgumentException extends Exception {
 export declare class IllegalStateException extends Exception {
 }
 export declare class NoSuchElementException extends Exception {
+}
+export declare class IndexOutOfBoundsException extends Exception {
 }
 export declare function hashString(item: string | null): number;
 export declare function hashAnything(item: any): number;

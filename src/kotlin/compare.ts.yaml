@@ -16,6 +16,20 @@
   type: call
   template: ~0~
 
+- id: kotlin.Comparator
+  type: type
+  template:
+    pattern: Comparator<~T0~>
+    imports:
+      Comparator: butterfly-web/dist/kotlin/Comparable
+
+- id: java.util.Comparator
+  type: type
+  template:
+    pattern: Comparator<~T0~>
+    imports:
+      Comparator: butterfly-web/dist/kotlin/Comparable
+
 - id: kotlin.Comparable.compareTo
   type: call
   infix: false
