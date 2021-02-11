@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require("ts-polyfill");
+require("./polyfill");
 const ViewDependency_1 = require("./views/ViewDependency");
 const HttpClient_1 = require("./net/HttpClient");
 const rxjs_1 = require("rxjs");

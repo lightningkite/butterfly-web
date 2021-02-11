@@ -5,8 +5,7 @@
   "main": "Kotlin.js",
   "types": "Kotlin.d.ts",
   "dependencies": {
-  },
-  "peerDependencies": {
+    "ts-polyfill": "^3.8.2",
     "rxjs": "6.x",
     "sprintf-js": "1.1.x",
     "@types/sprintf-js": "1.1.x",
@@ -16,6 +15,7 @@
     "@types/uuid": "8.x",
     "iterable-operator": "0.10.x"
   },
+  "peerDependencies": {},
   "devDependencies": {
     "typescript": "^3.4.5"
   },

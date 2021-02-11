@@ -298,6 +298,16 @@ function xActivityAccessDownloadFile(this_, url) {
     a.click();
 }
 exports.xActivityAccessDownloadFile = xActivityAccessDownloadFile;
+//! Declares com.lightningkite.butterfly.views.downloadFileData>com.lightningkite.butterfly.android.ActivityAccess
+function xActivityAccessDownloadFileData(this_, data, name, type) {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([data], {
+        type: type
+    }));
+    a.download = name;
+    a.click();
+}
+exports.xActivityAccessDownloadFileData = xActivityAccessDownloadFileData;
 function openFileMulti(type, callback) {
     const f = document.createElement("input");
     f.type = "file";

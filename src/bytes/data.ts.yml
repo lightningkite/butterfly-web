@@ -16,6 +16,11 @@
   receiver: kotlin.String
   template: new Int8Array(new TextEncoder().encode(~this~))
 
+- id: com.lightningkite.butterfly.bytes.toData
+  type: call
+  receiver: kotlin.String
+  template: new Int8Array(new TextEncoder().encode(~this~))
+
 - id: kotlin.text.Charsets.UTF_8
   type: get
   template: '"utf-8"'

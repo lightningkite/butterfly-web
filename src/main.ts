@@ -1,3 +1,5 @@
+import 'ts-polyfill'
+import './polyfill'
 import {ViewGenerator} from "./views/ViewGenerator";
 import {listenForDialogs} from "./views/ViewDependency";
 import {HttpClient} from "./net/HttpClient";

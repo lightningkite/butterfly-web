@@ -18,3 +18,4 @@ export declare function xActivityAccessRequestFiles(this_: Window, callback: (a:
 export declare function xActivityAccessGetMimeType(this_: Window, file: File): string;
 export declare function xActivityAccessGetFileName(this_: Window, file: File): string;
 export declare function xActivityAccessDownloadFile(this_: Window, url: string): void;
+export declare function xActivityAccessDownloadFileData(this_: Window, data: Int8Array, name: string, type: string): void;

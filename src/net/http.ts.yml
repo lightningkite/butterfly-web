@@ -13,6 +13,10 @@
   type: type
   template: Response
 
+- id: okhttp3.MediaType.parse
+  type: call
+  template: ~0~
+
 
 - id: java.net.SocketTimeoutException
   type: type
