@@ -175,6 +175,10 @@
   type: type
   template: '[~T0~, ~T1~]'
 
+- id: kotlin.collections.MutableMap.MutableEntry
+  type: type
+  template: '[~T0~, ~T1~]'
+
 ## Usage
 
 - id: kotlin.collections.component1
