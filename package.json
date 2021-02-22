@@ -17,11 +17,14 @@
   },
   "peerDependencies": {},
   "devDependencies": {
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.1",
+    "@types/jest": "^26.0.20"
   },
   "scripts": {
     "build": "tsc",
-    "execute": "tsc && node dist/Kotlin.js"
+    "test": "jest --env=node --colors --coverage test"
   },
   "author": "Lightning Kite"
 }

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./src;./test",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
