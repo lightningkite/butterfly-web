@@ -16,6 +16,7 @@ class LinearLayoutBoundSubview {
         this.property = property;
     }
 }
+exports.LinearLayoutBoundSubview = LinearLayoutBoundSubview;
 //! Declares com.lightningkite.butterfly.observables.binding.bind>android.widget.LinearLayout
 function xLinearLayoutBind(this_, data, defaultValue, makeView) {
     const existingViews = [];

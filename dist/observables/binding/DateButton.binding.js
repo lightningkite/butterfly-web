@@ -92,6 +92,31 @@ function xDateButtonBindDateAlone(this_, date) {
     };
 }
 exports.xDateButtonBindDateAlone = xDateButtonBindDateAlone;
+//! Declares com.lightningkite.butterfly.observables.binding.bindDateAloneNull>com.lightningkite.butterfly.views.widget.DateButton
+function xDateButtonBindDateAloneNull(this_, dependency, date, startText) {
+    let suppress = false;
+    DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {
+        if (suppress)
+            return;
+        suppress = true;
+        this_.value = it ? DateAlone_1.xDateAloneIso8601(it) : "";
+        suppress = false;
+    }), DisposeCondition_ext_1.xViewRemovedGet(this_));
+    this_.onchange = (e) => {
+        if (suppress)
+            return;
+        suppress = true;
+        const d = DateAlone_1.DateAlone.Companion.INSTANCE.iso(this_.value);
+        if (d) {
+            date.value = d;
+        }
+        else {
+            date.value = null;
+        }
+        suppress = false;
+    };
+}
+exports.xDateButtonBindDateAloneNull = xDateButtonBindDateAloneNull;
 //! Declares com.lightningkite.butterfly.observables.binding.bindTimeAlone>com.lightningkite.butterfly.views.widget.TimeButton
 function xTimeButtonBindTimeAlone(this_, date, minuteInterval = 1) {
     let suppress = false;

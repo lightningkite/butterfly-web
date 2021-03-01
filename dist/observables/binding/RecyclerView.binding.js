@@ -8,9 +8,12 @@ const DisposeCondition_ext_1 = require("../../rx/DisposeCondition.ext");
 const StandardObservableProperty_1 = require("../StandardObservableProperty");
 const Kotlin_1 = require("../../Kotlin");
 const LinearLayout_binding_1 = require("./LinearLayout.binding");
+const LinearLayout_1 = require("../../views/LinearLayout");
+const Align_1 = require("../../views/geometry/Align");
 const viewAttached_1 = require("../../views/viewAttached");
 //! Declares com.lightningkite.butterfly.observables.binding.whenScrolledToEnd>androidx.recyclerview.widget.RecyclerView
 function xRecyclerViewWhenScrolledToEnd(this_, action) {
+    this_._onScrollToEnd = action;
     this_.addEventListener("scroll", (ev) => {
         if (this_.scrollTop >= this_.scrollHeight - this_.offsetHeight - 10) {
             action();
@@ -47,7 +50,36 @@ function xRecyclerViewReverseDirectionSet(this_, value) {
 exports.xRecyclerViewReverseDirectionSet = xRecyclerViewReverseDirectionSet;
 //! Declares com.lightningkite.butterfly.observables.binding.bind>androidx.recyclerview.widget.RecyclerView
 function xRecyclerViewBind(this_, data, defaultValue, makeView) {
-    LinearLayout_binding_1.xLinearLayoutBind(this_, data, defaultValue, makeView);
+    const existingViews = [];
+    DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(data, undefined, undefined, (value) => {
+        //Fix view count
+        const excessViews = existingViews.length - value.length;
+        if (excessViews > 0) {
+            //remove views
+            for (const iter of new Kotlin_1.NumberRange(1, excessViews)) {
+                const old = existingViews.splice((existingViews.length - 1), 1)[0];
+                this_.removeChild(old.view);
+            }
+        }
+        else {
+            if (existingViews.length < value.length) {
+                //add views
+                for (const iter of new Kotlin_1.NumberRange(1, ((-excessViews)))) {
+                    const prop = new StandardObservableProperty_1.StandardObservableProperty(defaultValue, undefined);
+                    const view = makeView(prop);
+                    this_.appendChild(LinearLayout_1.xLinearLayoutParams(this_, undefined, undefined, undefined, undefined, undefined, undefined, Align_1.AlignPair.Companion.INSTANCE.centerFill, undefined)(view));
+                    existingViews.push(new LinearLayout_binding_1.LinearLayoutBoundSubview(view, prop));
+                }
+            }
+        }
+        //Update views
+        for (const index of new Kotlin_1.NumberRange(0, value.length - 1)) {
+            existingViews[index].property.value = value[index];
+        }
+        if (this_.scrollTop >= this_.scrollHeight - this_.offsetHeight - 10 && this_._onScrollToEnd) {
+            this_._onScrollToEnd();
+        }
+    }), DisposeCondition_ext_1.xViewRemovedGet(this_));
 }
 exports.xRecyclerViewBind = xRecyclerViewBind;
 class RVTypeHandler {
@@ -112,6 +144,9 @@ function xRecyclerViewBindMulti(this_, data, defaultValue, determineType, makeVi
             for (const part of entry[1]) {
                 viewAttached_1.triggerDetatchEvent(part[1]);
             }
+        }
+        if (this_.scrollTop >= this_.scrollHeight - this_.offsetHeight - 10 && this_._onScrollToEnd) {
+            this_._onScrollToEnd();
         }
     }), DisposeCondition_ext_1.xViewRemovedGet(this_));
 }

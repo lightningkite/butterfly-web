@@ -1,5 +1,10 @@
 import { ObservableProperty } from '../ObservableProperty';
 import { StandardObservableProperty } from '../StandardObservableProperty';
+declare global {
+    interface HTMLDivElement {
+        _onScrollToEnd?: () => void;
+    }
+}
 export declare function xRecyclerViewWhenScrolledToEnd(this_: HTMLDivElement, action: () => void): void;
 export declare function xRecyclerViewReverseDirectionGet(this_: HTMLDivElement): boolean;
 export declare function xRecyclerViewReverseDirectionSet(this_: HTMLDivElement, value: boolean): void;

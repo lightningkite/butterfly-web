@@ -9,14 +9,22 @@ import {StandardObservableProperty} from '../StandardObservableProperty'
 import {xObservablePropertyMap} from '../TransformedObservableProperty'
 import {MutableObservableProperty} from '../MutableObservableProperty'
 import {also, checkReified, NumberRange, tryCastClass} from '../../Kotlin'
-import {xLinearLayoutBind} from "./LinearLayout.binding";
+import {LinearLayoutBoundSubview, xLinearLayoutBind} from "./LinearLayout.binding";
 import {xLinearLayoutParams} from "../../views/LinearLayout";
 import {AlignPair} from "../../views/geometry/Align";
 import {range} from "iterable-operator";
 import {triggerDetatchEvent} from "../../views/viewAttached";
+import {SubscriptionLike} from "rxjs";
+
+declare global {
+    interface HTMLDivElement {
+        _onScrollToEnd?: ()=>void
+    }
+}
 
 //! Declares com.lightningkite.butterfly.observables.binding.whenScrolledToEnd>androidx.recyclerview.widget.RecyclerView
 export function xRecyclerViewWhenScrolledToEnd(this_: HTMLDivElement, action: () => void): void {
+    this_._onScrollToEnd = action
     this_.addEventListener("scroll", (ev) => {
         if (this_.scrollTop >= this_.scrollHeight - this_.offsetHeight - 10) {
             action()
@@ -51,7 +59,40 @@ export function xRecyclerViewReverseDirectionSet(this_: HTMLDivElement, value: b
 
 //! Declares com.lightningkite.butterfly.observables.binding.bind>androidx.recyclerview.widget.RecyclerView
 export function xRecyclerViewBind<T>(this_: HTMLDivElement, data: ObservableProperty<Array<T>>, defaultValue: T, makeView: (a: ObservableProperty<T>) => HTMLElement): void {
-    xLinearLayoutBind(this_, data, defaultValue, makeView)
+    const existingViews: Array<LinearLayoutBoundSubview<T>> = [];
+
+    xDisposableUntil<SubscriptionLike>(xObservablePropertySubscribeBy<Array<T>>(data, undefined, undefined, (value: Array<T>): void => {
+        //Fix view count
+        const excessViews = existingViews.length - value.length;
+
+        if (excessViews > 0) {
+            //remove views
+            for (const iter of new NumberRange(1, excessViews)) {
+                const old = existingViews.splice((existingViews.length - 1), 1)[0];
+
+                this_.removeChild(old.view);
+            }
+        } else { if (existingViews.length < value.length) {
+            //add views
+            for (const iter of new NumberRange(1, ((-excessViews)))) {
+                const prop = new StandardObservableProperty<T>(defaultValue, undefined);
+
+                const view = makeView(prop);
+
+                this_.appendChild(xLinearLayoutParams(this_, undefined, undefined, undefined, undefined, undefined, undefined, AlignPair.Companion.INSTANCE.centerFill, undefined)(view));
+                existingViews.push(new LinearLayoutBoundSubview<T>(view, prop));
+            }
+        } }
+
+        //Update views
+        for (const index of new NumberRange(0, value.length-1)) {
+            existingViews[index].property.value = value[index];
+        }
+
+        if (this_.scrollTop >= this_.scrollHeight - this_.offsetHeight - 10 && this_._onScrollToEnd) {
+            this_._onScrollToEnd()
+        }
+    }), xViewRemovedGet(this_));
 }
 
 //! Declares com.lightningkite.butterfly.observables.binding.RVTypeHandler
@@ -126,6 +167,9 @@ export function xRecyclerViewBindMulti<T>(this_: HTMLDivElement, data: Observabl
             for (const part of entry[1]) {
                 triggerDetatchEvent(part[1]);
             }
+        }
+        if (this_.scrollTop >= this_.scrollHeight - this_.offsetHeight - 10 && this_._onScrollToEnd) {
+            this_._onScrollToEnd()
         }
     }), xViewRemovedGet(this_));
 }

@@ -305,6 +305,7 @@
   template: ~this~.getTime()
 
 - id: com.lightningkite.butterfly.time.iso8601
+  receiver: java.util.Date
   type: call
   template: ~this~.toISOString()
 

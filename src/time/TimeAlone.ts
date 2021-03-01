@@ -81,7 +81,7 @@ export class TimeAlone {
     
 }
 
-//! Declares com.lightningkite.butterfly.time.iso8601
+//! Declares com.lightningkite.butterfly.time.iso8601>com.lightningkite.butterfly.time.TimeAlone
 export function xTimeAloneIso8601(this_: TimeAlone): string{
     return `${this_.hour.toString().padStart(2, "0")}:${this_.minute.toString().padStart(2, "0")}:${this_.second.toString().padStart(2, "0")}`
 }

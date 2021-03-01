@@ -73,7 +73,7 @@ TimeAlone.Companion = (_a = class Companion {
     },
     _a.INSTANCE = new _a(),
     _a);
-//! Declares com.lightningkite.butterfly.time.iso8601
+//! Declares com.lightningkite.butterfly.time.iso8601>com.lightningkite.butterfly.time.TimeAlone
 function xTimeAloneIso8601(this_) {
     return `${this_.hour.toString().padStart(2, "0")}:${this_.minute.toString().padStart(2, "0")}:${this_.second.toString().padStart(2, "0")}`;
 }

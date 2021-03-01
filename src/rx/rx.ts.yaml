@@ -664,3 +664,22 @@
     pattern: new Subject()
     imports:
       Subject: rxjs
+
+- id: io.reactivex.subjects.BehaviorSubject
+  type: type
+  template:
+    pattern: ReplaySubject<~T0~>
+    imports:
+      ReplaySubject: rxjs
+- id: io.reactivex.subjects.BehaviorSubject.create
+  type: call
+  template:
+    pattern: new ReplaySubject()
+    imports:
+      Subject: rxjs
+- id: io.reactivex.subjects.BehaviorSubject.createDefault
+  type: call
+  template:
+    pattern: new ReplaySubject(~0~)
+    imports:
+      Subject: rxjs

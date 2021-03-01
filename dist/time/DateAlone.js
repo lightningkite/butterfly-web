@@ -95,7 +95,7 @@ function xDateAloneAddDayOfWeek(this_, value) {
     return xDateAloneSetAddDayOfWeek(this_.copy(), value);
 }
 exports.xDateAloneAddDayOfWeek = xDateAloneAddDayOfWeek;
-//! Declares com.lightningkite.butterfly.time.iso8601
+//! Declares com.lightningkite.butterfly.time.iso8601>com.lightningkite.butterfly.time.DateAlone
 function xDateAloneIso8601(this_) {
     return `${this_.year.toString().padStart(4, "0")}-${this_.month.toString().padStart(2, "0")}-${this_.day.toString().padStart(2, "0")}`;
 }

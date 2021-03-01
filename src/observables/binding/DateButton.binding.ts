@@ -7,6 +7,7 @@ import {xViewRemovedGet, xDisposableUntil} from '../../rx/DisposeCondition.ext'
 import {xTimeAloneIso8601, TimeAlone} from '../../time/TimeAlone'
 import {MutableObservableProperty} from '../MutableObservableProperty'
 import {xDateAloneIso8601, DateAlone} from '../../time/DateAlone'
+import {ViewString} from "../../views/ViewString";
 
 //! Declares com.lightningkite.butterfly.observables.binding.bind>com.lightningkite.butterfly.views.widget.DateButton
 export function xDateButtonBind(this_: HTMLInputElement, date: MutableObservableProperty<Date>): void {
@@ -80,6 +81,29 @@ export function xDateButtonBindDateAlone(this_: HTMLInputElement, date: MutableO
         } else {
             console.warn("Failed to parse " + this_.value)
             console.warn(e);
+        }
+        suppress = false;
+    }
+}
+
+
+//! Declares com.lightningkite.butterfly.observables.binding.bindDateAloneNull>com.lightningkite.butterfly.views.widget.DateButton
+export function xDateButtonBindDateAloneNull(this_: HTMLInputElement, dependency: Window, date: MutableObservableProperty<DateAlone | null>, startText: ViewString): void {
+    let suppress = false;
+    xDisposableUntil(xObservablePropertySubscribeBy(date, undefined, undefined, (it) => {
+        if(suppress) return;
+        suppress = true;
+        this_.value = it ? xDateAloneIso8601(it) : "";
+        suppress = false;
+    }), xViewRemovedGet(this_));
+    this_.onchange = (e) => {
+        if(suppress) return;
+        suppress = true;
+        const d = DateAlone.Companion.INSTANCE.iso(this_.value);
+        if(d){
+            date.value = d;
+        } else {
+            date.value = null;
         }
         suppress = false;
     }

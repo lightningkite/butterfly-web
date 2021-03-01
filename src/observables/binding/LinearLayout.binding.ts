@@ -11,7 +11,7 @@ import { xLinearLayoutParams } from '../../views/LinearLayout'
 import { xObservablePropertySubscribeBy } from '../ObservableProperty.ext'
 
 //! Declares com.lightningkite.butterfly.observables.binding.LinearLayoutBoundSubview
-class LinearLayoutBoundSubview<T> {
+export class LinearLayoutBoundSubview<T> {
     public readonly view: HTMLElement;
     public readonly property: StandardObservableProperty<T>;
     public constructor(view: HTMLElement, property: StandardObservableProperty<T>) {
