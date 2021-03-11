@@ -199,6 +199,9 @@
 - id: kotlin.text.Regex
   type: call
   template: new RegExp(~0~)
+- id: kotlin.text.Regex.matches
+  type: call
+  template: ~this~.test(~0~)
 
 # String Builder
 - id: kotlin.text.StringBuilder
