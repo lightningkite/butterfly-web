@@ -4,6 +4,10 @@
   type: type
   template: "uhoh"
 
+- id: org.junit.Assert.assertEquals
+  type: call
+  template: expect(~1~).toEqual(~0~)
+
 - id: kotlin.assert
   type: call
   template: "if(!(~0~)) throw new Error(\"Assertion failed\")"
