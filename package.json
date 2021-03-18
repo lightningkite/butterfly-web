@@ -1,5 +1,5 @@
 {
-  "name": "@lightningkite/butterfly-web",
+  "name": "@lightningkite/butterfly",
   "version": "0.1.0",
   "description": "The Butterfly Gradle plugin translates code from Kotlin to Typescript, but in order to do so, a set of libraries must be present on both sides.  This is the web portion.",
   "main": "Kotlin.js",
