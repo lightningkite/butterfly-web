@@ -1,7 +1,7 @@
 {
-  "name": "butterfly-web",
+  "name": "@lightningkite/butterfly-web",
   "version": "0.1.0",
-  "description": "",
+  "description": "The Butterfly Gradle plugin translates code from Kotlin to Typescript, but in order to do so, a set of libraries must be present on both sides.  This is the web portion.",
   "main": "Kotlin.js",
   "types": "Kotlin.d.ts",
   "dependencies": {
@@ -26,5 +26,18 @@
     "build": "tsc",
     "test": "jest --env=node --colors --coverage test"
   },
-  "author": "Lightning Kite"
+  "author": "Lightning Kite",
+  "license": "MIT",
+  "directories": {
+    "test": "test",
+    "lib": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lightningkite/butterfly-web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lightningkite/butterfly-web/issues"
+  },
+  "homepage": "https://github.com/lightningkite/butterfly-web#readme"
 }
