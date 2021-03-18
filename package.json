@@ -29,7 +29,6 @@
   "author": "Lightning Kite",
   "license": "MIT",
   "directories": {
-    "test": "test",
     "lib": "src"
   },
   "repository": {
