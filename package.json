@@ -1,6 +1,6 @@
 {
   "name": "butterfly-web",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The Butterfly Gradle plugin translates code from Kotlin to Typescript, but in order to do so, a set of libraries must be present on both sides.  This is the web portion.",
   "main": "Kotlin.js",
   "types": "Kotlin.d.ts",
