@@ -8,8 +8,8 @@
     "declaration": true,
     "sourceMap": true,
     "module": "commonjs",
-    "moduleResolution": "node",
     "target": "ES2015",
+    "moduleResolution": "node",
     "lib": [
       "DOM",
       "DOM.Iterable",
@@ -31,5 +31,8 @@
     "allowJs": true,
     "baseUrl": "src"
   },
-  "include": ["src/**/*", "resources/**/*"]
+  "include": [
+    "src/**/*",
+    "resources/**/*"
+  ]
 }
