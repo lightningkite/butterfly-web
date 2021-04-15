@@ -6,7 +6,7 @@ if (!String.prototype.replaceAll) {
             return this.replace(new RegExp(replacing.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), "g"), withString);
         }
         else {
-            return this.replace(new RegExp(replacing, "g"), withString);
+            return this.replace(replacing, withString);
         }
     };
 }

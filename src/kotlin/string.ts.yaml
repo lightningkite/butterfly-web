@@ -172,6 +172,14 @@
 - id: kotlin.text.replace
   type: call
   template: ~this~.replaceAll(~0~, ~1~)
+- id: kotlin.text.replace
+  type: call
+  arguments: [kotlin.text.Regex, kotlin.String]
+  template: ~this~.replace(new RegExp(~0~.source, "g"), ~1~)
+
+- id: kotlin.text.replace
+  type: call
+  template: ~this~.replaceAll(~0~, ~1~)
 - id: kotlin.text.startsWith
   type: call
   template: ~this~.startsWith(~*~)
