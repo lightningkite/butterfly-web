@@ -71,3 +71,4 @@ export declare function iterMinBy<T, V>(iter: Iterable<T>, selector: (t: T) => V
 export declare function xMapPlus<K, V>(lhs: Map<K, V>, rhs: Map<K, V>): Map<K, V>;
 export declare function xMapPutAll<K, V>(map: Map<K, V>, other: Map<K, V>): void;
 export declare function xMapMapValues<K, V, VOUT>(this_: Map<K, V>, transform: (entry: [K, V]) => VOUT): Map<K, VOUT>;
+export declare function xMapFilter<K, V>(this_: Map<K, V>, predicate: (entry: [K, V]) => boolean): Map<K, V>;
