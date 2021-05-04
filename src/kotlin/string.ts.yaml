@@ -195,6 +195,10 @@
 - id: kotlin.text.contains
   type: call
   template: (~this~.indexOf(~0~) != -1)
+- id: kotlin.text.contains
+  type: call
+  suppliedArguments: [other, ignoreCase]
+  template: (~this~.toLowerCase().indexOf(~0~.toLowerCase()) != -1)
 
 # Characters
 

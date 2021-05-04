@@ -218,6 +218,12 @@
 - id: kotlin.collections.Map.containsKey
   type: call
   template: ~this~.has(~0~)
+- id: java.util.HashMap.get
+  type: call
+  template: (~this~.get(~0~) ?? null)
+- id: java.util.HashMap.containsKey
+  type: call
+  template: ~this~.has(~0~)
 
 # Mutable
 - id: kotlin.collections.MutableMap.put
