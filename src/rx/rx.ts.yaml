@@ -364,6 +364,10 @@
     imports:
       rxRefCount: refCount from rxjs/operators
 
+- id: io.reactivex.observables.ConnectableObservable.autoConnect
+  type: call
+  template: ~this~
+
 - id: io.reactivex.Observable.take
   type: call
   template:
