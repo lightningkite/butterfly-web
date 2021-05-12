@@ -8,6 +8,7 @@ const DisposeCondition_ext_1 = require("../rx/DisposeCondition.ext");
 const DisposableLambda_1 = require("../rx/DisposableLambda");
 const customViewDelegateSymbol = Symbol("customViewDelegateSymbol");
 const customViewConfiguredSymbol = Symbol("customViewConfiguredSymbol");
+const customViewWillRender = Symbol("customViewConfiguredSymbol");
 function customViewSetDelegate(view, delegate) {
     var _a, _b;
     (_a = view[customViewDelegateSymbol]) === null || _a === void 0 ? void 0 : _a.dispose();
@@ -88,8 +89,24 @@ function customViewSetDelegate(view, delegate) {
         }));
         const p = view.parentElement;
         if (p) {
-            const adjWidth = !view.style.width && !(p.style.flexDirection == "column" && view.style.alignSelf == "stretch");
-            const adjHeight = !view.style.height && !(p.style.flexDirection == "row" && view.style.alignSelf == "stretch");
+            let adjWidth = false;
+            let adjHeight = false;
+            window.setTimeout(() => {
+                const myStyle = window.getComputedStyle(view);
+                const parentStyle = window.getComputedStyle(p);
+                adjWidth = !myStyle.width &&
+                    !(parentStyle.display == "flex" && parentStyle.flexDirection === "column" && myStyle.alignSelf === "stretch") &&
+                    !(parentStyle.display == "grid" && myStyle.alignSelf === "stretch");
+                adjHeight = !myStyle.height &&
+                    !(parentStyle.display == "flex" && parentStyle.flexDirection === "row" && myStyle.alignSelf === "stretch") &&
+                    !(parentStyle.display == "grid" && myStyle.justifySelf === "stretch");
+                if (adjWidth) {
+                    view.style.width = delegate.sizeThatFitsWidth(p.scrollWidth, p.scrollHeight).toString() + "px";
+                }
+                if (adjHeight) {
+                    view.style.height = delegate.sizeThatFitsHeight(p.scrollWidth, p.scrollHeight).toString() + "px";
+                }
+            }, 1);
             const obs = new ResizeObserver(function callback() {
                 if (adjWidth) {
                     view.style.width = delegate.sizeThatFitsWidth(p.scrollWidth, p.scrollHeight).toString() + "px";
@@ -97,7 +114,9 @@ function customViewSetDelegate(view, delegate) {
                 if (adjHeight) {
                     view.style.height = delegate.sizeThatFitsHeight(p.scrollWidth, p.scrollHeight).toString() + "px";
                 }
-                customViewInvalidate(view);
+                if (view.height != view.offsetHeight || view.width != view.offsetWidth) {
+                    customViewInvalidate(view);
+                }
                 if (!document.contains(view)) {
                     obs.disconnect();
                 }
@@ -108,18 +127,28 @@ function customViewSetDelegate(view, delegate) {
 }
 exports.customViewSetDelegate = customViewSetDelegate;
 function customViewInvalidate(view) {
-    const delegate = view[customViewDelegateSymbol];
-    if (!delegate)
-        return;
-    if (view.getContext) {
-        const ctx = view.getContext("2d");
-        view.width = view.offsetWidth;
-        view.height = view.offsetHeight;
-        if (ctx && view.width > 2 && view.height > 2) {
-            ctx.clearRect(0, 0, view.width, view.height);
-            delegate.draw(ctx, view.width, view.height, DisplayMetrics_1.DisplayMetrics.INSTANCE);
+    view[customViewWillRender] = true;
+    window.setTimeout(() => {
+        if (!view[customViewWillRender])
+            return;
+        const realWidth = view.offsetWidth;
+        const realHeight = view.offsetHeight;
+        view[customViewWillRender] = false;
+        const delegate = view[customViewDelegateSymbol];
+        if (!delegate)
+            return;
+        if (view.getContext) {
+            const ctx = view.getContext("2d");
+            if (view.height != realHeight || view.width != realWidth) {
+                view.width = realWidth;
+                view.height = realHeight;
+            }
+            if (ctx && view.width > 2 && view.height > 2) {
+                ctx.clearRect(0, 0, view.width, view.height);
+                delegate.draw(ctx, view.width, view.height, DisplayMetrics_1.DisplayMetrics.INSTANCE);
+            }
         }
-    }
+    }, 1);
 }
 exports.customViewInvalidate = customViewInvalidate;
 //# sourceMappingURL=CustomView.js.map
