@@ -60,6 +60,9 @@
   arguments: [kotlin.Double, kotlin.Double]
   template: Math.max(~0~, ~1~)
 
+- id: kotlin.math.pow
+  type: call
+  template: Math.pow(~this~, ~0~)
 
 - id: kotlin.math.abs
   type: call
