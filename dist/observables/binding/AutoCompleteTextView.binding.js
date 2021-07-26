@@ -4,6 +4,9 @@ const DisposeCondition_ext_1 = require("../../rx/DisposeCondition.ext");
 const ObservableProperty_ext_1 = require("../ObservableProperty.ext");
 const CombineObservableProperty_1 = require("../CombineObservableProperty");
 const StandardObservableProperty_1 = require("../StandardObservableProperty");
+const uuid_1 = require("uuid");
+const DisposableLambda_1 = require("../../rx/DisposableLambda");
+const viewAttached_1 = require("../../views/viewAttached");
 //! Declares com.lightningkite.butterfly.observables.binding.bind>android.widget.AutoCompleteTextView
 function xAutoCompleteTextViewBind(this_, options, toString, onItemSelected) {
     let query = new StandardObservableProperty_1.StandardObservableProperty("");
@@ -15,97 +18,55 @@ function xAutoCompleteTextViewBind(this_, options, toString, onItemSelected) {
 exports.xAutoCompleteTextViewBind = xAutoCompleteTextViewBind;
 //! Declares com.lightningkite.butterfly.observables.binding.bindList>android.widget.AutoCompleteTextView
 function xAutoCompleteTextViewBindList(this_, options, toString, onItemSelected) {
-    const container = this_.parentElement;
-    let selectionView = null;
-    function removeOptions() {
-        if (selectionView) {
-            container.removeChild(selectionView);
-            selectionView = null;
-        }
-    }
-    let lastCancel = Date.now();
-    function removeOptionsCancel() {
-        lastCancel = Date.now();
-    }
-    function removeOptionsTenative() {
-        window.setTimeout(() => {
-            if (Date.now() - lastCancel > 150) {
-                removeOptions();
+    let optionMap = new Map(options.value.map(x => [toString(x), x]));
+    const observables = options.value.map((x) => {
+        return new StandardObservableProperty_1.StandardObservableProperty(x);
+    });
+    const dataListElement = document.createElement("datalist");
+    dataListElement.id = uuid_1.v4();
+    document.body.appendChild(dataListElement);
+    const listAttr = document.createAttribute("list");
+    listAttr.value = dataListElement.id;
+    this_.attributes.setNamedItem(listAttr);
+    DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(options, undefined, undefined, (options) => {
+        optionMap = new Map(options.map(x => [toString(x), x]));
+        const this_ = dataListElement;
+        //correct number of options
+        const diff = options.length - this_.options.length;
+        if (diff > 0) {
+            for (let i = 0; i < diff; i++) {
+                const newOpt = document.createElement("option");
+                newOpt.value = (options.length - 1 - diff + i).toString();
+                const newObs = new StandardObservableProperty_1.StandardObservableProperty(options[options.length - diff + i]);
+                DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(newObs, undefined, undefined, (x) => {
+                    const s = toString(x);
+                    newOpt.value = s;
+                }), DisposeCondition_ext_1.xViewRemovedGet(newOpt));
+                this_.appendChild(newOpt);
+                observables.push(newObs);
             }
-        }, 100);
-    }
-    function showOptions(query, options) {
-        removeOptions();
-        const newSelectionView = document.createElement("div");
-        newSelectionView.tabIndex = -1;
-        newSelectionView.classList.add("butterfly-autocomplete-options");
-        for (const option of options) {
-            const optionView = document.createElement("button");
-            optionView.tabIndex = 0;
-            optionView.classList.add("butterfly-autocomplete-option");
-            optionView.innerText = toString(option);
-            optionView.addEventListener("click", (ev) => {
-                ev.stopPropagation();
-                onItemSelected(option);
-                removeOptions();
-            });
-            optionView.addEventListener("blur", (ev) => {
-                removeOptionsTenative();
-            });
-            optionView.addEventListener("focus", (ev) => {
-                removeOptionsCancel();
-            });
-            optionView.addEventListener("keydown", (ev) => {
-                switch (ev.code) {
-                    case "ArrowDown":
-                        ev.preventDefault();
-                        let child = optionView.nextElementSibling;
-                        if (child) {
-                            child.focus();
-                        }
-                        break;
-                    case "ArrowUp":
-                        ev.preventDefault();
-                        let child2 = optionView.previousElementSibling;
-                        if (child2) {
-                            child2.focus();
-                        }
-                        else {
-                            this_.focus();
-                        }
-                        break;
-                }
-            });
-            newSelectionView.appendChild(optionView);
         }
-        container.appendChild(newSelectionView);
-        selectionView = newSelectionView;
-    }
-    this_.addEventListener("blur", (ev) => {
-        removeOptionsTenative();
-    });
-    this_.addEventListener("focus", (ev) => {
-        removeOptionsCancel();
-    });
-    this_.addEventListener("input", (ev) => {
-        showOptions(this_.value, options.value);
-    });
-    this_.addEventListener("keydown", (ev) => {
-        switch (ev.code) {
-            case "ArrowDown":
-                ev.preventDefault();
-                let child = selectionView === null || selectionView === void 0 ? void 0 : selectionView.firstElementChild;
-                if (child) {
-                    child.focus();
-                }
-                break;
+        else if (diff < 0) {
+            for (let i = 0; i < -diff; i++) {
+                const opt = this_.options.item(this_.options.length - 1);
+                viewAttached_1.triggerDetatchEvent(opt);
+                this_.removeChild(this_.lastChild);
+                observables.pop();
+            }
         }
-    });
-    DisposeCondition_ext_1.xDisposableUntil(ObservableProperty_ext_1.xObservablePropertySubscribeBy(options, undefined, undefined, (x) => {
-        if (this_ === document.activeElement) {
-            showOptions(this_.value, x);
+        for (let i = 0; i < options.length; i++) {
+            observables[i].value = options[i];
         }
     }), DisposeCondition_ext_1.xViewRemovedGet(this_));
+    DisposeCondition_ext_1.xViewRemovedGet(this_).call(new DisposableLambda_1.DisposableLambda(() => {
+        document.body.removeChild(dataListElement);
+    }));
+    this_.addEventListener("input", (ev) => {
+        const sel = optionMap.get(this_.value);
+        if (sel !== undefined) {
+            onItemSelected(sel);
+        }
+    });
 }
 exports.xAutoCompleteTextViewBindList = xAutoCompleteTextViewBindList;
 //# sourceMappingURL=AutoCompleteTextView.binding.js.map
