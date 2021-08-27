@@ -368,6 +368,20 @@
     imports:
       iterMinBy: butterfly-web/dist/kotlin/Collections
 
+- id: kotlin.collections.maxByOrNull
+  type: call
+  template:
+    pattern: iterMaxBy(~this~, ~0~)
+    imports:
+      iterMaxBy: butterfly-web/dist/kotlin/Collections
+
+- id: kotlin.collections.minByOrNull
+  type: call
+  template:
+    pattern: iterMinBy(~this~, ~0~)
+    imports:
+      iterMinBy: butterfly-web/dist/kotlin/Collections
+
 - id: kotlin.collections.max
   type: call
   template:
@@ -376,6 +390,20 @@
       iterMaxBy: butterfly-web/dist/kotlin/Collections
 
 - id: kotlin.collections.min
+  type: call
+  template:
+    pattern: iterMinBy(~this~, (x)=>x)
+    imports:
+      iterMinBy: butterfly-web/dist/kotlin/Collections
+
+- id: kotlin.collections.maxOrNull
+  type: call
+  template:
+    pattern: iterMaxBy(~this~, (x)=>x)
+    imports:
+      iterMaxBy: butterfly-web/dist/kotlin/Collections
+
+- id: kotlin.collections.minOrNull
   type: call
   template:
     pattern: iterMinBy(~this~, (x)=>x)

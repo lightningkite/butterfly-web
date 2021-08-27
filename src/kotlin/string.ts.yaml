@@ -172,6 +172,14 @@
 - id: kotlin.text.replace
   type: call
   template: ~this~.replaceAll(~0~, ~1~)
+- id: kotlin.text.replace
+  type: call
+  arguments: [kotlin.text.Regex, kotlin.String]
+  template: ~this~.replace(new RegExp(~0~.source, "g"), ~1~)
+
+- id: kotlin.text.replace
+  type: call
+  template: ~this~.replaceAll(~0~, ~1~)
 - id: kotlin.text.startsWith
   type: call
   template: ~this~.startsWith(~*~)
@@ -187,6 +195,10 @@
 - id: kotlin.text.contains
   type: call
   template: (~this~.indexOf(~0~) != -1)
+- id: kotlin.text.contains
+  type: call
+  suppliedArguments: [other, ignoreCase]
+  template: (~this~.toLowerCase().indexOf(~0~.toLowerCase()) != -1)
 
 # Characters
 
@@ -199,6 +211,9 @@
 - id: kotlin.text.Regex
   type: call
   template: new RegExp(~0~)
+- id: kotlin.text.Regex.matches
+  type: call
+  template: ~this~.test(~0~)
 
 # String Builder
 - id: kotlin.text.StringBuilder

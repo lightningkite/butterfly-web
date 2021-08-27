@@ -457,3 +457,13 @@ export function xMapMapValues<K, V, VOUT>(this_: Map<K, V>, transform: (entry: [
     }
     return newMap
 }
+//! Declares kotlin.collections.filter
+export function xMapFilter<K, V>(this_: Map<K, V>, predicate: (entry: [K, V]) => boolean) {
+    const newMap: Map<K, V> = this_ instanceof EqualOverrideMap ? new EqualOverrideMap() : new Map();
+    for(const entry of this_.entries()) {
+        if(predicate(entry)) {
+            newMap.set(entry[0], entry[1])
+        }
+    }
+    return newMap
+}

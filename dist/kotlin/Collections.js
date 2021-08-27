@@ -399,4 +399,15 @@ function xMapMapValues(this_, transform) {
     return newMap;
 }
 exports.xMapMapValues = xMapMapValues;
+//! Declares kotlin.collections.filter
+function xMapFilter(this_, predicate) {
+    const newMap = this_ instanceof EqualOverrideMap ? new EqualOverrideMap() : new Map();
+    for (const entry of this_.entries()) {
+        if (predicate(entry)) {
+            newMap.set(entry[0], entry[1]);
+        }
+    }
+    return newMap;
+}
+exports.xMapFilter = xMapFilter;
 //# sourceMappingURL=Collections.js.map

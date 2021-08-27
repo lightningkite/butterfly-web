@@ -364,6 +364,13 @@
     imports:
       rxRefCount: refCount from rxjs/operators
 
+- id: io.reactivex.observables.ConnectableObservable.autoConnect
+  type: call
+  template:
+    pattern: ~this~.pipe(rxAutoconnect())
+    imports:
+      rxAutoconnect: autoconnect from butterfly-web/dist/rx/autoconnect
+
 - id: io.reactivex.Observable.take
   type: call
   template:

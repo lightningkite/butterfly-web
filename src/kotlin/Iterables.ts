@@ -4,6 +4,18 @@ import {IllegalArgumentException, safeEq} from "./Language";
 import {filter, map} from './lazyOp'
 import {EqualOverrideSet, setAddCausedChange} from "./Collections";
 
+//! Declares kotlin.collections.groupBy
+export function xIterableGroupBy<T, K>(iter: Iterable<T>, by: (item: T)=>K): Map<K, Array<T>> {
+    const map = new Map<K, Array<T>>()
+    for(const item of iter) {
+        const key = by(item)
+        const list: Array<T> = map.get(key) || []
+        list.push(item)
+        map.set(key, list)
+    }
+    return map
+}
+
 //! Declares kotlin.collections.firstOrNull>kotlin.collections.Iterable
 export function xIterableFirstOrNull<T>(iter: Iterable<T>): T | null {
     const item = iter[Symbol.iterator]().next()

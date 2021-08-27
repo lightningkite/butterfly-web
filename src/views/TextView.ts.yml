@@ -9,6 +9,14 @@
   type: call
   template: document.createElement('p')
 
+- id: com.lightningkite.butterfly.views.widget.SelectableText
+  type: type
+  template: HTMLElement
+
+- id: com.lightningkite.butterfly.views.widget.SelectableText
+  type: call
+  template: document.createElement('p')
+
 - id: com.lightningkite.butterfly.views.textResource
   type: set
   template:

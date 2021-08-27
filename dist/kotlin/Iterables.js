@@ -4,6 +4,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Language_1 = require("./Language");
 const lazyOp_1 = require("./lazyOp");
 const Collections_1 = require("./Collections");
+//! Declares kotlin.collections.groupBy
+function xIterableGroupBy(iter, by) {
+    const map = new Map();
+    for (const item of iter) {
+        const key = by(item);
+        const list = map.get(key) || [];
+        list.push(item);
+        map.set(key, list);
+    }
+    return map;
+}
+exports.xIterableGroupBy = xIterableGroupBy;
 //! Declares kotlin.collections.firstOrNull>kotlin.collections.Iterable
 function xIterableFirstOrNull(iter) {
     const item = iter[Symbol.iterator]().next();

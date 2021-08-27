@@ -1,3 +1,4 @@
+export declare function xIterableGroupBy<T, K>(iter: Iterable<T>, by: (item: T) => K): Map<K, Array<T>>;
 export declare function xIterableFirstOrNull<T>(iter: Iterable<T>): T | null;
 export declare function xIterableLastOrNull<T>(iterable: Iterable<T>): T | null;
 export declare function xIterableFirst<T>(iter: Iterable<T>): T;

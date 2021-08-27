@@ -78,7 +78,7 @@ function xTimeAloneIso8601(this_) {
     return `${this_.hour.toString().padStart(2, "0")}:${this_.minute.toString().padStart(2, "0")}:${this_.second.toString().padStart(2, "0")}`;
 }
 exports.xTimeAloneIso8601 = xTimeAloneIso8601;
-//! Declares com.lightningkite.butterfly.time.minus
+//! Declares com.lightningkite.butterfly.time.minus>com.lightningkite.butterfly.time.TimeAlone
 function xTimeAloneMinus(this_, rhs) {
     let offset = 0;
     if (rhs instanceof TimeAlone) {
@@ -98,7 +98,7 @@ function xTimeAloneMinus(this_, rhs) {
     })();
 }
 exports.xTimeAloneMinus = xTimeAloneMinus;
-//! Declares com.lightningkite.butterfly.time.plus
+//! Declares com.lightningkite.butterfly.time.plus>com.lightningkite.butterfly.time.TimeAlone
 function xTimeAlonePlus(this_, rhs) {
     let offset = 0;
     if (rhs instanceof TimeAlone) {
